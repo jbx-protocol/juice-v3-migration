@@ -1,6 +1,6 @@
-# Juice Extension Templates
+# Juice V3 Migration
 
-This repo provides some implementation templates of peripheral contracts of the Juicebox V2 ecosystem, as well as some common implementation as examples.
+This repo contains all components related to v3 migration.
 
 # Install Foundry
 
@@ -37,19 +37,6 @@ forge test
 ```bash
 foundryup
 ```
-
-## Content
-
-This repo is organised as follow:
-
-- contracts/Allocator: contains an IJBSplitsAllocator implementation template (Allocator.sol) as well as existing implementions, in contracts/Allocator/examples:
-  -- SunsetAllocator.sol: an allocator providing custom sunsets (a timestamp after which a reccuring payment is not made anymore) to each beneficiaries of a group of splits
-
-- contracts/DatasourceDelegate: contains an IJBFundingCycleDataSource, IJBPayDelegate and IJBRedemptionDelegate implementation templates (DataSourceDelegate.sol) as well as existing implementions, in contracts/Allocator/examples:
-  -- NFT directory: a datasource minting a NFT for every contribution and a redemption delegate preventing redemption for non-NFT holder ("closed-loop treasury")
-  -- payment routing/: A datasource-delegate following the best possible route between minting and token buy on secondary market, in order to maximise the amount of token received by the contributor.
-
-- contracts/Terminal: contains an IJBPaymentTerminal and IJBRedemptionTerminal implementation template.
 
 ## Tests
 
