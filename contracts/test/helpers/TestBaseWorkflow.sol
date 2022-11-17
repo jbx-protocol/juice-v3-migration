@@ -3,18 +3,18 @@ pragma solidity 0.8.6;
 
 import 'ds-test/test.sol';
 import 'forge-std/Vm.sol';
+import '../../V2Allocator.sol';
+
 
 import '@jbx-protocol-v2/contracts/JBController.sol';
 import '@jbx-protocol-v2/contracts/JBDirectory.sol';
 import '@jbx-protocol-v2/contracts/JBETHPaymentTerminal.sol';
-import '@jbx-protocol-v2/contracts/JBERC20PaymentTerminal.sol';
 import '@jbx-protocol-v2/contracts/JBSingleTokenPaymentTerminalStore.sol';
 import '@jbx-protocol-v2/contracts/JBFundingCycleStore.sol';
 import '@jbx-protocol-v2/contracts/JBOperatorStore.sol';
 import '@jbx-protocol-v2/contracts/JBPrices.sol';
 import '@jbx-protocol-v2/contracts/JBProjects.sol';
 import '@jbx-protocol-v2/contracts/JBSplitsStore.sol';
-import '@jbx-protocol-v2/contracts/JBToken.sol';
 import '@jbx-protocol-v2/contracts/JBTokenStore.sol';
 
 import '@jbx-protocol-v2/contracts/structs/JBDidPayData.sol';
@@ -30,9 +30,10 @@ import '@jbx-protocol-v2/contracts/structs/JBPayParamsData.sol';
 import '@jbx-protocol-v2/contracts/structs/JBProjectMetadata.sol';
 import '@jbx-protocol-v2/contracts/structs/JBRedeemParamsData.sol';
 import '@jbx-protocol-v2/contracts/structs/JBSplit.sol';
-
 import '@jbx-protocol-v2/contracts/interfaces/IJBPaymentTerminal.sol';
 import '@jbx-protocol-v2/contracts/interfaces/IJBToken.sol';
+import '@jbx-protocol-v2/contracts/libraries/JBConstants.sol';
+
 
 import './AccessJBLib.sol';
 
@@ -64,8 +65,6 @@ contract TestBaseWorkflow is DSTest {
   JBDirectory private _jbDirectory;
   // JBFundingCycleStore
   JBFundingCycleStore private _jbFundingCycleStore;
-  // JBToken
-  JBToken private _jbToken;
   // JBTokenStore
   JBTokenStore private _jbTokenStore;
   // JBSplitsStore
@@ -76,10 +75,10 @@ contract TestBaseWorkflow is DSTest {
   JBSingleTokenPaymentTerminalStore private _jbPaymentTerminalStore;
   // JBETHPaymentTerminal
   JBETHPaymentTerminal private _jbETHPaymentTerminal;
-  // JBERC20PaymentTerminal
-  JBERC20PaymentTerminal private _jbERC20PaymentTerminal;
   // AccessJBLib
   AccessJBLib private _accessJBLib;
+  // V2Allocator
+  V2Allocator private _v2Allocator;
 
   //*********************************************************************//
   // ------------------------- internal views -------------------------- //
@@ -95,6 +94,10 @@ contract TestBaseWorkflow is DSTest {
 
   function jbOperatorStore() internal view returns (JBOperatorStore) {
     return _jbOperatorStore;
+  }
+
+  function v2Allocator() internal view returns (V2Allocator) {
+    return _v2Allocator;
   }
 
   function jbProjects() internal view returns (JBProjects) {
@@ -133,14 +136,6 @@ contract TestBaseWorkflow is DSTest {
     return _jbETHPaymentTerminal;
   }
 
-  function jbERC20PaymentTerminal() internal view returns (JBERC20PaymentTerminal) {
-    return _jbERC20PaymentTerminal;
-  }
-
-  function jbToken() internal view returns (JBToken) {
-    return _jbToken;
-  }
-
   function jbLibraries() internal view returns (AccessJBLib) {
     return _accessJBLib;
   }
@@ -176,6 +171,10 @@ contract TestBaseWorkflow is DSTest {
     // JBDirectory
     _jbDirectory = new JBDirectory(_jbOperatorStore, _jbProjects, _jbFundingCycleStore, _multisig);
     evm.label(address(_jbDirectory), 'JBDirectory');
+
+    // V2Allocator
+    _v2Allocator = new V2Allocator(_jbDirectory);
+    evm.label(address(_v2Allocator), 'V2Allocator');
 
     // JBTokenStore
     _jbTokenStore = new JBTokenStore(_jbOperatorStore, _jbProjects, _jbDirectory);
@@ -222,28 +221,6 @@ contract TestBaseWorkflow is DSTest {
       _multisig
     );
     evm.label(address(_jbETHPaymentTerminal), 'JBETHPaymentTerminal');
-
-    evm.prank(_multisig);
-    _jbToken = new JBToken('MyToken', 'MT');
-
-    evm.prank(_multisig);
-    _jbToken.mint(0, _multisig, 100 * 10**18);
-
-    // JBERC20PaymentTerminal
-    _jbERC20PaymentTerminal = new JBERC20PaymentTerminal(
-      _jbToken,
-      _accessJBLib.ETH(), // currency
-      _accessJBLib.ETH(), // base weight currency
-      1, // JBSplitsGroupe
-      _jbOperatorStore,
-      _jbProjects,
-      _jbDirectory,
-      _jbSplitsStore,
-      _jbPrices,
-      _jbPaymentTerminalStore,
-      _multisig
-    );
-    evm.label(address(_jbERC20PaymentTerminal), 'JBERC20PaymentTerminal');
   }
 
   //https://ethereum.stackexchange.com/questions/24248/how-to-calculate-an-ethereum-contracts-address-during-its-creation-using-the-so
@@ -266,3 +243,4 @@ contract TestBaseWorkflow is DSTest {
     }
   }
 }
+
