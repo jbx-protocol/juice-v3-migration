@@ -40,13 +40,13 @@ contract V2Allocator is ERC165, IJBSplitAllocator, ReentrancyGuard {
   */
   function allocate(JBSplitAllocationData calldata _data) external payable nonReentrant override {    
     // eth terminal
-    IJBPaymentTerminal _terminal = directory.primaryTerminalOf( _data.projectId, JBTokens.ETH);
+    IJBPaymentTerminal _terminal = directory.primaryTerminalOf( _data.split.projectId, JBTokens.ETH);
 
     if (address(_terminal) == address(0)) revert TERMINAL_NOT_FOUND();
     
     // add to balance of v3 terminal for the project
     _terminal.addToBalanceOf{value: msg.value}(
-        _data.projectId,
+        _data.split.projectId,
         msg.value,
         JBTokens.ETH,
         "v2 -> v3 allocation",

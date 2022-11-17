@@ -6,7 +6,6 @@ contract TestV2Allocation is TestBaseWorkflow {
  address _allocationSourceProjectOwner = address(0xf00ba6);
  address payable _allocationDDestinationProjectOwner = payable(address(0xf00ba5));
 
-  uint256 constant DOMAIN = 1;
   uint256 constant GROUP = 1;
   uint256 _allocationSourceProjectId;
   uint256 _allocationDestinationProjectId;
@@ -14,8 +13,8 @@ contract TestV2Allocation is TestBaseWorkflow {
   JBController controller;
   JBProjectMetadata _projectMetadata;
   JBFundingCycleData _data;
+  JBFundAccessConstraints[] _fundAccessConstraint;
   JBFundingCycleMetadata _metadata;
-  JBFundAccessConstraints[] _fundAccessConstraints; // Default empty
   IJBPaymentTerminal[] _terminals; // Default empty
   V2Allocator _v2Allocator;
   JBSplitsStore _jbSplitsStore;
@@ -26,6 +25,8 @@ contract TestV2Allocation is TestBaseWorkflow {
     controller = jbController();
 
     _v2Allocator = v2Allocator();
+
+    _jbSplitsStore = jbSplitsStore();
 
     _projectMetadata = JBProjectMetadata({content: 'myIPFSHash', domain: 1});
 
@@ -56,7 +57,18 @@ contract TestV2Allocation is TestBaseWorkflow {
       dataSource: address(0)
     });
 
-    JBGroupedSplits[] memory _groupedSplits; // Default empty
+    _terminals.push(jbETHPaymentTerminal());
+
+    _fundAccessConstraint.push(JBFundAccessConstraints({
+        terminal: jbETHPaymentTerminal(),
+        token: jbLibraries().ETHToken(),
+        distributionLimit: 2 ether,
+        overflowAllowance: 0,
+        distributionLimitCurrency: jbLibraries().ETH(),
+        overflowAllowanceCurrency: jbLibraries().ETH()
+    }));
+
+    JBGroupedSplits[] memory _groupedSplits = new JBGroupedSplits[](1); // Default empty
     
     evm.prank(_allocationSourceProjectOwner);
     _allocationSourceProjectId = controller.launchProjectFor(
@@ -66,7 +78,7 @@ contract TestV2Allocation is TestBaseWorkflow {
       _metadata,
       block.timestamp,
       _groupedSplits,
-      _fundAccessConstraints,
+      _fundAccessConstraint,
       _terminals,
       ''
     );
@@ -79,16 +91,16 @@ contract TestV2Allocation is TestBaseWorkflow {
       _metadata,
       block.timestamp,
       _groupedSplits,
-      _fundAccessConstraints,
+      _fundAccessConstraint,
       _terminals,
       ''
     );
 
    // setting splits
-   JBSplit[] memory _splits;
+   JBSplit[] memory _splits = new JBSplit[](1);
    _splits[0] = JBSplit({
        preferClaimed: false,
-       preferAddToBalance: false,
+       preferAddToBalance: true,
        projectId: _allocationDestinationProjectId,
        beneficiary: _allocationDDestinationProjectOwner,
        lockedUntil: 0,
@@ -101,6 +113,53 @@ contract TestV2Allocation is TestBaseWorkflow {
         splits: _splits
     });
 
-    _jbSplitsStore.set(_allocationSourceProjectId, DOMAIN, _groupedSplits);
+    (JBFundingCycle memory _currentFundingCycle, ) = controller.currentFundingCycleOf(_allocationSourceProjectId);
+
+    evm.prank(_allocationSourceProjectOwner);
+    _jbSplitsStore.set(_allocationSourceProjectId, _currentFundingCycle.configuration,  _groupedSplits);
+  }
+
+  function testV2Allocation() public {
+    JBETHPaymentTerminal terminal = jbETHPaymentTerminal();
+    address _user = address(bytes20(keccak256('user')));
+
+    // fund user
+    evm.deal(_user, 1 ether);
+    
+    // pay project
+    evm.prank(_user);
+    terminal.pay{value: 1 ether}(
+      _allocationSourceProjectId,
+      1 ether,
+      address(0),
+      /* _beneficiary */
+      _user,
+      /* _minReturnedTokens */
+      0,
+      /* _preferClaimedTokens */
+      false,
+      /* _memo */
+      'Take my money!',
+      /* _delegateMetadata */
+      new bytes(0)
+    );
+
+    assertEq(jbPaymentTerminalStore().balanceOf(terminal, _allocationSourceProjectId), 1 ether);
+    
+    // distribute thhe funds to another project
+    evm.prank(_allocationSourceProjectOwner);
+    terminal.distributePayoutsOf(
+      _allocationSourceProjectId,
+      1 ether,
+      1, // Currency
+      address(0), //token (unused)
+      0, // Min wei out
+      'v2 allocation' // Memo
+    );
+
+    assertEq(
+      jbPaymentTerminalStore().balanceOf(terminal, _allocationDestinationProjectId),
+      (1 ether * jbLibraries().MAX_FEE()) / (terminal.fee() + jbLibraries().MAX_FEE())
+    );
   }
 }
