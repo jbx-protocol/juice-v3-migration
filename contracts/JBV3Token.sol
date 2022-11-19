@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.16;
+pragma solidity ^0.8.6;
 
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol';
 import '@jbx-protocol-v3/contracts/interfaces/IJBToken.sol';
+import '@jbx-protocol-v3/contracts/interfaces/IJBTokenStore.sol';
+import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
 
 /** 
   @notice
@@ -34,6 +36,18 @@ contract JBToken is ERC20Votes, Ownable, IJBToken {
   */
   uint256 public immutable override projectId;
 
+  /** 
+    @notice
+    The V1 Token Booth Instance. 
+  */
+  ITicketBooth public immutable v1TicketBooth;
+
+  /** 
+    @notice
+    The V2 Token Store Instance. 
+  */
+  IJBTokenStore public immutable v2TokenStore;
+
   //*********************************************************************//
   // ------------------------- external views -------------------------- //
   //*********************************************************************//
@@ -49,7 +63,11 @@ contract JBToken is ERC20Votes, Ownable, IJBToken {
   function totalSupply(uint256 _projectId) external view override returns (uint256) {
     _projectId; // Prevents unused var compiler and natspec complaints.
 
-    return super.totalSupply();
+    return super.totalSupply() + 
+    v1TicketBooth.totalSupplyOf(projectId) + 
+    v2TokenStore.totalSupplyOf(projectId) -
+    v1TicketBooth.balanceOf(address(this), projectId) -
+    v2TokenStore.balanceOf(address(this), projectId);
   }
 
   /** 
@@ -95,13 +113,19 @@ contract JBToken is ERC20Votes, Ownable, IJBToken {
     @param _name The name of the token.
     @param _symbol The symbol that the token should be represented by.
     @param _projectId The ID of the project that this token should be exclusively used for. Send 0 to support any project.
+    @param _v1TicketBooth V1 Token Booth Instance.
+    @param _v2TokenStore V2 Token Store Instance.
   */
   constructor(
     string memory _name,
     string memory _symbol,
-    uint256 _projectId
+    uint256 _projectId,
+    ITicketBooth _v1TicketBooth,
+    IJBTokenStore _v2TokenStore
   ) ERC20(_name, _symbol) ERC20Permit(_name) {
     projectId = _projectId;
+    v1TicketBooth = _v1TicketBooth;
+    v2TokenStore = _v2TokenStore;
   }
 
   //*********************************************************************//
