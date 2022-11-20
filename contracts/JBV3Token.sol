@@ -4,6 +4,8 @@ pragma solidity ^0.8.6;
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol';
 import '@jbx-protocol-v3/contracts/interfaces/IJBToken.sol';
+import '@jbx-protocol-v3/contracts/interfaces/IJBController.sol';
+import '@jbx-protocol-v3/contracts/interfaces/IJBDirectory.sol';
 import '@jbx-protocol-v3/contracts/interfaces/IJBTokenStore.sol';
 import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
 
@@ -25,6 +27,8 @@ contract JBToken is ERC20Votes, Ownable, IJBToken {
   // --------------------------- custom errors ------------------------- //
   //*********************************************************************//
   error BAD_PROJECT();
+  error INSUFFICIENT_FUNDS();
+  error UNEXPECTED_AMOUNT();
 
   //*********************************************************************//
   // --------------------- public stored properties -------------------- //
@@ -47,6 +51,13 @@ contract JBToken is ERC20Votes, Ownable, IJBToken {
     The V2 Token Store Instance. 
   */
   IJBTokenStore public immutable v2TokenStore;
+
+
+  /** 
+    @notice
+    The V3 Directory Instance. 
+  */
+  IJBDirectory public immutable v3Directory;
 
   //*********************************************************************//
   // ------------------------- external views -------------------------- //
@@ -113,6 +124,7 @@ contract JBToken is ERC20Votes, Ownable, IJBToken {
     @param _name The name of the token.
     @param _symbol The symbol that the token should be represented by.
     @param _projectId The ID of the project that this token should be exclusively used for. Send 0 to support any project.
+    @param _v3Directory V3 Directory Instance.
     @param _v1TicketBooth V1 Token Booth Instance.
     @param _v2TokenStore V2 Token Store Instance.
   */
@@ -120,12 +132,14 @@ contract JBToken is ERC20Votes, Ownable, IJBToken {
     string memory _name,
     string memory _symbol,
     uint256 _projectId,
+    IJBDirectory _v3Directory,
     ITicketBooth _v1TicketBooth,
     IJBTokenStore _v2TokenStore
   ) ERC20(_name, _symbol) ERC20Permit(_name) {
     projectId = _projectId;
     v1TicketBooth = _v1TicketBooth;
     v2TokenStore = _v2TokenStore;
+    v3Directory = _v3Directory;
   }
 
   //*********************************************************************//
@@ -233,5 +247,112 @@ contract JBToken is ERC20Votes, Ownable, IJBToken {
     if (projectId != 0 && _projectId != projectId) revert BAD_PROJECT();
 
     transferFrom(_from, _to, _amount);
+  }
+
+  /** 
+    @notice
+    Migrate v1 & v2 tokens to v3.
+  */
+  function migrate() external {
+
+    // Get a reference to the v1 project's ERC20 tokens.
+    ITickets _v1Token = v1TicketBooth.ticketsOf(projectId);
+    // Get a reference to the v2 project's ERC20 tokens.
+    IJBToken _v2Token = v2TokenStore.tokenOf(projectId);
+
+    _migrateV1Tokens(_v1Token);
+    _migrateV2Tokens(_v2Token);
+  }
+
+  /** 
+    @notice
+    Migrate v1 tokens to v3.
+    @param _v1Token The v1 token instance.
+  */
+  function _migrateV1Tokens(ITickets _v1Token) internal {    
+    // Get a reference to the migrator's unclaimed balance.
+    uint256 _tokensToMintFromUnclaimedBalance = v1TicketBooth.stakedBalanceOf(msg.sender, projectId);
+
+    // Get a reference to the migrator's ERC20 balance.
+    uint256 _tokensToMintFromERC20s = _v1Token == ITickets(address(0)) ? 0 : _v1Token.balanceOf(msg.sender);
+    
+    // total v3 tokens to mint
+    uint256 v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
+
+    if (v3TokensToMint == 0)
+      revert INSUFFICIENT_FUNDS();
+
+    // Transfer v1 ERC20 tokens to this contract from the msg sender if needed.
+    if (_tokensToMintFromERC20s != 0)
+      IERC20(_v1Token).transferFrom(msg.sender, address(this), _tokensToMintFromERC20s);
+
+    // Transfer v1 unclaimed tokens to this contract from the msg sender if needed.
+    if (_tokensToMintFromUnclaimedBalance != 0)
+      v1TicketBooth.transfer(
+        msg.sender,
+        projectId,
+        _tokensToMintFromUnclaimedBalance,
+        address(this)
+      );
+
+    // Mint the v3 tokens for the beneficary.
+    uint256 beneficiaryTokenCount = IJBController(v3Directory.controllerOf(projectId)).mintTokensOf(
+      projectId,
+      v3TokensToMint,
+      msg.sender,
+      '',
+      true,
+      false
+    );
+
+    // Make sure the token amount is the same as the v1 token amount and is at least what is expected.
+    if (beneficiaryTokenCount != v3TokensToMint)
+      revert UNEXPECTED_AMOUNT();
+  }
+
+  /** 
+    @notice
+    Migrate v2 tokens to v3.
+    @param _v2Token The v2 token instance.
+  */
+  function _migrateV2Tokens(IJBToken _v2Token) internal {
+    // Get a reference to the migrator's unclaimed balance.
+    uint256 _tokensToMintFromUnclaimedBalance = v2TokenStore.unclaimedBalanceOf(msg.sender, projectId);
+
+    // Get a reference to the migrator's ERC20 balance.
+    uint256 _tokensToMintFromERC20s = _v2Token == IJBToken(address(0)) ? 0 : _v2Token.balanceOf(msg.sender, projectId);
+    
+    // total v3 tokens to mint
+    uint256 v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
+
+    if (v3TokensToMint == 0)
+      revert INSUFFICIENT_FUNDS();
+
+    // Transfer v2 ERC20 tokens to this contract from the msg sender if needed.
+    if (_tokensToMintFromERC20s != 0)
+      IJBToken(_v2Token).transferFrom(projectId, msg.sender, address(this), _tokensToMintFromERC20s);
+
+    // Transfer v2 unclaimed tokens to this contract from the msg sender if needed.
+    if (_tokensToMintFromUnclaimedBalance != 0)
+      v2TokenStore.transferFrom(
+        msg.sender,
+        projectId,
+        address(this),
+        _tokensToMintFromUnclaimedBalance
+      );
+
+    // Mint the v3 tokens for the beneficary.
+    uint256 beneficiaryTokenCount = IJBController(v3Directory.controllerOf(projectId)).mintTokensOf(
+      projectId,
+      v3TokensToMint,
+      msg.sender,
+      '',
+      true,
+      false
+    );
+
+    // Make sure the token amount is the same as the v1 token amount and is at least what is expected.
+    if (beneficiaryTokenCount != v3TokensToMint)
+      revert UNEXPECTED_AMOUNT();
   }
 }
