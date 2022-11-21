@@ -82,7 +82,8 @@ contract TestV2Allocation is TestBaseWorkflow {
       _terminals,
       ''
     );
-
+    
+    // mimicing a v3 project launch since there was dependency issue with importing both v2 & v3 contract togethet since the almost every contract is the same
     evm.prank(_allocationDDestinationProjectOwner);
     _allocationDestinationProjectId = controller.launchProjectFor(
       _allocationDDestinationProjectOwner,
