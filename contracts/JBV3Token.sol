@@ -3,10 +3,10 @@ pragma solidity ^0.8.6;
 
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol';
-import '@jbx-protocol-v3/contracts/interfaces/IJBToken.sol';
-import '@jbx-protocol-v3/contracts/interfaces/IJBController.sol';
-import '@jbx-protocol-v3/contracts/interfaces/IJBDirectory.sol';
-import '@jbx-protocol-v3/contracts/interfaces/IJBTokenStore.sol';
+import '@jbx-protocol-v2/contracts/interfaces/IJBToken.sol';
+import '@jbx-protocol-v2/contracts/interfaces/IJBController.sol';
+import '@jbx-protocol-v2/contracts/interfaces/IJBDirectory.sol';
+import '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
 import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
 
 /** 
@@ -22,7 +22,7 @@ import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
   ERC20Votes: General token standard for fungible membership with snapshot capabilities sufficient to interact with standard governance contracts. 
   Ownable: Includes convenience functionality for checking a message sender's permissions before executing certain transactions.
 */
-contract JBToken is ERC20Votes, Ownable, IJBToken {
+contract JBV3Token is ERC20Votes, Ownable, IJBToken {
   //*********************************************************************//
   // --------------------------- custom errors ------------------------- //
   //*********************************************************************//
@@ -38,7 +38,7 @@ contract JBToken is ERC20Votes, Ownable, IJBToken {
     @notice
     The ID of the project that this token should be exclusively used for. Send 0 to support any project. 
   */
-  uint256 public immutable override projectId;
+  uint256 public immutable projectId;
 
   /** 
     @notice
@@ -249,6 +249,13 @@ contract JBToken is ERC20Votes, Ownable, IJBToken {
     transferFrom(_from, _to, _amount);
   }
 
+  function transferOwnership(uint256 _projectId, address _newOwner) external pure override {
+    _projectId;
+    _newOwner;
+    // there are dependency issues with both v2 & v3 imports due to same name of contract/interfaces
+    revert("not available");
+  }
+
   /** 
     @notice
     Migrate v1 & v2 tokens to v3.
@@ -355,4 +362,6 @@ contract JBToken is ERC20Votes, Ownable, IJBToken {
     if (beneficiaryTokenCount != v3TokensToMint)
       revert UNEXPECTED_AMOUNT();
   }
+
+
 }

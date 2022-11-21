@@ -5,6 +5,7 @@ import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import '@jbx-protocol-v2/contracts/structs/JBSplitAllocationData.sol';
 import '@jbx-protocol-v2/contracts/interfaces/IJBDirectory.sol';
+import '@jbx-protocol-v2/contracts/interfaces/IJBSplitAllocator.sol';
 import '@jbx-protocol-v2/contracts/interfaces/IJBPaymentTerminal.sol';
 import '@jbx-protocol-v2/contracts/libraries/JBTokens.sol';
 
