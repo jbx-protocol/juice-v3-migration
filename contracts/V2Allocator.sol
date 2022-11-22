@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.6;
 
+// TODO: Due to the contract names being thhe same in v2 & v3 repo mmixing the imports cause compilation issue in this context importing only either v2 or v3 tokens should be okay?
 import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import '@jbx-protocol-v2/contracts/structs/JBSplitAllocationData.sol';
