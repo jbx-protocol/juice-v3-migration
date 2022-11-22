@@ -6,29 +6,29 @@ import 'forge-std/Test.sol';
 import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
 
 contract TestTokenMigration is TestBaseWorkflow {
- address _projectOwner = address(0xf00ba6);
-
+  address _projectOwner = address(0xf00ba6);
   uint256 _projectId;
-
+  
+  // v3 instances
+  JBTokenStore _v3JbTokenStore;
   JBV3Token _v3Token;
-  JBDirectory _jbDirectory;
-  JBController v2controller;
+  JBDirectory _v3jJbDirectory;
   JBController v3controller;
+
+  // v2 instances
+  JBController v2controller;
   JBProjectMetadata _projectMetadata;
   JBFundingCycleData _data;
   JBFundAccessConstraints[] _fundAccessConstraint;
   JBGroupedSplits[] _groupedSplits;
   JBFundingCycleMetadata _metadata;
   IJBPaymentTerminal[] _terminals; // Default empty
-  V2Allocator _v2Allocator;
   JBSplitsStore _jbSplitsStore;
 
   function setUp() public override {
      super.setUp();
 
     v2controller = jbController();
-
-    _v2Allocator = v2Allocator();
 
     _jbSplitsStore = jbSplitsStore();
 
@@ -86,44 +86,46 @@ contract TestTokenMigration is TestBaseWorkflow {
       ''
     );
 
-    _setupProjectToMigrateTokensTo();
+    evm.prank(_projectOwner);
+    v2controller.issueTokenFor(_projectId, 'v2 token', 'v2 token');
+
+    // mimicing a v3 project launch since there was dependency issue with importing both v2 & v3 contract togethet since the almost every contract is the same
+    _setupV3ProjectToMigrateTokensTo();
   }
 
-  function _setupProjectToMigrateTokensTo () internal {
+  function _setupV3ProjectToMigrateTokensTo () internal {
     JBProjects _jbProjects = new JBProjects(jbOperatorStore());
 
-    address contractAtNoncePlusOne = addressFrom(address(this), 15);
-    // address contractAtNoncePlusOne = computeCreateAddress(address(this), evm.getNonce(address(this)));
+    address preDeterministicJBDirectory = addressFrom(address(this), 15);
 
     // JBFundingCycleStore
-    JBFundingCycleStore _jbFundingCycleStore = new JBFundingCycleStore(IJBDirectory(contractAtNoncePlusOne));
-    // assertEq(evm.getNonce(address(this)), 10);
+    JBFundingCycleStore _jbFundingCycleStore = new JBFundingCycleStore(IJBDirectory(preDeterministicJBDirectory));
 
     // JBDirectory
-    _jbDirectory = new JBDirectory(jbOperatorStore(), _jbProjects, _jbFundingCycleStore, multisig());
+    _v3jJbDirectory = new JBDirectory(jbOperatorStore(), _jbProjects, _jbFundingCycleStore, multisig());
 
     // JBTokenStore
-    JBTokenStore _jbTokenStore = new JBTokenStore(jbOperatorStore(), _jbProjects, _jbDirectory);
+    _v3JbTokenStore = new JBTokenStore(jbOperatorStore(), _jbProjects, _v3jJbDirectory);
 
     // JBSplitsStore
-    JBSplitsStore _newJbSplitsStore = new JBSplitsStore(jbOperatorStore(), _jbProjects, _jbDirectory);
+    JBSplitsStore _newJbSplitsStore = new JBSplitsStore(jbOperatorStore(), _jbProjects, _v3jJbDirectory);
 
     // JBController
     v3controller = new JBController(
       jbOperatorStore(),
       _jbProjects,
-      _jbDirectory,
+      _v3jJbDirectory,
       _jbFundingCycleStore,
-      _jbTokenStore,
+      _v3JbTokenStore,
       _newJbSplitsStore
     );
 
     evm.prank(multisig());
-    _jbDirectory.setIsAllowedToSetFirstController(address(v3controller), true);
+    _v3jJbDirectory.setIsAllowedToSetFirstController(address(v3controller), true);
 
     // JBETHPaymentTerminalStore
     JBSingleTokenPaymentTerminalStore _jbPaymentTerminalStore = new JBSingleTokenPaymentTerminalStore(
-      _jbDirectory,
+      _v3jJbDirectory,
       _jbFundingCycleStore,
       jbPrices()
     );
@@ -136,7 +138,7 @@ contract TestTokenMigration is TestBaseWorkflow {
       _accessJBLib.ETH(),
       jbOperatorStore(),
       _jbProjects,
-      _jbDirectory,
+      _v3jJbDirectory,
       _newJbSplitsStore,
       jbPrices(),
       _jbPaymentTerminalStore,
@@ -155,7 +157,10 @@ contract TestTokenMigration is TestBaseWorkflow {
         overflowAllowanceCurrency: jbLibraries().ETH()
     }));
 
-    // deploying a v2 project
+   
+    _metadata.allowMinting = true;
+
+    // mimicing a v3 project launch since there was dependency issue with importing both v2 & v3 contract togethet since the almost every contract is the same
     evm.prank(_projectOwner);
     _projectId = v3controller.launchProjectFor(
       _projectOwner,
@@ -169,17 +174,21 @@ contract TestTokenMigration is TestBaseWorkflow {
       ''
     );
 
-    _v3Token = new JBV3Token('v3 token', 'v3 token', _projectId, _jbDirectory, ITicketBooth(address(0)), jbTokenStore());
+    assertEq(_jbProjects.ownerOf(_projectId), _projectOwner);
+    
+    // deploying v3 token
+    _v3Token = new JBV3Token('v3 token', 'v3 token', _projectId, _v3jJbDirectory, ITicketBooth(address(0)), jbTokenStore());
+
   }
 
-  function testMigration() public {
+  function testMigrationWhenUseHasClaimedAndUnclaimedBalances() public {
     JBETHPaymentTerminal terminal = jbETHPaymentTerminal();
     address _user = address(bytes20(keccak256('user')));
 
     // fund user
-    evm.deal(_user, 1 ether);
+    evm.deal(_user, 2 ether);
     
-    // pay project
+    // pay project and getting unclaimed token balance
     evm.prank(_user);
     terminal.pay{value: 1 ether}(
       _projectId,
@@ -197,9 +206,85 @@ contract TestTokenMigration is TestBaseWorkflow {
       new bytes(0)
     );
 
-    assertEq(jbPaymentTerminalStore().balanceOf(terminal, _projectId), 1 ether);
+    // pay project and getting claimed tokens sent
+    evm.prank(_user);
+    terminal.pay{value: 1 ether}(
+      _projectId,
+      1 ether,
+      address(0),
+      /* _beneficiary */
+      _user,
+      /* _minReturnedTokens */
+      0,
+      /* _preferClaimedTokens */
+      true,
+      /* _memo */
+      'Take my money!',
+      /* _delegateMetadata */
+      new bytes(0)
+    );
+
+    assertEq(jbPaymentTerminalStore().balanceOf(terminal, _projectId), 2 ether);
+
+    // giving all necessary permissions
+    IJBToken _token = jbTokenStore().tokenOf(_projectId);
+    evm.prank(_user);
+    _token.approve(_projectId, address(_v3Token), 1000000 ether);
+
+    uint256[] memory _transferPermissionIndex = new uint256[](1);
+    _transferPermissionIndex[0] = JBOperations.TRANSFER;
 
     evm.prank(_user);
+    jbOperatorStore().setOperator(
+      JBOperatorData(address(_v3Token), _projectId, _transferPermissionIndex)
+    );
+
+    uint256[] memory _mintPermissionIndex = new uint256[](1);
+    _mintPermissionIndex[0] = JBOperations.MINT;
+
+    evm.prank(_projectOwner);
+    jbOperatorStore().setOperator(
+      JBOperatorData(address(_v3Token), _projectId, _mintPermissionIndex)
+    );
+
+    uint256 unclaimedBalance = jbTokenStore().unclaimedBalanceOf(_user, _projectId);
+    uint256 claimedBalance = jbTokenStore().tokenOf(_projectId).balanceOf(_user, _projectId);
+
+    evm.prank(_user);
+    _v3Token.migrate();
+
+    uint256 unclaimedv3Balance = _v3JbTokenStore.balanceOf(_user, _projectId);
+    assertEq(unclaimedv3Balance, unclaimedBalance + claimedBalance);
+  }
+
+    function testMigrationWhenUseHasNoClaimedAndUnclaimedBalances() public {
+    address _user = address(bytes20(keccak256('user')));
+
+    // fund user
+    evm.deal(_user, 2 ether);
+
+    IJBToken _token = jbTokenStore().tokenOf(_projectId);
+    evm.prank(_user);
+    _token.approve(_projectId, address(_v3Token), 1000000 ether);
+
+    uint256[] memory _transferPermissionIndex = new uint256[](1);
+    _transferPermissionIndex[0] = JBOperations.TRANSFER;
+
+    evm.prank(_user);
+    jbOperatorStore().setOperator(
+      JBOperatorData(address(_v3Token), _projectId, _transferPermissionIndex)
+    );
+
+    uint256[] memory _mintPermissionIndex = new uint256[](1);
+    _mintPermissionIndex[0] = JBOperations.MINT;
+
+    evm.prank(_projectOwner);
+    jbOperatorStore().setOperator(
+      JBOperatorData(address(_v3Token), _projectId, _mintPermissionIndex)
+    );
+
+    evm.prank(_user);
+    evm.expectRevert(abi.encodeWithSignature('INSUFFICIENT_FUNDS()'));
     _v3Token.migrate();
   }
 }
