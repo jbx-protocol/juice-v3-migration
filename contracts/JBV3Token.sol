@@ -261,14 +261,17 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     Migrate v1 & v2 tokens to v3.
   */
   function migrate() external {
+    if (address(v1TicketBooth) != address(0)) {
+      // Get a reference to the v1 project's ERC20 tokens.
+      ITickets _v1Token = v1TicketBooth.ticketsOf(projectId);
+      _migrateV1Tokens(_v1Token);
+    }
 
-    // Get a reference to the v1 project's ERC20 tokens.
-    ITickets _v1Token = v1TicketBooth.ticketsOf(projectId);
-    // Get a reference to the v2 project's ERC20 tokens.
-    IJBToken _v2Token = v2TokenStore.tokenOf(projectId);
-
-    _migrateV1Tokens(_v1Token);
-    _migrateV2Tokens(_v2Token);
+    if (address(v2TokenStore) != address(0)) {
+      // Get a reference to the v2 project's ERC20 tokens.
+      IJBToken _v2Token = v2TokenStore.tokenOf(projectId);
+      _migrateV2Tokens(_v2Token);
+    }
   }
 
   /** 
