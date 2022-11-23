@@ -1,11 +1,12 @@
 pragma solidity 0.8.6;
 
-import './helpers/TestBaseWorkflow.sol';
+import './helpers/TestBaseWorkflowV2.sol';
+import './helpers/TestBaseWorkflowV1.sol';
 import '../JBV3Token.sol';
 import 'forge-std/Test.sol';
 import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
 
-contract TestTokenMigration is TestBaseWorkflow {
+contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
   address _projectOwner = address(0xf00ba6);
   uint256 _projectId;
   
@@ -25,8 +26,8 @@ contract TestTokenMigration is TestBaseWorkflow {
   IJBPaymentTerminal[] _terminals; // Default empty
   JBSplitsStore _jbSplitsStore;
 
-  function setUp() public override {
-     super.setUp();
+  function setUp() public override(TestBaseWorkflowV2, TestBaseWorkflowV1) {
+    TestBaseWorkflowV2.setUp();
 
     v2controller = jbController();
 

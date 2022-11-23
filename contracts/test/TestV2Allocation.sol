@@ -1,8 +1,8 @@
 pragma solidity 0.8.6;
 
-import './helpers/TestBaseWorkflow.sol';
+import './helpers/TestBaseWorkflowV2.sol';
 
-contract TestV2Allocation is TestBaseWorkflow {
+contract TestV2Allocation is TestBaseWorkflowV2 {
  address _allocationSourceProjectOwner = address(0xf00ba6);
  address payable _allocationDDestinationProjectOwner = payable(address(0xf00ba5));
 
