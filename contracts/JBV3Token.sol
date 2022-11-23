@@ -262,17 +262,23 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     Migrate v1 & v2 tokens to v3.
   */
   function migrate() external {
+    uint256 _fundsToMigrateFromV1;
+    uint256 _fundsToMigrateFromV2;
     if (address(v1TicketBooth) != address(0)) {
-      // Get a reference to the v1 project's ERC20 tokens.
+      // Get a reference to the v1 projects ERC20 tokens.
       ITickets _v1Token = v1TicketBooth.ticketsOf(projectId);
-      _migrateV1Tokens(_v1Token);
+      _fundsToMigrateFromV1 = _migrateV1Tokens(_v1Token);
     }
 
     if (address(v2TokenStore) != address(0)) {
       // Get a reference to the v2 project's ERC20 tokens.
       IJBToken _v2Token = v2TokenStore.tokenOf(projectId);
-      _migrateV2Tokens(_v2Token);
+      _fundsToMigrateFromV2 = _migrateV2Tokens(_v2Token);
     }
+
+    uint256 _tokensToMint = _fundsToMigrateFromV1 + _fundsToMigrateFromV2;
+    // mint tokens directly
+    _mint(msg.sender, _tokensToMint);
   }
 
   /** 
@@ -280,7 +286,7 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     Migrate v1 tokens to v3.
     @param _v1Token The v1 token instance.
   */
-  function _migrateV1Tokens(ITickets _v1Token) internal {    
+  function _migrateV1Tokens(ITickets _v1Token) internal returns(uint256) {     
     // Get a reference to the migrator's unclaimed balance.
     uint256 _tokensToMintFromUnclaimedBalance = v1TicketBooth.stakedBalanceOf(msg.sender, projectId);
 
@@ -305,20 +311,8 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
         _tokensToMintFromUnclaimedBalance,
         address(this)
       );
-
-    // Mint the v3 tokens for the beneficary.
-    uint256 beneficiaryTokenCount = IJBController(v3Directory.controllerOf(projectId)).mintTokensOf(
-      projectId,
-      v3TokensToMint,
-      msg.sender,
-      '',
-      true,
-      false
-    );
-
-    // Make sure the token amount is the same as the v1 token amount and is at least what is expected.
-    if (beneficiaryTokenCount != v3TokensToMint)
-      revert UNEXPECTED_AMOUNT();
+    
+    return v3TokensToMint;
   }
 
   /** 
@@ -326,7 +320,7 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     Migrate v2 tokens to v3.
     @param _v2Token The v2 token instance.
   */
-  function _migrateV2Tokens(IJBToken _v2Token) internal {
+  function _migrateV2Tokens(IJBToken _v2Token) internal returns(uint256) {
     // Get a reference to the migrator's unclaimed balance.
     uint256 _tokensToMintFromUnclaimedBalance = v2TokenStore.unclaimedBalanceOf(msg.sender, projectId);
 
@@ -351,20 +345,8 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
         address(this),
         _tokensToMintFromUnclaimedBalance
       );
-
-    // Mint the v3 tokens for the beneficary.
-    uint256 beneficiaryTokenCount = IJBController(v3Directory.controllerOf(projectId)).mintTokensOf(
-      projectId,
-      v3TokensToMint,
-      msg.sender,
-      '',
-      true,
-      false
-    );
-
-    // Make sure the token amount is the same as the v1 token amount and is at least what is expected.
-    if (beneficiaryTokenCount != v3TokensToMint)
-      revert UNEXPECTED_AMOUNT();
+    
+    return v3TokensToMint;
   }
 
 
