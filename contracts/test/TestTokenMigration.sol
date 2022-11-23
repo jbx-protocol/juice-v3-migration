@@ -253,8 +253,8 @@ contract TestTokenMigration is TestBaseWorkflow {
     evm.prank(_user);
     _v3Token.migrate();
 
-    uint256 unclaimedv3Balance = _v3JbTokenStore.balanceOf(_user, _projectId);
-    assertEq(unclaimedv3Balance, unclaimedBalance + claimedBalance);
+    uint256 v3TokenBalance = _v3Token.balanceOf(_user, _projectId);
+    assertEq(v3TokenBalance, unclaimedBalance + claimedBalance);
   }
 
     function testMigrationWhenUseHasNoClaimedAndUnclaimedBalances() public {

@@ -29,7 +29,6 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
   //*********************************************************************//
   error BAD_PROJECT();
   error INSUFFICIENT_FUNDS();
-  error UNEXPECTED_AMOUNT();
 
   //*********************************************************************//
   // --------------------- public stored properties -------------------- //
