@@ -92,6 +92,8 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
 
     // mimicing a v3 project launch since there was dependency issue with importing both v2 & v3 contract togethet since the almost every contract is the same
     _setupV3ProjectToMigrateTokensTo();
+
+    TestBaseWorkflowV1.setUp();
   }
 
   function _setupV3ProjectToMigrateTokensTo () internal {
