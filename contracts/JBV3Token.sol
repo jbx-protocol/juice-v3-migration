@@ -283,6 +283,8 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     @notice
     Migrate v1 tokens to v3.
     @param _v1Token The v1 token instance.
+
+    @return amount of v2 tokens to be migrated
   */
   function _migrateV1Tokens(ITickets _v1Token) internal returns(uint256) {     
     // Get a reference to the migrator's unclaimed balance.
@@ -317,6 +319,8 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     @notice
     Migrate v2 tokens to v3.
     @param _v2Token The v2 token instance.
+
+    @return amount of v2 tokens to be migrated
   */
   function _migrateV2Tokens(IJBToken _v2Token) internal returns(uint256) {
     // Get a reference to the migrator's unclaimed balance.
