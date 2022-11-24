@@ -4,7 +4,6 @@ import './helpers/TestBaseWorkflowV2.sol';
 import './helpers/TestBaseWorkflowV1.sol';
 import '../JBV3Token.sol';
 import 'forge-std/Test.sol';
-import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
 
 contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
   address _projectOwner = address(0xf00ba6);
@@ -92,8 +91,6 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
 
     // mimicing a v3 project launch since there was dependency issue with importing both v2 & v3 contract togethet since the almost every contract is the same
     _setupV3ProjectToMigrateTokensTo();
-
-    TestBaseWorkflowV1.setUp();
   }
 
   function _setupV3ProjectToMigrateTokensTo () internal {
@@ -178,22 +175,37 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     );
 
     assertEq(_jbProjects.ownerOf(_projectId), _projectOwner);
+
+    TestBaseWorkflowV1.setUp();
     
     // deploying v3 token
-    _v3Token = new JBV3Token('v3 token', 'v3 token', _projectId, _v3jJbDirectory, ITicketBooth(address(0)), jbTokenStore());
+    _v3Token = new JBV3Token('v3 token', 'v3 token', _projectId, _v3jJbDirectory, ticketBooth(), jbTokenStore());
 
   }
 
   function testMigrationWhenUseHasClaimedAndUnclaimedBalances() public {
-    JBETHPaymentTerminal terminal = jbETHPaymentTerminal();
+    TerminalV1_1 _v1Terminal = terminal();
+    JBETHPaymentTerminal _v2Terminal = jbETHPaymentTerminal();
+
     address _user = address(bytes20(keccak256('user')));
 
     // fund user
-    evm.deal(_user, 2 ether);
-    
-    // pay project and getting unclaimed token balance
+    evm.deal(_user, 4 ether);
+
+    // pay project and getting unclaimed tickets
     evm.prank(_user);
-    terminal.pay{value: 1 ether}(
+    _v1Terminal.pay{value: 1 ether}(
+      _projectId,
+      _user,
+      'Take my money',
+       false
+    );
+
+    assertEq(_v1Terminal.balanceOf(_projectId), 1 ether);
+    
+    // pay project and getting unclaimed token balance for v2
+    evm.prank(_user);
+    _v2Terminal.pay{value: 1 ether}(
       _projectId,
       1 ether,
       address(0),
@@ -209,9 +221,9 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
       new bytes(0)
     );
 
-    // pay project and getting claimed tokens sent
+    // pay project and getting claimed tokens sent for v2
     evm.prank(_user);
-    terminal.pay{value: 1 ether}(
+    _v2Terminal.pay{value: 1 ether}(
       _projectId,
       1 ether,
       address(0),
@@ -227,29 +239,33 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
       new bytes(0)
     );
 
-    assertEq(jbPaymentTerminalStore().balanceOf(terminal, _projectId), 2 ether);
+    assertEq(jbPaymentTerminalStore().balanceOf(_v2Terminal, _projectId), 2 ether);
 
     // giving all necessary permissions
     IJBToken _token = jbTokenStore().tokenOf(_projectId);
     evm.prank(_user);
     _token.approve(_projectId, address(_v3Token), 1000000 ether);
 
-    uint256[] memory _transferPermissionIndex = new uint256[](1);
-    _transferPermissionIndex[0] = JBOperations.TRANSFER;
+    uint256[] memory _transferPermissionIndexForV2 = new uint256[](1);
+    _transferPermissionIndexForV2[0] = JBOperations.TRANSFER;
 
     evm.prank(_user);
     jbOperatorStore().setOperator(
-      JBOperatorData(address(_v3Token), _projectId, _transferPermissionIndex)
+      JBOperatorData(address(_v3Token), _projectId, _transferPermissionIndexForV2)
     );
 
-    uint256[] memory _mintPermissionIndex = new uint256[](1);
-    _mintPermissionIndex[0] = JBOperations.MINT;
+    uint256[] memory _transferPermissionIndexForV1 = new uint256[](1);
+    _transferPermissionIndexForV1[0] = Operations.Transfer;
 
-    evm.prank(_projectOwner);
-    jbOperatorStore().setOperator(
-      JBOperatorData(address(_v3Token), _projectId, _mintPermissionIndex)
+    evm.prank(_user);
+    operatorStore().setOperator(
+      address(_v3Token), _projectId, _transferPermissionIndexForV1
     );
 
+    // v1 balances
+    uint256 v1UnclaimedBalance = ticketBooth().stakedBalanceOf(_user, _projectId);
+
+    // v2 balances
     uint256 unclaimedBalance = jbTokenStore().unclaimedBalanceOf(_user, _projectId);
     uint256 claimedBalance = jbTokenStore().tokenOf(_projectId).balanceOf(_user, _projectId);
 
@@ -257,7 +273,7 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     _v3Token.migrate();
 
     uint256 v3TokenBalance = _v3Token.balanceOf(_user, _projectId);
-    assertEq(v3TokenBalance, unclaimedBalance + claimedBalance);
+    assertEq(v3TokenBalance, unclaimedBalance + claimedBalance + v1UnclaimedBalance);
   }
 
     function testMigrationWhenUseHasNoClaimedAndUnclaimedBalances() public {

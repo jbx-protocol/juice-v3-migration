@@ -11,7 +11,12 @@ import '@jbx-protocol-v1/contracts/TerminalDirectory.sol';
 import '@jbx-protocol-v1/contracts/TicketBooth.sol';
 import '@jbx-protocol-v1/contracts/ModStore.sol';
 import '@jbx-protocol-v1/contracts/Prices.sol';
-
+import '@jbx-protocol-v1/contracts/interfaces/IModStore.sol';
+import '@jbx-protocol-v1/contracts/interfaces/IFundingCycles.sol';
+import '@jbx-protocol-v1/contracts/interfaces/ITerminalV1_1.sol';
+import '@jbx-protocol-v1/contracts/interfaces/ITreasuryExtension.sol';
+import '@jbx-protocol-v1/contracts/interfaces/IFundingCycleBallot.sol';
+import '@jbx-protocol-v1/contracts/libraries/Operations.sol';
 
 contract TestBaseWorkflowV1 is DSTest {
 
@@ -95,7 +100,38 @@ contract TestBaseWorkflowV1 is DSTest {
 
       _modStore = new ModStore(_projects, _operatorStore, _terminalDirectory);
 
+      PayoutMod[] memory _payoutMod = new PayoutMod[](0);
+      TicketMod[] memory _ticketMod = new TicketMod[](0);
+
       _terminal = new TerminalV1_1(_projects, _fundingCycles, _ticketBooth, _operatorStore, _modStore, _prices, _terminalDirectory, _multisig);
+
+      FundingCycleProperties memory _fundingCycleProperties = FundingCycleProperties({
+        target: 2 ether,
+        currency: 0,
+        duration: 14,
+        cycleLimit: 2,
+        discountRate: 200,
+        ballot: IFundingCycleBallot(address(0))
+      });
+
+      FundingCycleMetadata2 memory _metadata = FundingCycleMetadata2({
+        reservedRate: 0,
+        bondingCurveRate: 200,
+        reconfigurationBondingCurveRate: 200,
+        payIsPaused: false,
+        ticketPrintingIsAllowed: true,
+        treasuryExtension: ITreasuryExtension(address(0))
+      });
+
+      _terminal.deploy(
+        _multisig,
+        bytes32("deploy"),
+        "deploy",
+        _fundingCycleProperties,
+        _metadata,
+        _payoutMod,
+        _ticketMod
+      );
   }
 
 }
