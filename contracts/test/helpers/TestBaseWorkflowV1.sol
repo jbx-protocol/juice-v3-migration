@@ -17,6 +17,7 @@ import '@jbx-protocol-v1/contracts/interfaces/ITerminalV1_1.sol';
 import '@jbx-protocol-v1/contracts/interfaces/ITreasuryExtension.sol';
 import '@jbx-protocol-v1/contracts/interfaces/IFundingCycleBallot.sol';
 import '@jbx-protocol-v1/contracts/libraries/Operations.sol';
+import '@jbx-protocol-v1/contracts/interfaces/ITickets.sol';
 
 contract TestBaseWorkflowV1 is DSTest {
 
@@ -132,6 +133,10 @@ contract TestBaseWorkflowV1 is DSTest {
         _payoutMod,
         _ticketMod
       );
+
+      // issue token
+      vm.prank(_multisig);
+      _ticketBooth.issue(1, 'v1 token', 'v1 token');
   }
 
 }
