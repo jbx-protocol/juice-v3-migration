@@ -1,12 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.6;
 
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import '@jbx-protocol-v1/contracts/interfaces/IModAllocator.sol';
+import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
 import '@jbx-protocol-v3/contracts/interfaces/IJBDirectory.sol';
 import '@jbx-protocol-v3/contracts/interfaces/IJBPaymentTerminal.sol';
+import '@jbx-protocol-v1/contracts/interfaces/IModAllocator.sol';
 import '@jbx-protocol-v3/contracts/libraries/JBTokens.sol';
-import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
 
 /**
  @title

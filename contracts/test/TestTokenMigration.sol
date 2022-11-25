@@ -179,11 +179,11 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     TestBaseWorkflowV1.setUp();
     
     // deploying v3 token
-    _v3Token = new JBV3Token('v3 token', 'v3 token', _projectId, _v3jJbDirectory, ticketBooth(), jbTokenStore());
+    _v3Token = new JBV3Token('v3 token', 'v3 token', _projectId, ticketBooth(), jbTokenStore());
 
   }
 
-  function testMigrationWhenUseHasClaimedAndUnclaimedBalances() public {
+  function test_Migration_When_User_Has_Claimed_And_Unclaimed_Balances() public {
     TerminalV1_1 _v1Terminal = terminal();
     JBETHPaymentTerminal _v2Terminal = jbETHPaymentTerminal();
 
@@ -290,7 +290,7 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     assertEq(v3TokenBalance, unclaimedBalance + claimedBalance + v1UnclaimedBalance + v1ClaimedBalance);
   }
 
-    function testMigrationWhenUseHasNoClaimedAndUnclaimedBalances() public {
+    function test_Migration_When_User_Has_No_Claimed_And_Unclaimed_Balances() public {
     address _user = address(bytes20(keccak256('user')));
 
     // fund user
@@ -317,7 +317,9 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     );
 
     evm.prank(_user);
-    evm.expectRevert(abi.encodeWithSignature('INSUFFICIENT_FUNDS()'));
     _v3Token.migrate();
+
+    uint256 v3TokenBalance = _v3Token.balanceOf(_user, _projectId);
+    assertEq(v3TokenBalance, 0);
   }
 }

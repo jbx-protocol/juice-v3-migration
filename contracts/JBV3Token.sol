@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-import '@openzeppelin/contracts/access/Ownable.sol';
-import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol';
-import '@jbx-protocol-v2/contracts/interfaces/IJBToken.sol';
+import '@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol';
 import '@jbx-protocol-v2/contracts/interfaces/IJBController.sol';
-import '@jbx-protocol-v2/contracts/interfaces/IJBDirectory.sol';
+import '@jbx-protocol-v2/contracts/interfaces/IJBToken.sol';
 import '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
 import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
+import '@openzeppelin/contracts/access/Ownable.sol';
 
 /** 
   @notice
@@ -22,12 +21,11 @@ import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
   ERC20Votes: General token standard for fungible membership with snapshot capabilities sufficient to interact with standard governance contracts. 
   Ownable: Includes convenience functionality for checking a message sender's permissions before executing certain transactions.
 */
-contract JBV3Token is ERC20Votes, Ownable, IJBToken {
+contract JBV3Token is ERC20Permit, Ownable, IJBToken {
   //*********************************************************************//
   // --------------------------- custom errors ------------------------- //
   //*********************************************************************//
   error BAD_PROJECT();
-  error INSUFFICIENT_FUNDS();
 
   //*********************************************************************//
   // --------------------- public stored properties -------------------- //
@@ -50,13 +48,6 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     The V2 Token Store Instance. 
   */
   IJBTokenStore public immutable v2TokenStore;
-
-
-  /** 
-    @notice
-    The V3 Directory Instance. 
-  */
-  IJBDirectory public immutable v3Directory;
 
   //*********************************************************************//
   // ------------------------- external views -------------------------- //
@@ -82,6 +73,20 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
 
   /** 
     @notice
+    The total supply of this ERC20.
+
+    @return The total supply of this ERC20, as a fixed point number.
+  */
+  function totalSupply() public view override returns (uint256) {
+    return super.totalSupply() + 
+    v1TicketBooth.totalSupplyOf(projectId) + 
+    v2TokenStore.totalSupplyOf(projectId) -
+    v1TicketBooth.balanceOf(address(this), projectId) -
+    v2TokenStore.balanceOf(address(this), projectId);
+  }
+
+  /** 
+    @notice
     An account's balance of this ERC20.
 
     @param _account The account to get a balance of.
@@ -95,7 +100,6 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     override
     returns (uint256)
   {
-    _account; // Prevents unused var compiler and natspec complaints.
     _projectId; // Prevents unused var compiler and natspec complaints.
 
     return super.balanceOf(_account);
@@ -123,7 +127,6 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     @param _name The name of the token.
     @param _symbol The symbol that the token should be represented by.
     @param _projectId The ID of the project that this token should be exclusively used for. Send 0 to support any project.
-    @param _v3Directory V3 Directory Instance.
     @param _v1TicketBooth V1 Token Booth Instance.
     @param _v2TokenStore V2 Token Store Instance.
   */
@@ -131,14 +134,12 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     string memory _name,
     string memory _symbol,
     uint256 _projectId,
-    IJBDirectory _v3Directory,
     ITicketBooth _v1TicketBooth,
     IJBTokenStore _v2TokenStore
   ) ERC20(_name, _symbol) ERC20Permit(_name) {
     projectId = _projectId;
     v1TicketBooth = _v1TicketBooth;
     v2TokenStore = _v2TokenStore;
-    v3Directory = _v3Directory;
   }
 
   //*********************************************************************//
@@ -150,7 +151,7 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     Mints more of the token.
 
     @dev
-    Only the owner of this contract cant mint more of it.
+    Only the owner of this contract can mint more of it.
 
     @param _projectId The ID of the project to which the token belongs. This is ignored.
     @param _account The account to mint the tokens for.
@@ -248,11 +249,10 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     transferFrom(_from, _to, _amount);
   }
 
-  function transferOwnership(uint256 _projectId, address _newOwner) external pure override {
-    _projectId;
-    _newOwner;
-    // there are dependency issues with both v2 & v3 imports due to same name of contract/interfaces
-    revert("not available");
+  function transferOwnership(uint256 _projectId, address _newOwner) external override {
+    _projectId; // Prevents unused var compiler and natspec complaints.
+
+    return super.transferOwnership(_newOwner);
   }
 
   /** 
@@ -297,7 +297,7 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     uint256 v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
 
     if (v3TokensToMint == 0)
-      revert INSUFFICIENT_FUNDS();
+      return 0;
 
     // Transfer v1 ERC20 tokens to this contract from the msg sender if needed.
     if (_tokensToMintFromERC20s != 0)
@@ -333,7 +333,7 @@ contract JBV3Token is ERC20Votes, Ownable, IJBToken {
     uint256 v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
 
     if (v3TokensToMint == 0)
-      revert INSUFFICIENT_FUNDS();
+      return 0;
 
     // Transfer v2 ERC20 tokens to this contract from the msg sender if needed.
     if (_tokensToMintFromERC20s != 0)

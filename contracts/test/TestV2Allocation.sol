@@ -120,7 +120,7 @@ contract TestV2Allocation is TestBaseWorkflowV2 {
     _jbSplitsStore.set(_allocationSourceProjectId, _currentFundingCycle.configuration,  _groupedSplits);
   }
 
-  function testV2Allocation() public {
+  function test_V2Allocation() public {
     JBETHPaymentTerminal terminal = jbETHPaymentTerminal();
     address _user = address(bytes20(keccak256('user')));
 
