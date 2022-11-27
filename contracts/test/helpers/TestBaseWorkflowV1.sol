@@ -124,10 +124,31 @@ contract TestBaseWorkflowV1 is DSTest {
         treasuryExtension: ITreasuryExtension(address(0))
       });
 
+    // deploying a 3 v1 projects to make sure the project id is diff than v2 & v3 project id so v1 project id would be 3
       _terminal.deploy(
         _multisig,
-        bytes32("deploy"),
-        "deploy",
+        bytes32("deploy 1st project"),
+        "deploy 1st project",
+        _fundingCycleProperties,
+        _metadata,
+        _payoutMod,
+        _ticketMod
+      );
+
+      _terminal.deploy(
+        _multisig,
+        bytes32("deploy 2nd project"),
+        "deploy 2nd project",
+        _fundingCycleProperties,
+        _metadata,
+        _payoutMod,
+        _ticketMod
+      );
+      
+      _terminal.deploy(
+        _multisig,
+        bytes32("deploy 3rd project"),
+        "deploy 3rd project",
         _fundingCycleProperties,
         _metadata,
         _payoutMod,
@@ -136,7 +157,7 @@ contract TestBaseWorkflowV1 is DSTest {
 
       // issue token
       vm.prank(_multisig);
-      _ticketBooth.issue(1, 'v1 token', 'v1 token');
+      _ticketBooth.issue(3, 'v1 token', 'v1 token');
   }
 
 }

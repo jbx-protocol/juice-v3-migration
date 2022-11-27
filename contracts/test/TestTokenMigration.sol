@@ -7,8 +7,10 @@ import 'forge-std/Test.sol';
 
 contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
   address _projectOwner = address(0xf00ba6);
-  uint256 _projectId;
-  
+  uint256 _v3ProjectId;
+  uint256 _v2ProjectId;
+  uint256 _v1ProjectId = 3;
+
   // v3 instances
   JBTokenStore _v3JbTokenStore;
   JBV3Token _v3Token;
@@ -72,9 +74,8 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
         overflowAllowanceCurrency: jbLibraries().ETH()
     }));
 
-    // deploying a v2 project
-    evm.prank(_projectOwner);
-    _projectId = v2controller.launchProjectFor(
+    // deploying a couple of v2 projects to make sure the project id is diff than v3 project id so v2 project id would be 2
+    v2controller.launchProjectFor(
       _projectOwner,
       _projectMetadata,
       _data,
@@ -87,7 +88,20 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     );
 
     evm.prank(_projectOwner);
-    v2controller.issueTokenFor(_projectId, 'v2 token', 'v2 token');
+    _v2ProjectId = v2controller.launchProjectFor(
+      _projectOwner,
+      _projectMetadata,
+      _data,
+      _metadata,
+      block.timestamp,
+      _groupedSplits,
+      _fundAccessConstraint,
+      _terminals,
+      ''
+    );
+
+    evm.prank(_projectOwner);
+    v2controller.issueTokenFor(_v2ProjectId, 'v2 token', 'v2 token');
 
     // mimicing a v3 project launch since there was dependency issue with importing both v2 & v3 contract togethet since the almost every contract is the same
     _setupV3ProjectToMigrateTokensTo();
@@ -162,7 +176,7 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
 
     // mimicing a v3 project launch since there was dependency issue with importing both v2 & v3 contract togethet since the almost every contract is the same
     evm.prank(_projectOwner);
-    _projectId = v3controller.launchProjectFor(
+    _v3ProjectId = v3controller.launchProjectFor(
       _projectOwner,
       _projectMetadata,
       _data,
@@ -174,12 +188,12 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
       ''
     );
 
-    assertEq(_jbProjects.ownerOf(_projectId), _projectOwner);
+    assertEq(_jbProjects.ownerOf(_v3ProjectId), _projectOwner);
 
     TestBaseWorkflowV1.setUp();
     
     // deploying v3 token
-    _v3Token = new JBV3Token('v3 token', 'v3 token', _projectId, ticketBooth(), jbTokenStore(), uint128(_projectId), uint128(_projectId));
+    _v3Token = new JBV3Token('v3 token', 'v3 token', _v3ProjectId, ticketBooth(), jbTokenStore(), uint128(_v2ProjectId), uint128(_v1ProjectId));
 
   }
 
@@ -195,7 +209,7 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     // pay project and getting unclaimed tickets
     evm.prank(_user);
     _v1Terminal.pay{value: 1 ether}(
-      _projectId,
+      _v1ProjectId,
       _user,
       'Take my money',
        false
@@ -204,18 +218,18 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     // pay project and getting claimed tickets
     evm.prank(_user);
     _v1Terminal.pay{value: 1 ether}(
-      _projectId,
+      _v1ProjectId,
       _user,
       'Take my money',
        true
     );
 
-    assertEq(_v1Terminal.balanceOf(_projectId), 2 ether);
+    assertEq(_v1Terminal.balanceOf(_v1ProjectId), 2 ether);
     
     // pay project and getting unclaimed token balance for v2
     evm.prank(_user);
     _v2Terminal.pay{value: 1 ether}(
-      _projectId,
+      _v2ProjectId,
       1 ether,
       address(0),
       /* _beneficiary */
@@ -233,7 +247,7 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     // pay project and getting claimed tokens sent for v2
     evm.prank(_user);
     _v2Terminal.pay{value: 1 ether}(
-      _projectId,
+      _v2ProjectId,
       1 ether,
       address(0),
       /* _beneficiary */
@@ -248,14 +262,14 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
       new bytes(0)
     );
 
-    assertEq(jbPaymentTerminalStore().balanceOf(_v2Terminal, _projectId), 2 ether);
+    assertEq(jbPaymentTerminalStore().balanceOf(_v2Terminal, _v2ProjectId), 2 ether);
 
     // giving all necessary permissions
-    IJBToken _token = jbTokenStore().tokenOf(_projectId);
+    IJBToken _token = jbTokenStore().tokenOf(_v2ProjectId);
     evm.prank(_user);
-    _token.approve(_projectId, address(_v3Token), 1000000 ether);
+    _token.approve(_v2ProjectId, address(_v3Token), 1000000 ether);
 
-    ITickets _v1Token = ticketBooth().ticketsOf(_projectId);
+    ITickets _v1Token = ticketBooth().ticketsOf(_v1ProjectId);
     evm.prank(_user);
     _v1Token.approve(address(_v3Token), 1000000 ether);
 
@@ -264,7 +278,7 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
 
     evm.prank(_user);
     jbOperatorStore().setOperator(
-      JBOperatorData(address(_v3Token), _projectId, _transferPermissionIndexForV2)
+      JBOperatorData(address(_v3Token), _v2ProjectId, _transferPermissionIndexForV2)
     );
 
     uint256[] memory _transferPermissionIndexForV1 = new uint256[](1);
@@ -272,21 +286,21 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
 
     evm.prank(_user);
     operatorStore().setOperator(
-      address(_v3Token), _projectId, _transferPermissionIndexForV1
+      address(_v3Token), _v1ProjectId, _transferPermissionIndexForV1
     );
 
     // v1 balances
-    uint256 v1UnclaimedBalance = ticketBooth().stakedBalanceOf(_user, _projectId);
+    uint256 v1UnclaimedBalance = ticketBooth().stakedBalanceOf(_user, _v1ProjectId);
     uint256 v1ClaimedBalance = _v1Token.balanceOf(_user);
 
     // v2 balances
-    uint256 unclaimedBalance = jbTokenStore().unclaimedBalanceOf(_user, _projectId);
-    uint256 claimedBalance = _token.balanceOf(_user, _projectId);
+    uint256 unclaimedBalance = jbTokenStore().unclaimedBalanceOf(_user, _v2ProjectId);
+    uint256 claimedBalance = _token.balanceOf(_user, _v2ProjectId);
 
     evm.prank(_user);
     _v3Token.migrate();
 
-    uint256 v3TokenBalance = _v3Token.balanceOf(_user, _projectId);
+    uint256 v3TokenBalance = _v3Token.balanceOf(_user, _v3ProjectId);
     assertEq(v3TokenBalance, unclaimedBalance + claimedBalance + v1UnclaimedBalance + v1ClaimedBalance);
   }
 
@@ -296,30 +310,22 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     // fund user
     evm.deal(_user, 2 ether);
 
-    IJBToken _token = jbTokenStore().tokenOf(_projectId);
+    IJBToken _token = jbTokenStore().tokenOf(_v2ProjectId);
     evm.prank(_user);
-    _token.approve(_projectId, address(_v3Token), 1000000 ether);
+    _token.approve(_v3ProjectId, address(_v3Token), 1000000 ether);
 
     uint256[] memory _transferPermissionIndex = new uint256[](1);
     _transferPermissionIndex[0] = JBOperations.TRANSFER;
 
     evm.prank(_user);
     jbOperatorStore().setOperator(
-      JBOperatorData(address(_v3Token), _projectId, _transferPermissionIndex)
-    );
-
-    uint256[] memory _mintPermissionIndex = new uint256[](1);
-    _mintPermissionIndex[0] = JBOperations.MINT;
-
-    evm.prank(_projectOwner);
-    jbOperatorStore().setOperator(
-      JBOperatorData(address(_v3Token), _projectId, _mintPermissionIndex)
+      JBOperatorData(address(_v3Token), _v2ProjectId, _transferPermissionIndex)
     );
 
     evm.prank(_user);
     _v3Token.migrate();
 
-    uint256 v3TokenBalance = _v3Token.balanceOf(_user, _projectId);
+    uint256 v3TokenBalance = _v3Token.balanceOf(_user, _v3ProjectId);
     assertEq(v3TokenBalance, 0);
   }
 }
