@@ -179,7 +179,7 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     TestBaseWorkflowV1.setUp();
     
     // deploying v3 token
-    _v3Token = new JBV3Token('v3 token', 'v3 token', _projectId, ticketBooth(), jbTokenStore());
+    _v3Token = new JBV3Token('v3 token', 'v3 token', _projectId, ticketBooth(), jbTokenStore(), uint128(_projectId), uint128(_projectId));
 
   }
 
