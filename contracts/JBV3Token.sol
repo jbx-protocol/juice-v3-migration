@@ -160,6 +160,8 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     @param _projectId The ID of the project that this token should be exclusively used for. Send 0 to support any project.
     @param _v1TicketBooth V1 Token Booth Instance.
     @param _v2TokenStore V2 Token Store Instance.
+    @param _v2ProjectId V2 Project Id.
+    @param _v1ProjectId V1 Project Id.
   */
   constructor(
     string memory _name,
