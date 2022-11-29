@@ -1,9 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-import './JBV3Token.sol';
 import '@jbx-protocol-v1/contracts/interfaces/IProjects.sol';
 import '@jbx-protocol-v2/contracts/interfaces/IJBProjects.sol';
+// since importing v3 & v2 contract together give compilation issues because of same contract names & setFor isn't available in the v2 interface so using this custom interface
+import './interfaces/IJBV3TokenStore.sol';
+import './JBV3Token.sol';
+ 
 
 
 /** 
@@ -34,6 +37,13 @@ contract JBV3TokenDeployer {
   IJBProjects public immutable v3_v2_ProjectDirectory;
 
 
+  /** 
+    @notice
+    The V3 token store.
+  */
+  IJBV3TokenStore public immutable tokenStore;
+
+
     //*********************************************************************//
     // -------------------------- constructor ---------------------------- //
     //*********************************************************************//
@@ -41,9 +51,10 @@ contract JBV3TokenDeployer {
       @param _v3_v2_ProjectDirectory V3 & V2 project directory address.
       @param _v1ProjectDirectory V1 project directory address.
     */
-    constructor(IJBProjects _v3_v2_ProjectDirectory, IProjects _v1ProjectDirectory) {
+    constructor(IJBProjects _v3_v2_ProjectDirectory, IProjects _v1ProjectDirectory, IJBV3TokenStore _tokenStore) {
       v3_v2_ProjectDirectory = _v3_v2_ProjectDirectory;
       v1ProjectDirectory = _v1ProjectDirectory;
+      tokenStore = _tokenStore;
     }
 
 
@@ -76,6 +87,10 @@ contract JBV3TokenDeployer {
             revert NOT_OWNER();
 
           JBV3Token _v3Token = new JBV3Token(_name, _symbol, _projectId, _v1TicketBooth, _v2TokenStore, _v2ProjectId, _v1ProjectId);
+          // attachhing the token to the project
+          tokenStore.setFor(_projectId, _v3Token);
+
+          // transferring the ownership to the project owner
           _v3Token.transferOwnership(_projectId, msg.sender);
 
           emit Deployed(_projectId, address(_v3Token), msg.sender);
