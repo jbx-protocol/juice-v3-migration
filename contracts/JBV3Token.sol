@@ -281,6 +281,13 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     transferFrom(_from, _to, _amount);
   }
 
+  /** 
+    @notice
+    Transfer token ownership to a new owner.
+
+    @param _projectId The ID of the project to which the token belongs. This is ignored.
+    @param _newOwner The new owner address.
+  */
   function transferOwnership(uint256 _projectId, address _newOwner) external override {
     // Can't transfer for a wrong project.
     if (_projectId != projectId) revert BAD_PROJECT();
