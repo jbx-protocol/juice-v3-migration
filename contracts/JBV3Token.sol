@@ -23,6 +23,12 @@ import '@openzeppelin/contracts/access/Ownable.sol';
 */
 contract JBV3Token is ERC20Permit, Ownable, IJBToken {
   //*********************************************************************//
+  // --------------------------- custom errors ------------------------- //
+  //*********************************************************************//
+  error BAD_PROJECT();
+
+
+  //*********************************************************************//
   // --------------------- public stored properties -------------------- //
   //*********************************************************************//
 
@@ -193,6 +199,8 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     address _account,
     uint256 _amount
   ) external override onlyOwner {
+    // Can't transfer for a wrong project.
+    if (_projectId != projectId) revert BAD_PROJECT();
     return _mint(_account, _amount);
   }
 
@@ -212,6 +220,8 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     address _account,
     uint256 _amount
   ) external override onlyOwner {
+    // Can't transfer for a wrong project.
+    if (_projectId != projectId) revert BAD_PROJECT();
     return _burn(_account, _amount);
   }
 
@@ -228,6 +238,8 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     address _spender,
     uint256 _amount
   ) external override {
+    // Can't transfer for a wrong project.
+    if (_projectId != projectId) revert BAD_PROJECT();
     approve(_spender, _amount);
   }
 
@@ -244,6 +256,8 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     address _to,
     uint256 _amount
   ) external override {
+    // Can't transfer for a wrong project.
+    if (_projectId != projectId) revert BAD_PROJECT();
     transfer(_to, _amount);
   }
 
@@ -262,12 +276,14 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     address _to,
     uint256 _amount
   ) external override {
+     // Can't transfer for a wrong project.
+    if (_projectId != projectId) revert BAD_PROJECT();
     transferFrom(_from, _to, _amount);
   }
 
   function transferOwnership(uint256 _projectId, address _newOwner) external override {
-    _projectId; // Prevents unused var compiler and natspec complaints.
-
+    // Can't transfer for a wrong project.
+    if (_projectId != projectId) revert BAD_PROJECT();
     return super.transferOwnership(_newOwner);
   }
 
@@ -282,13 +298,11 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     // getting the v1 & v2 id's to migrate from
     (uint128 _v2ProjectId, uint128 _v1ProjectId) = getMigrationInfo(projectId);
 
-    if (address(v1TicketBooth) != address(0))
-      // fetching the no of v1 tokens to migrate
-      _tokensToMigrateFromV1 = _migrateV1Tokens(_v1ProjectId);
+    // fetching the no of v1 tokens to migrate
+    _tokensToMigrateFromV1 = _migrateV1Tokens(_v1ProjectId);
 
-    if (address(v2TokenStore) != address(0))
-      // fetching the no of v2 tokens to migrate
-      _tokensToMigrateFromV2 = _migrateV2Tokens(_v2ProjectId);
+    // fetching the no of v2 tokens to migrate
+    _tokensToMigrateFromV2 = _migrateV2Tokens(_v2ProjectId);
 
     uint256 _tokensToMint = _tokensToMigrateFromV1 + _tokensToMigrateFromV2;
     // mint tokens directly
@@ -302,7 +316,10 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
 
     @return amount of v2 tokens to be migrated
   */
-  function _migrateV1Tokens(uint128 _v1ProjectId) internal returns(uint256) {  
+  function _migrateV1Tokens(uint128 _v1ProjectId) internal returns(uint256) {
+    // return 0 if a ticket booth does not exist
+    if (address(v1TicketBooth) == address(0))
+      return 0;
     // local reference to the the project's v1 token instance   
     ITickets _v1Token = v1TicketBooth.ticketsOf(_v1ProjectId);
 
@@ -342,6 +359,10 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     @return amount of v2 tokens to be migrated
   */
   function _migrateV2Tokens(uint128 _v2ProjectId) internal returns(uint256) {
+    // return 0 if a token store does not exist
+    if (address(v2TokenStore) == address(0))
+      return 0;
+
     // local reference to the the project's v2 token instance   
     IJBToken _v2Token = v2TokenStore.tokenOf(_v2ProjectId);
 
