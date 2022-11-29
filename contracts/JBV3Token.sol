@@ -147,7 +147,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     @return v1 & v2 project id's.
   */
   function getMigrationInfo(uint256 _projectId) public view returns(uint128, uint128) {
-    MigrationInfo memory _migrationInfo = migrationOf[_projectId];
+    MigrationInfo storage _migrationInfo = migrationOf[_projectId];
     return (_migrationInfo.v2ProjectId, _migrationInfo.v1ProjectId);
   }
 
@@ -311,7 +311,10 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     // fetching the no of v2 tokens to migrate
     _tokensToMigrateFromV2 = _migrateV2Tokens(_v2ProjectId);
 
-    uint256 _tokensToMint = _tokensToMigrateFromV1 + _tokensToMigrateFromV2;
+    uint256 _tokensToMint;
+    unchecked {
+      _tokensToMint = _tokensToMigrateFromV1 + _tokensToMigrateFromV2;
+    }
     // mint tokens directly
     _mint(msg.sender, _tokensToMint);
   }
@@ -337,7 +340,10 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     uint256 _tokensToMintFromERC20s = _v1Token == ITickets(address(0)) ? 0 : _v1Token.balanceOf(msg.sender);
     
     // total v3 tokens to mint
-    uint256 v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
+    uint256 v3TokensToMint;
+    unchecked {
+      v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
+    }
 
     if (v3TokensToMint == 0)
       return 0;
@@ -380,7 +386,10 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     uint256 _tokensToMintFromERC20s = _v2Token == IJBToken(address(0)) ? 0 : _v2Token.balanceOf(msg.sender, _v2ProjectId);
     
     // total v3 tokens to mint
-    uint256 v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
+    uint256 v3TokensToMint;
+    unchecked {
+      v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
+    }
 
     if (v3TokensToMint == 0)
       return 0;
