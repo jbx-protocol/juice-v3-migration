@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-import '@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol';
 import '@jbx-protocol-v2/contracts/interfaces/IJBController.sol';
 import '@jbx-protocol-v2/contracts/interfaces/IJBToken.sol';
 import '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
 import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
+import '@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
 
 /** 
