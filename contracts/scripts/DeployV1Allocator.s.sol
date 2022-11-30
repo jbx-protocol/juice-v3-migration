@@ -16,15 +16,3 @@ contract Deploy_V1_Allocator_On_Mainnet is Script {
       v1Allocator = new V1Allocator(jbV3Directory);
     }
 }
-
-contract Deploy_V1_Allocator_On_Goerli is Script {
-
-    IJBDirectory jbV3Directory = IJBDirectory(0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99);
-    V1Allocator v1Allocator;
-
-    function run() external {
-      vm.startBroadcast();
-
-      v1Allocator = new V1Allocator(jbV3Directory);
-    }
-}
