@@ -17,7 +17,9 @@
   },
   "scripts": {
     "pretty": "prettier --write \"./**/*.{js,jsx,json,sol}\"",
-    "deploy-rinkeby": "source .env && forge script DeployRinkeby --rpc-url $RINKEBY_RPC_PROVIDER_URL --broadcast --mnemonic-paths mnemonic.txt --verify --etherscan-api-key $ETHERSCAN_API_KEY --sender $SENDER_ADDRESS",
-    "deploy-mainnet": "source .env && forge script DeployMainnet --rpc-url $MAINNET_RPC_PROVIDER_URL --broadcast --mnemonic-paths mnemonic.txt --verify --etherscan-api-key $ETHERSCAN_API_KEY --sender $SENDER_ADDRESS"
+    "deploy-goerli-v2-allocator": "source .env && forge script Deploy_V2_Allocator_On_Goerli --rpc-url $GOERLI_RPC_PROVIDER_URL --broadcast --mnemonic-paths mnemonic.txt --verify --etherscan-api-key $ETHERSCAN_API_KEY --sender $SENDER_ADDRESS",
+    "deploy-mainnet-v2-allocator": "source .env && forge script Deploy_V2_Allocator_On_Mainnet --rpc-url $MAINNET_RPC_PROVIDER_URL --broadcast --mnemonic-paths mnemonic.txt --verify --etherscan-api-key $ETHERSCAN_API_KEY --sender $SENDER_ADDRESS",
+    "deploy-mainnet-v1-allocator": "source .env && forge script Deploy_V1_Allocator_On_Mainnet --rpc-url $RINKEBY_RPC_PROVIDER_URL --broadcast --mnemonic-paths mnemonic.txt --verify --etherscan-api-key $ETHERSCAN_API_KEY --sender $SENDER_ADDRESS",
+    "deploy-mainnet-v3-token-deployer": "source .env && forge script Deploy_JB_V3_Token_Deployer_On_Mainnet --rpc-url $MAINNET_RPC_PROVIDER_URL --broadcast --mnemonic-paths mnemonic.txt --verify --etherscan-api-key $ETHERSCAN_API_KEY --sender $SENDER_ADDRESS"
   }
 }

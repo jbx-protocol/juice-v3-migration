@@ -1,8 +1,8 @@
 pragma solidity 0.8.6;
 
-import './helpers/TestBaseWorkflow.sol';
+import './helpers/TestBaseWorkflowV2.sol';
 
-contract TestV2Allocation is TestBaseWorkflow {
+contract TestV2Allocation is TestBaseWorkflowV2 {
  address _allocationSourceProjectOwner = address(0xf00ba6);
  address payable _allocationDDestinationProjectOwner = payable(address(0xf00ba5));
 
@@ -82,7 +82,8 @@ contract TestV2Allocation is TestBaseWorkflow {
       _terminals,
       ''
     );
-
+    
+    // mimicing a v3 project launch since there was dependency issue with importing both v2 & v3 contract togethet since the almost every contract is the same
     evm.prank(_allocationDDestinationProjectOwner);
     _allocationDestinationProjectId = controller.launchProjectFor(
       _allocationDDestinationProjectOwner,
@@ -119,7 +120,7 @@ contract TestV2Allocation is TestBaseWorkflow {
     _jbSplitsStore.set(_allocationSourceProjectId, _currentFundingCycle.configuration,  _groupedSplits);
   }
 
-  function testV2Allocation() public {
+  function test_V2Allocation() public {
     JBETHPaymentTerminal terminal = jbETHPaymentTerminal();
     address _user = address(bytes20(keccak256('user')));
 
