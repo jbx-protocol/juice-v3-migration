@@ -86,7 +86,6 @@ contract JBV3TokenDeployer {
       _projectId,
       _v1TicketBooth,
       _v2TokenStore,
-      _v2ProjectId,
       _v1ProjectId
     );
     // attachhing the token to the project

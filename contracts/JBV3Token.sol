@@ -27,7 +27,6 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
   //*********************************************************************//
   error BAD_PROJECT();
 
-
   //*********************************************************************//
   // --------------------- public stored properties -------------------- //
   //*********************************************************************//
@@ -62,7 +61,6 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     v1ProjectId to migrate from. 
   */
   struct MigrationInfo {
-    uint128 v2ProjectId;
     uint128 v1ProjectId;
   }
 
@@ -81,13 +79,14 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
   function totalSupply(uint256 _projectId) external view override returns (uint256) {
     _projectId; // Prevents unused var compiler and natspec complaints.
 
-    (uint128 v2ProjectId, uint128 v1ProjectId) = getMigrationInfo(projectId);
+    uint128 v1ProjectId = getMigrationInfo(projectId);
 
-    return super.totalSupply() + 
-    v1TicketBooth.totalSupplyOf(v1ProjectId) + 
-    v2TokenStore.totalSupplyOf(v2ProjectId) -
-    v1TicketBooth.balanceOf(address(this), projectId) -
-    v2TokenStore.balanceOf(address(this), projectId);
+    return
+      super.totalSupply() +
+      v1TicketBooth.totalSupplyOf(v1ProjectId) +
+      v2TokenStore.totalSupplyOf(projectId) -
+      v1TicketBooth.balanceOf(address(this), v1ProjectId) -
+      v2TokenStore.balanceOf(address(this), projectId);
   }
 
   /** 
@@ -97,13 +96,14 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     @return The total supply of this ERC20, as a fixed point number.
   */
   function totalSupply() public view override returns (uint256) {
-    (uint128 v2ProjectId, uint128 v1ProjectId) = getMigrationInfo(projectId);
+    uint128 v1ProjectId = getMigrationInfo(projectId);
 
-    return super.totalSupply() + 
-    v1TicketBooth.totalSupplyOf(v1ProjectId) + 
-    v2TokenStore.totalSupplyOf(v2ProjectId) -
-    v1TicketBooth.balanceOf(address(this), projectId) -
-    v2TokenStore.balanceOf(address(this), projectId);
+    return
+      super.totalSupply() +
+      v1TicketBooth.totalSupplyOf(v1ProjectId) +
+      v2TokenStore.totalSupplyOf(projectId) -
+      v1TicketBooth.balanceOf(address(this), v1ProjectId) -
+      v2TokenStore.balanceOf(address(this), projectId);
   }
 
   /** 
@@ -144,11 +144,11 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     @notice
     The token id's to migrate from.
 
-    @return v1 & v2 project id's.
+    @return v1 project id's.
   */
-  function getMigrationInfo(uint256 _projectId) public view returns(uint128, uint128) {
+  function getMigrationInfo(uint256 _projectId) public view returns (uint128) {
     MigrationInfo storage _migrationInfo = migrationOf[_projectId];
-    return (_migrationInfo.v2ProjectId, _migrationInfo.v1ProjectId);
+    return _migrationInfo.v1ProjectId;
   }
 
   //*********************************************************************//
@@ -161,7 +161,6 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     @param _projectId The v3 ID of the project that this token should be exclusively used for.
     @param _v1TicketBooth V1 Token Booth Instance.
     @param _v2TokenStore V2 Token Store Instance.
-    @param _v2ProjectId V2 Project Id.
     @param _v1ProjectId V1 Project Id.
   */
   constructor(
@@ -170,13 +169,12 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     uint256 _projectId,
     ITicketBooth _v1TicketBooth,
     IJBTokenStore _v2TokenStore,
-    uint128 _v2ProjectId,
     uint128 _v1ProjectId
   ) ERC20(_name, _symbol) ERC20Permit(_name) {
     projectId = _projectId;
     v1TicketBooth = _v1TicketBooth;
     v2TokenStore = _v2TokenStore;
-    migrationOf[_projectId] = MigrationInfo({ v2ProjectId: _v2ProjectId, v1ProjectId: _v1ProjectId });
+    migrationOf[_projectId] = MigrationInfo({v1ProjectId: _v1ProjectId});
   }
 
   //*********************************************************************//
@@ -276,7 +274,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     address _to,
     uint256 _amount
   ) external override {
-     // Can't transfer for a wrong project.
+    // Can't transfer for a wrong project.
     if (_projectId != projectId) revert BAD_PROJECT();
     transferFrom(_from, _to, _amount);
   }
@@ -303,13 +301,13 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     uint256 _tokensToMigrateFromV2;
 
     // getting the v1 & v2 id's to migrate from
-    (uint128 _v2ProjectId, uint128 _v1ProjectId) = getMigrationInfo(projectId);
+    uint128 _v1ProjectId = getMigrationInfo(projectId);
 
     // fetching the no of v1 tokens to migrate
     _tokensToMigrateFromV1 = _migrateV1Tokens(_v1ProjectId);
 
     // fetching the no of v2 tokens to migrate
-    _tokensToMigrateFromV2 = _migrateV2Tokens(_v2ProjectId);
+    _tokensToMigrateFromV2 = _migrateV2Tokens(projectId);
 
     uint256 _tokensToMint;
     unchecked {
@@ -326,27 +324,30 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
 
     @return amount of v2 tokens to be migrated
   */
-  function _migrateV1Tokens(uint128 _v1ProjectId) internal returns(uint256) {
+  function _migrateV1Tokens(uint128 _v1ProjectId) internal returns (uint256) {
     // return 0 if a ticket booth does not exist
-    if (address(v1TicketBooth) == address(0))
-      return 0;
-    // local reference to the the project's v1 token instance   
+    if (address(v1TicketBooth) == address(0)) return 0;
+    // local reference to the the project's v1 token instance
     ITickets _v1Token = v1TicketBooth.ticketsOf(_v1ProjectId);
 
     // Get a reference to the migrator's unclaimed balance.
-    uint256 _tokensToMintFromUnclaimedBalance = v1TicketBooth.stakedBalanceOf(msg.sender, _v1ProjectId);
+    uint256 _tokensToMintFromUnclaimedBalance = v1TicketBooth.stakedBalanceOf(
+      msg.sender,
+      _v1ProjectId
+    );
 
     // Get a reference to the migrator's ERC20 balance.
-    uint256 _tokensToMintFromERC20s = _v1Token == ITickets(address(0)) ? 0 : _v1Token.balanceOf(msg.sender);
-    
+    uint256 _tokensToMintFromERC20s = _v1Token == ITickets(address(0))
+      ? 0
+      : _v1Token.balanceOf(msg.sender);
+
     // total v3 tokens to mint
     uint256 v3TokensToMint;
     unchecked {
       v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
     }
 
-    if (v3TokensToMint == 0)
-      return 0;
+    if (v3TokensToMint == 0) return 0;
 
     // Transfer v1 ERC20 tokens to this contract from the msg sender if needed.
     if (_tokensToMintFromERC20s != 0)
@@ -360,43 +361,52 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
         _tokensToMintFromUnclaimedBalance,
         address(this)
       );
-    
+
     return v3TokensToMint;
   }
 
   /** 
     @notice
     Migrate v2 tokens to v3.
+
     @param _v2ProjectId v2 project id.
 
     @return amount of v2 tokens to be migrated
   */
-  function _migrateV2Tokens(uint128 _v2ProjectId) internal returns(uint256) {
+  function _migrateV2Tokens(uint128 _v2ProjectId) internal returns (uint256) {
     // return 0 if a token store does not exist
-    if (address(v2TokenStore) == address(0))
-      return 0;
+    if (address(v2TokenStore) == address(0)) return 0;
 
-    // local reference to the the project's v2 token instance   
+    // local reference to the the project's v2 token instance
     IJBToken _v2Token = v2TokenStore.tokenOf(_v2ProjectId);
 
     // Get a reference to the migrator's unclaimed balane.
-    uint256 _tokensToMintFromUnclaimedBalance = v2TokenStore.unclaimedBalanceOf(msg.sender, _v2ProjectId);
+    uint256 _tokensToMintFromUnclaimedBalance = v2TokenStore.unclaimedBalanceOf(
+      msg.sender,
+      _v2ProjectId
+    );
 
     // Get a reference to the migrator's ERC20 balance.
-    uint256 _tokensToMintFromERC20s = _v2Token == IJBToken(address(0)) ? 0 : _v2Token.balanceOf(msg.sender, _v2ProjectId);
-    
+    uint256 _tokensToMintFromERC20s = _v2Token == IJBToken(address(0))
+      ? 0
+      : _v2Token.balanceOf(msg.sender, _v2ProjectId);
+
     // total v3 tokens to mint
     uint256 v3TokensToMint;
     unchecked {
       v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
     }
 
-    if (v3TokensToMint == 0)
-      return 0;
+    if (v3TokensToMint == 0) return 0;
 
     // Transfer v2 ERC20 tokens to this contract from the msg sender if needed.
     if (_tokensToMintFromERC20s != 0)
-      IJBToken(_v2Token).transferFrom(projectId, msg.sender, address(this), _tokensToMintFromERC20s);
+      IJBToken(_v2Token).transferFrom(
+        projectId,
+        msg.sender,
+        address(this),
+        _tokensToMintFromERC20s
+      );
 
     // Transfer v2 unclaimed tokens to this contract from the msg sender if needed.
     if (_tokensToMintFromUnclaimedBalance != 0)
@@ -406,7 +416,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
         address(this),
         _tokensToMintFromUnclaimedBalance
       );
-    
+
     return v3TokensToMint;
   }
 }
