@@ -260,20 +260,6 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     transferFrom(_from, _to, _amount);
   }
 
-  // TODO: Do we want/need this method? Its not part of the V3 interface
-  // /** 
-  //   @notice
-  //   Transfer token ownership to a new owner.
-
-  //   @param _projectId The ID of the project to which the token belongs. This is ignored.
-  //   @param _newOwner The new owner address.
-  // */
-  // function transferOwnership(uint256 _projectId, address _newOwner) external override {
-  //   // Can't transfer for a wrong project.
-  //   if (_projectId != projectId) revert BAD_PROJECT();
-  //   return super.transferOwnership(_newOwner);
-  // }
-
   /** 
     @notice
     Migrate v1 & v2 tokens to v3.
