@@ -277,22 +277,15 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     Migrate v1 & v2 tokens to v3.
   */
   function migrate() external {
-    uint256 _tokensToMigrateFromV1;
-    uint256 _tokensToMigrateFromV2;
-
-    // getting the v1 project id to migrate from
-    uint256 _v1ProjectId = v1ProjectIdOf[projectId];
-
-    // fetching the no of v1 tokens to migrate
-    _tokensToMigrateFromV1 = _migrateV1Tokens(_v1ProjectId);
-
-    // fetching the no of v2 tokens to migrate
-    _tokensToMigrateFromV2 = _migrateV2Tokens(projectId);
-
     uint256 _tokensToMint;
     unchecked {
-      _tokensToMint = _tokensToMigrateFromV1 + _tokensToMigrateFromV2;
+      // Get the v1 project id to migrate from and fetching the number of of v1 tokens to migrate
+      _tokensToMint += _migrateV1Tokens(v1ProjectIdOf[projectId]);
+
+      // fetching the no of v2 tokens to migrate
+      _tokensToMint += _migrateV2Tokens(projectId);
     }
+    
     // mint tokens directly
     _mint(msg.sender, _tokensToMint);
   }
@@ -381,7 +374,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
 
     // Transfer v2 ERC20 tokens to this contract from the msg sender if needed.
     if (_tokensToMintFromERC20s != 0)
-      IJBToken(_v2Token).transferFrom(
+      _v2Token.transferFrom(
         projectId,
         msg.sender,
         address(this),
