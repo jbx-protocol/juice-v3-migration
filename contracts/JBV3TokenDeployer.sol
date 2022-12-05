@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-import '@jbx-protocol-v1/contracts/interfaces/IProjects.sol';
-import '@jbx-protocol-v2/contracts/interfaces/IJBProjects.sol';
-// since importing v3 & v2 contract together give compilation issues because of same contract names & setFor isn't available in the v2 interface so using this custom interface
-import './interfaces/IJBV3TokenStore.sol';
-import './JBV3Token.sol';
+import { ITicketBooth, ITickets } from '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
+import { IProjects } from '@jbx-protocol-v1/contracts/interfaces/IProjects.sol';
+import { IJBProjects } from '@jbx-protocol-v2/contracts/interfaces/IJBProjects.sol';
+import { IJBTokenStore as IJBV2TokenStore } from '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
+import { IJBTokenStore as IJBV3TokenStore } from '@jbx-protocol-v3/contracts/interfaces/IJBTokenStore.sol';
+import { JBV3Token } from './JBV3Token.sol';
 
 /** 
   @notice
@@ -32,7 +33,7 @@ contract JBV3TokenDeployer {
     @notice
     The V3 & V2 project directory instance (since both use 1 directory instance)
   */
-  IJBProjects public immutable v3_v2_ProjectDirectory;
+  IJBProjects public immutable projectDirectory;
 
   /** 
     @notice
@@ -44,15 +45,15 @@ contract JBV3TokenDeployer {
   // -------------------------- constructor ---------------------------- //
   //*********************************************************************//
   /** 
-      @param _v3_v2_ProjectDirectory V3 & V2 project directory address.
+      @param _projectDirectory V3 & V2 project directory address.
       @param _v1ProjectDirectory V1 project directory address.
     */
   constructor(
-    IJBProjects _v3_v2_ProjectDirectory,
+    IJBProjects _projectDirectory,
     IProjects _v1ProjectDirectory,
     IJBV3TokenStore _tokenStore
   ) {
-    v3_v2_ProjectDirectory = _v3_v2_ProjectDirectory;
+    projectDirectory = _projectDirectory;
     v1ProjectDirectory = _v1ProjectDirectory;
     tokenStore = _tokenStore;
   }
@@ -70,14 +71,14 @@ contract JBV3TokenDeployer {
     string memory _symbol,
     uint256 _projectId,
     ITicketBooth _v1TicketBooth,
-    IJBTokenStore _v2TokenStore,
+    IJBV2TokenStore _v2TokenStore,
     uint128 _v1ProjectId
   ) external {
     // only the project owner an deploy the token
     if (_v1ProjectId != 0 && v1ProjectDirectory.ownerOf(_v1ProjectId) != msg.sender)
       revert NOT_OWNER();
 
-    if (_projectId != 0 && v3_v2_ProjectDirectory.ownerOf(_projectId) != msg.sender)
+    if (_projectId != 0 && projectDirectory.ownerOf(_projectId) != msg.sender)
       revert NOT_OWNER();
 
     JBV3Token _v3Token = new JBV3Token(
@@ -92,7 +93,7 @@ contract JBV3TokenDeployer {
     tokenStore.setFor(_projectId, _v3Token);
 
     // transferring the ownership to the project owner
-    _v3Token.transferOwnership(_projectId, address(tokenStore));
+    _v3Token.transferOwnership(address(tokenStore));
 
     emit Deployed(_projectId, address(_v3Token), msg.sender);
   }

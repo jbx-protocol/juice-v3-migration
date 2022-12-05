@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-import '@jbx-protocol-v2/contracts/interfaces/IJBController.sol';
-import '@jbx-protocol-v2/contracts/interfaces/IJBToken.sol';
-import '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
-import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
+import { IJBToken as IJBTokenV2 } from '@jbx-protocol-v2/contracts/interfaces/IJBToken.sol';
+import { IJBToken as IJBTokenV3 } from '@jbx-protocol-v3/contracts/interfaces/IJBToken.sol';
+import { IJBController } from '@jbx-protocol-v2/contracts/interfaces/IJBController.sol';
+import { IJBTokenStore } from '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
+import { ITicketBooth, ITickets } from '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
 import '@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
 
@@ -21,7 +22,7 @@ import '@openzeppelin/contracts/access/Ownable.sol';
   ERC20Votes: General token standard for fungible membership with snapshot capabilities sufficient to interact with standard governance contracts. 
   Ownable: Includes convenience functionality for checking a message sender's permissions before executing certain transactions.
 */
-contract JBV3Token is ERC20Permit, Ownable, IJBToken {
+contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
   //*********************************************************************//
   // --------------------------- custom errors ------------------------- //
   //*********************************************************************//
@@ -35,7 +36,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     @notice
     The ID of the project that this token should be exclusively used for. Send 0 to support any project. 
   */
-  uint256 public immutable projectId;
+  uint256 public immutable override projectId;
 
   /** 
     @notice
@@ -127,7 +128,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
 
     @return The number of decimals.
   */
-  function decimals() public view override(ERC20, IJBToken) returns (uint8) {
+  function decimals() public view override(ERC20, IJBTokenV3) returns (uint8) {
     return super.decimals();
   }
 
@@ -259,18 +260,19 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     transferFrom(_from, _to, _amount);
   }
 
-  /** 
-    @notice
-    Transfer token ownership to a new owner.
+  // TODO: Do we want/need this method? Its not part of the V3 interface
+  // /** 
+  //   @notice
+  //   Transfer token ownership to a new owner.
 
-    @param _projectId The ID of the project to which the token belongs. This is ignored.
-    @param _newOwner The new owner address.
-  */
-  function transferOwnership(uint256 _projectId, address _newOwner) external override {
-    // Can't transfer for a wrong project.
-    if (_projectId != projectId) revert BAD_PROJECT();
-    return super.transferOwnership(_newOwner);
-  }
+  //   @param _projectId The ID of the project to which the token belongs. This is ignored.
+  //   @param _newOwner The new owner address.
+  // */
+  // function transferOwnership(uint256 _projectId, address _newOwner) external override {
+  //   // Can't transfer for a wrong project.
+  //   if (_projectId != projectId) revert BAD_PROJECT();
+  //   return super.transferOwnership(_newOwner);
+  // }
 
   /** 
     @notice
@@ -351,7 +353,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     if (address(v2TokenStore) == address(0)) return 0;
 
     // local reference to the the project's v2 token instance
-    IJBToken _v2Token = v2TokenStore.tokenOf(_v2ProjectId);
+    IJBTokenV2 _v2Token = v2TokenStore.tokenOf(_v2ProjectId);
 
     // Get a reference to the migrator's unclaimed balane.
     uint256 _tokensToMintFromUnclaimedBalance = v2TokenStore.unclaimedBalanceOf(
@@ -360,7 +362,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     );
 
     // Get a reference to the migrator's ERC20 balance.
-    uint256 _tokensToMintFromERC20s = _v2Token == IJBToken(address(0))
+    uint256 _tokensToMintFromERC20s = _v2Token == IJBTokenV2(address(0))
       ? 0
       : _v2Token.balanceOf(msg.sender, _v2ProjectId);
 
