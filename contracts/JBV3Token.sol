@@ -51,18 +51,9 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
 
   /** 
     @notice
-    Storing the id's to migrate from for the v3 project ID. 
+    Storing the v1 project id to migrate from for the v3 project ID. 
   */
-  mapping(uint256 => MigrationInfo) public migrationOf;
-
-  /** 
-    @notice
-    v2ProjectId to migrate from. 
-    v1ProjectId to migrate from. 
-  */
-  struct MigrationInfo {
-    uint128 v1ProjectId;
-  }
+  mapping(uint256 => uint256) public v1ProjectIdOf;
 
   //*********************************************************************//
   // ------------------------- external views -------------------------- //
@@ -79,7 +70,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
   function totalSupply(uint256 _projectId) external view override returns (uint256) {
     _projectId; // Prevents unused var compiler and natspec complaints.
 
-    uint128 v1ProjectId = getMigrationInfo(projectId);
+    uint256 v1ProjectId = v1ProjectIdOf[projectId];
 
     return
       super.totalSupply() +
@@ -96,7 +87,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     @return The total supply of this ERC20, as a fixed point number.
   */
   function totalSupply() public view override returns (uint256) {
-    uint128 v1ProjectId = getMigrationInfo(projectId);
+    uint256 v1ProjectId = v1ProjectIdOf[projectId];
 
     return
       super.totalSupply() +
@@ -140,17 +131,6 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     return super.decimals();
   }
 
-  /** 
-    @notice
-    The token id's to migrate from.
-
-    @return v1 project id's.
-  */
-  function getMigrationInfo(uint256 _projectId) public view returns (uint128) {
-    MigrationInfo storage _migrationInfo = migrationOf[_projectId];
-    return _migrationInfo.v1ProjectId;
-  }
-
   //*********************************************************************//
   // -------------------------- constructor ---------------------------- //
   //*********************************************************************//
@@ -169,12 +149,12 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     uint256 _projectId,
     ITicketBooth _v1TicketBooth,
     IJBTokenStore _v2TokenStore,
-    uint128 _v1ProjectId
+    uint256 _v1ProjectId
   ) ERC20(_name, _symbol) ERC20Permit(_name) {
     projectId = _projectId;
     v1TicketBooth = _v1TicketBooth;
     v2TokenStore = _v2TokenStore;
-    migrationOf[_projectId] = MigrationInfo({v1ProjectId: _v1ProjectId});
+    v1ProjectIdOf[_projectId] = _v1ProjectId;
   }
 
   //*********************************************************************//
@@ -300,8 +280,8 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     uint256 _tokensToMigrateFromV1;
     uint256 _tokensToMigrateFromV2;
 
-    // getting the v1 & v2 id's to migrate from
-    uint128 _v1ProjectId = getMigrationInfo(projectId);
+    // getting the v1 project id to migrate from
+    uint256 _v1ProjectId = v1ProjectIdOf[projectId];
 
     // fetching the no of v1 tokens to migrate
     _tokensToMigrateFromV1 = _migrateV1Tokens(_v1ProjectId);
@@ -324,7 +304,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
 
     @return amount of v2 tokens to be migrated
   */
-  function _migrateV1Tokens(uint128 _v1ProjectId) internal returns (uint256) {
+  function _migrateV1Tokens(uint256 _v1ProjectId) internal returns (uint256) {
     // return 0 if a ticket booth does not exist
     if (address(v1TicketBooth) == address(0)) return 0;
     // local reference to the the project's v1 token instance
@@ -373,7 +353,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
 
     @return amount of v2 tokens to be migrated
   */
-  function _migrateV2Tokens(uint128 _v2ProjectId) internal returns (uint256) {
+  function _migrateV2Tokens(uint256 _v2ProjectId) internal returns (uint256) {
     // return 0 if a token store does not exist
     if (address(v2TokenStore) == address(0)) return 0;
 
