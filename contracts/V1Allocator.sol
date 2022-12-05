@@ -6,14 +6,12 @@ import '@jbx-protocol-v3/contracts/interfaces/IJBPaymentTerminal.sol';
 import '@jbx-protocol-v1/contracts/interfaces/IModAllocator.sol';
 import '@jbx-protocol-v3/contracts/libraries/JBTokens.sol';
 import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-
 
 /**
  @title
  Juicebox split allocator for allocating v1 treasury funds to v3 treasury
 */
-contract V1Allocator is ERC165, IModAllocator, ReentrancyGuard {
+contract V1Allocator is ERC165, IModAllocator {
  //*********************************************************************//
   // --------------------------- custom errors ------------------------- //
   //*********************************************************************//
@@ -41,7 +39,7 @@ contract V1Allocator is ERC165, IModAllocator, ReentrancyGuard {
     @param _forProjectId project id where the funds will be transferred to.
     @param _beneficiary beneficiary to transfer the funds to
   */
-  function allocate(uint256 _projectId, uint256 _forProjectId, address _beneficiary) external payable nonReentrant override {
+  function allocate(uint256 _projectId, uint256 _forProjectId, address _beneficiary) external payable override {
     // avoid compiler warnings
     _projectId;
     _beneficiary;
