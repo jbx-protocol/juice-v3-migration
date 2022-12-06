@@ -5,9 +5,12 @@ import { IJBToken as IJBTokenV2 } from '@jbx-protocol-v2/contracts/interfaces/IJ
 import { IJBToken as IJBTokenV3 } from '@jbx-protocol-v3/contracts/interfaces/IJBToken.sol';
 import { IJBController } from '@jbx-protocol-v2/contracts/interfaces/IJBController.sol';
 import { IJBTokenStore } from '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
+import { JBFundingCycle } from '@jbx-protocol-v2/contracts/structs/JBFundingCycle.sol';
+import { IFundingCycles, FundingCycle } from '@jbx-protocol-v1/contracts/interfaces/IFundingCycles.sol';
 import { ITicketBooth, ITickets } from '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
 import '@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
+import '@paulrberg/contracts/math/PRBMath.sol';
 
 /** 
   @notice
@@ -49,6 +52,24 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     The V2 Token Store Instance. 
   */
   IJBTokenStore public immutable v2TokenStore;
+
+  /**
+    @notice
+    The V1 funding cycle store instance.
+  */
+  IFundingCycles public immutable v1FundingCycleStore;
+
+  /**
+    @notice
+    The V2 controller instance.
+  */
+  IJBController public immutable v2Controller;
+
+  /**
+    @notice
+    The V3 controller instance.
+  */
+  IJBController public immutable v3Controller;
 
   /** 
     @notice
@@ -150,11 +171,17 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     uint256 _projectId,
     ITicketBooth _v1TicketBooth,
     IJBTokenStore _v2TokenStore,
+    IFundingCycles _v1FundingCycleStore,
+    IJBController _v2Controller,
+    IJBController _v3Controller,
     uint256 _v1ProjectId
   ) ERC20(_name, _symbol) ERC20Permit(_name) {
     projectId = _projectId;
     v1TicketBooth = _v1TicketBooth;
     v2TokenStore = _v2TokenStore;
+    v2Controller = _v2Controller;
+    v3Controller = _v3Controller;
+    v1FundingCycleStore = _v1FundingCycleStore;
     v1ProjectIdOf[_projectId] = _v1ProjectId;
   }
 
@@ -266,12 +293,19 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
   */
   function migrate() external {
     uint256 _tokensToMint;
+    uint256 _v1ProjectId = v1ProjectIdOf[projectId];
+
+    // getting local instances of v1, v2 & v3  current funding cycles
+    FundingCycle memory _currentV1FundingCycle = v1FundingCycleStore.currentOf(_v1ProjectId);
+    JBFundingCycle memory _currentV2FundingCycle = v2Controller.fundingCycleStore().currentOf(projectId);
+    JBFundingCycle memory _currentV3FundingCycle = v3Controller.fundingCycleStore().currentOf(projectId);
+
     unchecked {
       // Get the v1 project id to migrate from and fetching the number of of v1 tokens to migrate
-      _tokensToMint += _migrateV1Tokens(v1ProjectIdOf[projectId]);
+      _tokensToMint = PRBMath.mulDiv(_migrateV1Tokens(_v1ProjectId), _currentV3FundingCycle.weight, _currentV1FundingCycle.weight);
 
       // fetching the no of v2 tokens to migrate
-      _tokensToMint += _migrateV2Tokens(projectId);
+      _tokensToMint +=  PRBMath.mulDiv(_migrateV2Tokens(projectId), _currentV3FundingCycle.weight, _currentV2FundingCycle.weight);
     }
     
     // mint tokens directly
