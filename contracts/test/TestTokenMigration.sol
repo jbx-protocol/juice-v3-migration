@@ -2,7 +2,7 @@ pragma solidity 0.8.6;
 
 import './helpers/TestBaseWorkflowV2.sol';
 import './helpers/TestBaseWorkflowV1.sol';
-import '../JBV3Token.sol';
+import {JBV3Token} from '../JBV3Token.sol';
 import 'forge-std/Test.sol';
 
 contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
@@ -73,19 +73,6 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
         distributionLimitCurrency: jbLibraries().ETH(),
         overflowAllowanceCurrency: jbLibraries().ETH()
     }));
-
-    // deploying a couple of v2 projects to make sure the project id is diff than v3 project id so v2 project id would be 2
-    v2controller.launchProjectFor(
-      _projectOwner,
-      _projectMetadata,
-      _data,
-      _metadata,
-      block.timestamp,
-      _groupedSplits,
-      _fundAccessConstraint,
-      _terminals,
-      ''
-    );
 
     evm.prank(_projectOwner);
     _v2ProjectId = v2controller.launchProjectFor(
@@ -193,7 +180,7 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     TestBaseWorkflowV1.setUp();
     
     // deploying v3 token
-    _v3Token = new JBV3Token('v3 token', 'v3 token', _v3ProjectId, ticketBooth(), jbTokenStore(), uint128(_v2ProjectId), uint128(_v1ProjectId));
+    _v3Token = new JBV3Token('v3 token', 'v3 token', _v3ProjectId, ticketBooth(), jbTokenStore(), _v1ProjectId);
 
   }
 

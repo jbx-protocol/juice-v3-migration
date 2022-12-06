@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-import '@jbx-protocol-v2/contracts/interfaces/IJBController.sol';
-import '@jbx-protocol-v2/contracts/interfaces/IJBToken.sol';
-import '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
-import '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
+import { IJBToken as IJBTokenV2 } from '@jbx-protocol-v2/contracts/interfaces/IJBToken.sol';
+import { IJBToken as IJBTokenV3 } from '@jbx-protocol-v3/contracts/interfaces/IJBToken.sol';
+import { IJBController } from '@jbx-protocol-v2/contracts/interfaces/IJBController.sol';
+import { IJBTokenStore } from '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
+import { ITicketBooth, ITickets } from '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
 import '@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
 
@@ -21,12 +22,11 @@ import '@openzeppelin/contracts/access/Ownable.sol';
   ERC20Votes: General token standard for fungible membership with snapshot capabilities sufficient to interact with standard governance contracts. 
   Ownable: Includes convenience functionality for checking a message sender's permissions before executing certain transactions.
 */
-contract JBV3Token is ERC20Permit, Ownable, IJBToken {
+contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
   //*********************************************************************//
   // --------------------------- custom errors ------------------------- //
   //*********************************************************************//
   error BAD_PROJECT();
-
 
   //*********************************************************************//
   // --------------------- public stored properties -------------------- //
@@ -36,7 +36,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     @notice
     The ID of the project that this token should be exclusively used for. Send 0 to support any project. 
   */
-  uint256 public immutable projectId;
+  uint256 public immutable override projectId;
 
   /** 
     @notice
@@ -52,19 +52,9 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
 
   /** 
     @notice
-    Storing the id's to migrate from for the v3 project ID. 
+    Storing the v1 project id to migrate from for the v3 project ID. 
   */
-  mapping(uint256 => MigrationInfo) public migrationOf;
-
-  /** 
-    @notice
-    v2ProjectId to migrate from. 
-    v1ProjectId to migrate from. 
-  */
-  struct MigrationInfo {
-    uint128 v2ProjectId;
-    uint128 v1ProjectId;
-  }
+  mapping(uint256 => uint256) public v1ProjectIdOf;
 
   //*********************************************************************//
   // ------------------------- external views -------------------------- //
@@ -81,13 +71,14 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
   function totalSupply(uint256 _projectId) external view override returns (uint256) {
     _projectId; // Prevents unused var compiler and natspec complaints.
 
-    (uint128 v2ProjectId, uint128 v1ProjectId) = getMigrationInfo(projectId);
+    uint256 v1ProjectId = v1ProjectIdOf[projectId];
 
-    return super.totalSupply() + 
-    v1TicketBooth.totalSupplyOf(v1ProjectId) + 
-    v2TokenStore.totalSupplyOf(v2ProjectId) -
-    v1TicketBooth.balanceOf(address(this), projectId) -
-    v2TokenStore.balanceOf(address(this), projectId);
+    return
+      super.totalSupply() +
+      v1TicketBooth.totalSupplyOf(v1ProjectId) +
+      v2TokenStore.totalSupplyOf(projectId) -
+      v1TicketBooth.balanceOf(address(this), v1ProjectId) -
+      v2TokenStore.balanceOf(address(this), projectId);
   }
 
   /** 
@@ -97,13 +88,14 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     @return The total supply of this ERC20, as a fixed point number.
   */
   function totalSupply() public view override returns (uint256) {
-    (uint128 v2ProjectId, uint128 v1ProjectId) = getMigrationInfo(projectId);
+    uint256 v1ProjectId = v1ProjectIdOf[projectId];
 
-    return super.totalSupply() + 
-    v1TicketBooth.totalSupplyOf(v1ProjectId) + 
-    v2TokenStore.totalSupplyOf(v2ProjectId) -
-    v1TicketBooth.balanceOf(address(this), projectId) -
-    v2TokenStore.balanceOf(address(this), projectId);
+    return
+      super.totalSupply() +
+      v1TicketBooth.totalSupplyOf(v1ProjectId) +
+      v2TokenStore.totalSupplyOf(projectId) -
+      v1TicketBooth.balanceOf(address(this), v1ProjectId) -
+      v2TokenStore.balanceOf(address(this), projectId);
   }
 
   /** 
@@ -136,19 +128,8 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
 
     @return The number of decimals.
   */
-  function decimals() public view override(ERC20, IJBToken) returns (uint8) {
+  function decimals() public view override(ERC20, IJBTokenV3) returns (uint8) {
     return super.decimals();
-  }
-
-  /** 
-    @notice
-    The token id's to migrate from.
-
-    @return v1 & v2 project id's.
-  */
-  function getMigrationInfo(uint256 _projectId) public view returns(uint128, uint128) {
-    MigrationInfo storage _migrationInfo = migrationOf[_projectId];
-    return (_migrationInfo.v2ProjectId, _migrationInfo.v1ProjectId);
   }
 
   //*********************************************************************//
@@ -161,7 +142,6 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     @param _projectId The v3 ID of the project that this token should be exclusively used for.
     @param _v1TicketBooth V1 Token Booth Instance.
     @param _v2TokenStore V2 Token Store Instance.
-    @param _v2ProjectId V2 Project Id.
     @param _v1ProjectId V1 Project Id.
   */
   constructor(
@@ -170,13 +150,12 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     uint256 _projectId,
     ITicketBooth _v1TicketBooth,
     IJBTokenStore _v2TokenStore,
-    uint128 _v2ProjectId,
-    uint128 _v1ProjectId
+    uint256 _v1ProjectId
   ) ERC20(_name, _symbol) ERC20Permit(_name) {
     projectId = _projectId;
     v1TicketBooth = _v1TicketBooth;
     v2TokenStore = _v2TokenStore;
-    migrationOf[_projectId] = MigrationInfo({ v2ProjectId: _v2ProjectId, v1ProjectId: _v1ProjectId });
+    v1ProjectIdOf[_projectId] = _v1ProjectId;
   }
 
   //*********************************************************************//
@@ -276,22 +255,9 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     address _to,
     uint256 _amount
   ) external override {
-     // Can't transfer for a wrong project.
-    if (_projectId != projectId) revert BAD_PROJECT();
-    transferFrom(_from, _to, _amount);
-  }
-
-  /** 
-    @notice
-    Transfer token ownership to a new owner.
-
-    @param _projectId The ID of the project to which the token belongs. This is ignored.
-    @param _newOwner The new owner address.
-  */
-  function transferOwnership(uint256 _projectId, address _newOwner) external override {
     // Can't transfer for a wrong project.
     if (_projectId != projectId) revert BAD_PROJECT();
-    return super.transferOwnership(_newOwner);
+    transferFrom(_from, _to, _amount);
   }
 
   /** 
@@ -299,22 +265,15 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
     Migrate v1 & v2 tokens to v3.
   */
   function migrate() external {
-    uint256 _tokensToMigrateFromV1;
-    uint256 _tokensToMigrateFromV2;
-
-    // getting the v1 & v2 id's to migrate from
-    (uint128 _v2ProjectId, uint128 _v1ProjectId) = getMigrationInfo(projectId);
-
-    // fetching the no of v1 tokens to migrate
-    _tokensToMigrateFromV1 = _migrateV1Tokens(_v1ProjectId);
-
-    // fetching the no of v2 tokens to migrate
-    _tokensToMigrateFromV2 = _migrateV2Tokens(_v2ProjectId);
-
     uint256 _tokensToMint;
     unchecked {
-      _tokensToMint = _tokensToMigrateFromV1 + _tokensToMigrateFromV2;
+      // Get the v1 project id to migrate from and fetching the number of of v1 tokens to migrate
+      _tokensToMint += _migrateV1Tokens(v1ProjectIdOf[projectId]);
+
+      // fetching the no of v2 tokens to migrate
+      _tokensToMint += _migrateV2Tokens(projectId);
     }
+    
     // mint tokens directly
     _mint(msg.sender, _tokensToMint);
   }
@@ -326,27 +285,30 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
 
     @return amount of v2 tokens to be migrated
   */
-  function _migrateV1Tokens(uint128 _v1ProjectId) internal returns(uint256) {
+  function _migrateV1Tokens(uint256 _v1ProjectId) internal returns (uint256) {
     // return 0 if a ticket booth does not exist
-    if (address(v1TicketBooth) == address(0))
-      return 0;
-    // local reference to the the project's v1 token instance   
+    if (address(v1TicketBooth) == address(0)) return 0;
+    // local reference to the the project's v1 token instance
     ITickets _v1Token = v1TicketBooth.ticketsOf(_v1ProjectId);
 
     // Get a reference to the migrator's unclaimed balance.
-    uint256 _tokensToMintFromUnclaimedBalance = v1TicketBooth.stakedBalanceOf(msg.sender, _v1ProjectId);
+    uint256 _tokensToMintFromUnclaimedBalance = v1TicketBooth.stakedBalanceOf(
+      msg.sender,
+      _v1ProjectId
+    );
 
     // Get a reference to the migrator's ERC20 balance.
-    uint256 _tokensToMintFromERC20s = _v1Token == ITickets(address(0)) ? 0 : _v1Token.balanceOf(msg.sender);
-    
+    uint256 _tokensToMintFromERC20s = _v1Token == ITickets(address(0))
+      ? 0
+      : _v1Token.balanceOf(msg.sender);
+
     // total v3 tokens to mint
     uint256 v3TokensToMint;
     unchecked {
       v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
     }
 
-    if (v3TokensToMint == 0)
-      return 0;
+    if (v3TokensToMint == 0) return 0;
 
     // Transfer v1 ERC20 tokens to this contract from the msg sender if needed.
     if (_tokensToMintFromERC20s != 0)
@@ -360,43 +322,52 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
         _tokensToMintFromUnclaimedBalance,
         address(this)
       );
-    
+
     return v3TokensToMint;
   }
 
   /** 
     @notice
     Migrate v2 tokens to v3.
+
     @param _v2ProjectId v2 project id.
 
     @return amount of v2 tokens to be migrated
   */
-  function _migrateV2Tokens(uint128 _v2ProjectId) internal returns(uint256) {
+  function _migrateV2Tokens(uint256 _v2ProjectId) internal returns (uint256) {
     // return 0 if a token store does not exist
-    if (address(v2TokenStore) == address(0))
-      return 0;
+    if (address(v2TokenStore) == address(0)) return 0;
 
-    // local reference to the the project's v2 token instance   
-    IJBToken _v2Token = v2TokenStore.tokenOf(_v2ProjectId);
+    // local reference to the the project's v2 token instance
+    IJBTokenV2 _v2Token = v2TokenStore.tokenOf(_v2ProjectId);
 
     // Get a reference to the migrator's unclaimed balane.
-    uint256 _tokensToMintFromUnclaimedBalance = v2TokenStore.unclaimedBalanceOf(msg.sender, _v2ProjectId);
+    uint256 _tokensToMintFromUnclaimedBalance = v2TokenStore.unclaimedBalanceOf(
+      msg.sender,
+      _v2ProjectId
+    );
 
     // Get a reference to the migrator's ERC20 balance.
-    uint256 _tokensToMintFromERC20s = _v2Token == IJBToken(address(0)) ? 0 : _v2Token.balanceOf(msg.sender, _v2ProjectId);
-    
+    uint256 _tokensToMintFromERC20s = _v2Token == IJBTokenV2(address(0))
+      ? 0
+      : _v2Token.balanceOf(msg.sender, _v2ProjectId);
+
     // total v3 tokens to mint
     uint256 v3TokensToMint;
     unchecked {
       v3TokensToMint = _tokensToMintFromERC20s + _tokensToMintFromUnclaimedBalance;
     }
 
-    if (v3TokensToMint == 0)
-      return 0;
+    if (v3TokensToMint == 0) return 0;
 
     // Transfer v2 ERC20 tokens to this contract from the msg sender if needed.
     if (_tokensToMintFromERC20s != 0)
-      IJBToken(_v2Token).transferFrom(projectId, msg.sender, address(this), _tokensToMintFromERC20s);
+      _v2Token.transferFrom(
+        projectId,
+        msg.sender,
+        address(this),
+        _tokensToMintFromERC20s
+      );
 
     // Transfer v2 unclaimed tokens to this contract from the msg sender if needed.
     if (_tokensToMintFromUnclaimedBalance != 0)
@@ -406,7 +377,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBToken {
         address(this),
         _tokensToMintFromUnclaimedBalance
       );
-    
+
     return v3TokensToMint;
   }
 }
