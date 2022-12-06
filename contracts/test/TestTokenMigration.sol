@@ -11,11 +11,17 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
   uint256 _v2ProjectId;
   uint256 _v1ProjectId = 3;
 
+  FundingCycle _currentV1FundingCycle;
+  JBFundingCycle _currentV2FundingCycle;
+  JBFundingCycle _currentV3FundingCycle;
+
+
   // v3 instances
   JBTokenStore _v3JbTokenStore;
   JBV3Token _v3Token;
   JBDirectory _v3jJbDirectory;
   JBController v3controller;
+  JBFundingCycleStore _jbFundingCycleStore;
 
   // v2 instances
   JBController v2controller;
@@ -100,7 +106,7 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     address preDeterministicJBDirectory = addressFrom(address(this), 15);
 
     // JBFundingCycleStore
-    JBFundingCycleStore _jbFundingCycleStore = new JBFundingCycleStore(IJBDirectory(preDeterministicJBDirectory));
+    _jbFundingCycleStore = new JBFundingCycleStore(IJBDirectory(preDeterministicJBDirectory));
 
     // JBDirectory
     _v3jJbDirectory = new JBDirectory(jbOperatorStore(), _jbProjects, _jbFundingCycleStore, multisig());
@@ -180,7 +186,7 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     TestBaseWorkflowV1.setUp();
     
     // deploying v3 token
-    _v3Token = new JBV3Token('v3 token', 'v3 token', _v3ProjectId, ticketBooth(), jbTokenStore(), _v1ProjectId);
+    _v3Token = new JBV3Token('v3 token', 'v3 token', _v3ProjectId, ticketBooth(), jbTokenStore(), fundingCycles(), v2controller, v3controller, _v1ProjectId);
 
   }
 
@@ -275,20 +281,27 @@ contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {
     operatorStore().setOperator(
       address(_v3Token), _v1ProjectId, _transferPermissionIndexForV1
     );
+    {
+    _currentV1FundingCycle = fundingCycles().currentOf(_v1ProjectId);
+    _currentV2FundingCycle = jbFundingCycleStore().currentOf(_v2ProjectId);
+    _currentV3FundingCycle = _jbFundingCycleStore.currentOf(_v2ProjectId);
 
     // v1 balances
     uint256 v1UnclaimedBalance = ticketBooth().stakedBalanceOf(_user, _v1ProjectId);
     uint256 v1ClaimedBalance = _v1Token.balanceOf(_user);
+    uint256 expectedV1TokensMigrated = PRBMath.mulDiv(v1UnclaimedBalance + v1ClaimedBalance, _currentV3FundingCycle.weight, _currentV1FundingCycle.weight);
 
     // v2 balances
     uint256 unclaimedBalance = jbTokenStore().unclaimedBalanceOf(_user, _v2ProjectId);
     uint256 claimedBalance = _token.balanceOf(_user, _v2ProjectId);
+    uint256 expectedV2TokensMigrated = PRBMath.mulDiv(unclaimedBalance + claimedBalance, _currentV3FundingCycle.weight, _currentV2FundingCycle.weight);
 
     evm.prank(_user);
     _v3Token.migrate();
 
     uint256 v3TokenBalance = _v3Token.balanceOf(_user, _v3ProjectId);
-    assertEq(v3TokenBalance, unclaimedBalance + claimedBalance + v1UnclaimedBalance + v1ClaimedBalance);
+    assertEq(v3TokenBalance, expectedV2TokensMigrated + expectedV1TokensMigrated);
+    }
   }
 
     function test_Migration_When_User_Has_No_Claimed_And_Unclaimed_Balances() public {
