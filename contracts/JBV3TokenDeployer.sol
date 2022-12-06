@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
+import { IFundingCycles } from '@jbx-protocol-v1/contracts/interfaces/IFundingCycles.sol';
 import { ITicketBooth, ITickets } from '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
 import { IProjects } from '@jbx-protocol-v1/contracts/interfaces/IProjects.sol';
+import { IJBController } from '@jbx-protocol-v2/contracts/interfaces/IJBController.sol';
 import { IJBProjects } from '@jbx-protocol-v2/contracts/interfaces/IJBProjects.sol';
 import { IJBTokenStore as IJBV2TokenStore } from '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
 import { IJBTokenStore as IJBV3TokenStore } from '@jbx-protocol-v3/contracts/interfaces/IJBTokenStore.sol';
@@ -72,6 +74,9 @@ contract JBV3TokenDeployer {
     uint256 _projectId,
     ITicketBooth _v1TicketBooth,
     IJBV2TokenStore _v2TokenStore,
+    IFundingCycles _v1FundingCycleStore,
+    IJBController _v2Controller,
+    IJBController _v3Controller,
     uint128 _v1ProjectId
   ) external {
     // only the project owner an deploy the token
@@ -87,6 +92,9 @@ contract JBV3TokenDeployer {
       _projectId,
       _v1TicketBooth,
       _v2TokenStore,
+      _v1FundingCycleStore,
+      _v2Controller,
+      _v3Controller,
       _v1ProjectId
     );
     // attachhing the token to the project
