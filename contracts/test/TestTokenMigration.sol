@@ -2,7 +2,7 @@ pragma solidity 0.8.6;
 
 import './helpers/TestBaseWorkflowV2.sol';
 import './helpers/TestBaseWorkflowV1.sol';
-import '../JBV3Token.sol';
+import {JBV3Token} from '../JBV3Token.sol';
 import 'forge-std/Test.sol';
 
 contract TestTokenMigration is TestBaseWorkflowV2, TestBaseWorkflowV1 {

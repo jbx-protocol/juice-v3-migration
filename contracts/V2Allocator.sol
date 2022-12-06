@@ -7,14 +7,12 @@ import '@jbx-protocol-v2/contracts/interfaces/IJBSplitAllocator.sol';
 import '@jbx-protocol-v2/contracts/structs/JBSplitAllocationData.sol';
 import '@jbx-protocol-v2/contracts/libraries/JBTokens.sol';
 import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-
 
 /**
  @title
  Juicebox split allocator for allocating v2 treasury funds to v3 treasury
 */
-contract V2Allocator is ERC165, IJBSplitAllocator, ReentrancyGuard {
+contract V2Allocator is ERC165, IJBSplitAllocator {
  //*********************************************************************//
   // --------------------------- custom errors ------------------------- //
   //*********************************************************************//
@@ -40,7 +38,7 @@ contract V2Allocator is ERC165, IJBSplitAllocator, ReentrancyGuard {
 
     @param _data allocation config which specifies the beneficiary, split info
   */
-  function allocate(JBSplitAllocationData calldata _data) external payable nonReentrant override {    
+  function allocate(JBSplitAllocationData calldata _data) external payable override {    
     // eth terminal
     IJBPaymentTerminal _terminal = directory.primaryTerminalOf( _data.split.projectId, JBTokens.ETH);
 
