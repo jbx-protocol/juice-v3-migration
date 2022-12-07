@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.6;
 
-import '@jbx-protocol-v3/contracts/interfaces/IJBDirectory.sol';
-import '@jbx-protocol-v3/contracts/interfaces/IJBPaymentTerminal.sol';
+import { IJBDirectory as IJBDirectoryV3 } from '@jbx-protocol-v3/contracts/interfaces/IJBDirectory.sol';
+import { IJBPaymentTerminal as IJBPaymentTerminalV3 } from '@jbx-protocol-v3/contracts/interfaces/IJBPaymentTerminal.sol';
 import '@jbx-protocol-v1/contracts/interfaces/IModAllocator.sol';
-import '@jbx-protocol-v3/contracts/libraries/JBTokens.sol';
+import { JBTokens as JBTokensV3 } from '@jbx-protocol-v3/contracts/libraries/JBTokens.sol';
 import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
 
 /**
@@ -22,12 +22,12 @@ contract V1Allocator is ERC165, IModAllocator {
     @notice
     The jb directory address.
   */
-  IJBDirectory public immutable directory;
+  IJBDirectoryV3 public immutable directory;
 
   /**
     @param _directory directory address. 
   */
-  constructor(IJBDirectory _directory) {
+  constructor(IJBDirectoryV3 _directory) {
     directory = _directory;
   }
 
@@ -45,7 +45,7 @@ contract V1Allocator is ERC165, IModAllocator {
     _beneficiary;
 
     // eth terminal
-    IJBPaymentTerminal _terminal = directory.primaryTerminalOf(_forProjectId, JBTokens.ETH);
+    IJBPaymentTerminalV3 _terminal = directory.primaryTerminalOf(_forProjectId, JBTokensV3.ETH);
 
     if (address(_terminal) == address(0)) revert TERMINAL_NOT_FOUND();
     
@@ -53,7 +53,7 @@ contract V1Allocator is ERC165, IModAllocator {
     _terminal.addToBalanceOf{value: msg.value}(
         _forProjectId,
         msg.value,
-        JBTokens.ETH,
+        JBTokensV3.ETH,
         "v1 -> v3 allocation",
         bytes("")
     );
