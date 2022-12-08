@@ -132,10 +132,12 @@ contract TestV1Allocation is TestBaseWorkflowV1, TestBaseWorkflowV2 {
       0, // Currency
       0 // Min wei out
     );
-    
-    // considering the fee
-    assert(
-      jbPaymentTerminalStore().balanceOf(_v3Terminal, _allocationDestinationProjectId) < 1 ether
+
+    // deposit is 1 ether
+    uint256 feeAmount = 1 ether - PRBMath.mulDiv(1 ether, 200, 200 + _v1Terminal.fee());
+
+    assertEq(
+      jbPaymentTerminalStore().balanceOf(_v3Terminal, _allocationDestinationProjectId), 1 ether - feeAmount
     );
   }
 }
