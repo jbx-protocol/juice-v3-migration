@@ -7,7 +7,7 @@ import 'forge-std/Script.sol';
 
 contract Deploy_V1_Allocator_On_Mainnet is Script {
 
-    IJBDirectory jbV3Directory = IJBDirectory(0x65572FB928b46f9aDB7cfe5A4c41226F636161ea);
+    IJBDirectoryV3 jbV3Directory = IJBDirectoryV3(0x65572FB928b46f9aDB7cfe5A4c41226F636161ea);
     V1Allocator v1Allocator;
 
     function run() external {

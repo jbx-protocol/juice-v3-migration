@@ -18,12 +18,15 @@ contract V2Allocator is ERC165, IJBSplitAllocator {
   //*********************************************************************//
   error TERMINAL_NOT_FOUND();
 
-
+  //*********************************************************************//
+  // --------------------- public stored properties -------------------- //
+  //*********************************************************************//
   /**
     @notice
     The jb directory address.
   */
   IJBDirectory public immutable directory;
+
 
   /**
     @param _directory directory address. 
