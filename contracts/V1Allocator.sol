@@ -18,6 +18,9 @@ contract V1Allocator is ERC165, IModAllocator {
   error TERMINAL_NOT_FOUND();
 
 
+  //*********************************************************************//
+  // --------------------- public stored properties -------------------- //
+  //*********************************************************************//
   /**
     @notice
     The jb directory address.
