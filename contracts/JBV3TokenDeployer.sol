@@ -72,8 +72,8 @@ contract JBV3TokenDeployer {
     uint256 _projectId,
     ITicketBooth _v1TicketBooth,
     IJBV2TokenStore _v2TokenStore,
-    uint128 _v1ProjectId
-  ) external {
+    uint256 _v1ProjectId
+  ) external returns (JBV3Token _v3Token) {
     // only the project owner an deploy the token
     if (_v1ProjectId != 0 && v1ProjectDirectory.ownerOf(_v1ProjectId) != msg.sender)
       revert NOT_OWNER();
@@ -81,7 +81,7 @@ contract JBV3TokenDeployer {
     if (_projectId != 0 && projectDirectory.ownerOf(_projectId) != msg.sender)
       revert NOT_OWNER();
 
-    JBV3Token _v3Token = new JBV3Token(
+    _v3Token = new JBV3Token(
       _name,
       _symbol,
       _projectId,

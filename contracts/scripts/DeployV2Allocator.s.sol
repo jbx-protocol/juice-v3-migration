@@ -14,6 +14,7 @@ contract Deploy_V2_Allocator_On_Mainnet is Script {
       vm.startBroadcast();
 
       v2Allocator = new V2Allocator(jbV3Directory);
+      console.log(address(v2Allocator));
     }
 }
 
@@ -26,5 +27,6 @@ contract Deploy_V2_Allocator_On_Goerli is Script {
       vm.startBroadcast();
 
       v2Allocator = new V2Allocator(jbV3Directory);
+      console.log(address(v2Allocator));
     }
 }

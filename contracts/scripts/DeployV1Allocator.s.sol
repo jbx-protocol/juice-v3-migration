@@ -14,5 +14,6 @@ contract Deploy_V1_Allocator_On_Mainnet is Script {
       vm.startBroadcast();
 
       v1Allocator = new V1Allocator(jbV3Directory);
+      console.log(address(v1Allocator));
     }
 }
