@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.6;
+pragma solidity ^0.8.6;
 
 import {IJBDirectory as IJBDirectoryV3} from '@jbx-protocol-v3/contracts/interfaces/IJBDirectory.sol';
 import {IJBPaymentTerminal as IJBPaymentTerminalV3} from '@jbx-protocol-v3/contracts/interfaces/IJBPaymentTerminal.sol';
