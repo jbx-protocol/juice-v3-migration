@@ -161,7 +161,9 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     projectId = _projectId;
     v1TicketBooth = _v1TicketBooth;
     v2TokenStore = _v2TokenStore;
-    v1ProjectIdOf[_projectId] = _v1ProjectId;
+
+    // Store the V1 project ID if needed.
+    if (_v1ProjectId != 0) v1ProjectIdOf[_projectId] = _v1ProjectId;
   }
 
   //*********************************************************************//
