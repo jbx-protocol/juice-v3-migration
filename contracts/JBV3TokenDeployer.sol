@@ -99,7 +99,7 @@ contract JBV3TokenDeployer {
     );
 
     // Attach the token to the token store.
-    tokenStore.setFor(_projectId, _v3Token);
+    tokenStore.setFor(_projectId, v3Token);
 
     // Transfer the ownership to the token store.
     v3Token.transferOwnership(address(tokenStore));

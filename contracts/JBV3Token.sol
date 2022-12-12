@@ -345,18 +345,18 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     if (address(v2TokenStore) == address(0)) return 0;
 
     // Keep a reference to the the project's V2 token instance.
-    IJBTokenV2 _v2Token = v2TokenStore.tokenOf(_v2ProjectId);
+    IJBTokenV2 _v2Token = v2TokenStore.tokenOf(projectId);
 
     // Get a reference to the migrating account's unclaimed balane.
     uint256 _tokensToMintFromUnclaimedBalance = v2TokenStore.unclaimedBalanceOf(
       msg.sender,
-      _v2ProjectId
+      projectId
     );
 
     // Get a reference to the migrating account's ERC20 balance.
     uint256 _tokensToMintFromERC20s = _v2Token == IJBTokenV2(address(0))
       ? 0
-      : _v2Token.balanceOf(msg.sender, _v2ProjectId);
+      : _v2Token.balanceOf(msg.sender, projectId);
 
     // Calculate the amount of V3 tokens to mint from the total tokens being migrated.
     unchecked {
@@ -374,7 +374,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     if (_tokensToMintFromUnclaimedBalance != 0)
       v2TokenStore.transferFrom(
         msg.sender,
-        _v2ProjectId,
+        projectId,
         address(this),
         _tokensToMintFromUnclaimedBalance
       );
