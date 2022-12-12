@@ -1,0 +1,749 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "deposit",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "deposited",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCurrentBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_beneficiary",
+          "type": "address"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "_beneficiary",
+          "type": "address"
+        }
+      ],
+      "name": "withdrawAll",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "deposit()": "d0e30db0",
+    "deposited()": "eef49ee3",
+    "getCurrentBalance()": "a5749710",
+    "withdraw(uint256,address)": "00f714ce",
+    "withdrawAll(address)": "fa09e630"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"deposit\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"deposited\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCurrentBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"address payable\",\"name\":\"_beneficiary\",\"type\":\"address\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"_beneficiary\",\"type\":\"address\"}],\"name\":\"withdrawAll\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/juice-contracts-v1/contracts/interfaces/IYielder.sol\":\"IYielder\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":@chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":@jbx-protocol-v1/=lib/juice-contracts-v1/\",\":@jbx-protocol-v2/=lib/juice-contracts-v2/\",\":@jbx-protocol-v3/=lib/juice-contracts-v3/\",\":@juicebox/=lib/juice-contracts-v2/contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/\",\":chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":ds-test/=lib/juice-contracts-v2/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":juice-contracts-v1/=lib/juice-contracts-v1/contracts/\",\":juice-contracts-v2/=lib/juice-contracts-v2/contracts/\",\":juice-contracts-v3/=lib/juice-contracts-v3/contracts/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":openzeppelin-contracts/contracts/=lib/juice-contracts-v2/lib/openzeppelin-contracts/contracts/\",\":prb-math/=lib/juice-contracts-v2/lib/prb-math/\"]},\"sources\":{\"lib/juice-contracts-v1/contracts/interfaces/IDirectPaymentAddress.sol\":{\"keccak256\":\"0xadcaeb92b5682b85f48c4a8923e82b54bbee28ef31a54e7ec8dea31efe45ee7e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://27ec298aa604532de06f56c2c932cc017b9bfc5b196f0781ebb54909dc7bc4a7\",\"dweb:/ipfs/QmT5ut8rzEsoebYAv2fmSDWYYKyNULGGD9KaVU1qCDhxhH\"]},\"lib/juice-contracts-v1/contracts/interfaces/IFundingCycleBallot.sol\":{\"keccak256\":\"0xb3d0d2fdfe1993414d4b58e8cd54a2fc5b38ffb9aa724d7d90e8c42c1e75ab50\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d41c27a4c624abc97d568ef9a1494f9506a2502ee64ab3da15f906d7260648b3\",\"dweb:/ipfs/QmXENeBpgjfcVJEi74AKdn9cxcDTVW5c28ogn7sW1oaMRT\"]},\"lib/juice-contracts-v1/contracts/interfaces/IFundingCycles.sol\":{\"keccak256\":\"0x53611fa221c607fdd547d89785238dfc3ca471938c20832d1f86a0796461fa11\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://10acd4c6194aefff3d32bd33e835f3a9a55c5867ec86b1f1599c029662e9f33a\",\"dweb:/ipfs/QmTC62AaZYB2LyjgLUkAjGvLWBHWaH5qefKMjiUuFyaNmf\"]},\"lib/juice-contracts-v1/contracts/interfaces/IModAllocator.sol\":{\"keccak256\":\"0x7fa3496d09249348a6be4614d282d4da9aa0042fcae1d5c117001df0ac5c10ca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://916e1d2173c1d2151ac10be09b4222f5a053e8cef18462d752873226779c808c\",\"dweb:/ipfs/QmZD3CNtE3nDeaqataApxJ28GMajaZ2LbWp5d64pxXbzPb\"]},\"lib/juice-contracts-v1/contracts/interfaces/IModStore.sol\":{\"keccak256\":\"0xd265501b6abeec0bcab11f972c6d36ba47bfda57a53dd85cade4940d3e11132c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7c3a00b880a7782e12df17b5006cec50405f3b840db7054a27a1ce07bf4146bc\",\"dweb:/ipfs/QmZi3T8pQwpFPaBfSyFbj2L6MAj1dTSsTigjSo6SWQZmRj\"]},\"lib/juice-contracts-v1/contracts/interfaces/IOperatorStore.sol\":{\"keccak256\":\"0x1fefddcf072d01ffd86b5743d8f1e6ac32b4c5bc0af54b9cf2e00fb79d22d90d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://76d837c380f40598f9a3854924a19cf89daad9bc6856adca304ca5a4b8d90e87\",\"dweb:/ipfs/QmWbb6Si6Fic7uWCfLeP9AstCWocKcQe99bae1QbhmrRb5\"]},\"lib/juice-contracts-v1/contracts/interfaces/IPrices.sol\":{\"keccak256\":\"0xcf6f91d065f44dc4bb516a05656ece8a3da5b825cbd331eabe48f5dbe515d0f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a4b53205efc2fa42ecc4d1cf8c92dddf407b9df7b92a8b177fcca748eff56316\",\"dweb:/ipfs/Qme8PKKC5GFBGkb2JCE3UFBwnnsxKxxiNPCU3mvmAjDxTn\"]},\"lib/juice-contracts-v1/contracts/interfaces/IProjects.sol\":{\"keccak256\":\"0xdc9b7c9924ea448c7aaab16d5a56b9b3b09b58406ae34026687337eee7ba4a4e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a6c8ea8188c310082c2ad6205725323b9a47208a52820f51c1b8b0a80009331b\",\"dweb:/ipfs/Qmanm8gvVL6tv2qNm5UC9TLZ49pLAmqHJRT6Q1rXW2s42g\"]},\"lib/juice-contracts-v1/contracts/interfaces/ITerminal.sol\":{\"keccak256\":\"0x45efad59fd33dab1b05c0d59d1f623fbd9fc67373cf7b4da603078369611cd88\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://093b1157f9a56dd5d38d9aff46d2e76f380dbf5f6792bd1453c17e3b361cf767\",\"dweb:/ipfs/QmSYJoCBuhjJp3tX1yx4NfdEQTrf9R4kau8UiHErjky88L\"]},\"lib/juice-contracts-v1/contracts/interfaces/ITerminalDirectory.sol\":{\"keccak256\":\"0xee026727319ec7f26119fe026c2d5eb3b6769e7bd00f7b39c543b130617cb8bf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7e8e337cb7dc8501afd37fc5a285e930aeec4fe4d36efcc39382eb3cb50212d0\",\"dweb:/ipfs/QmZqD4AbrAwz7kyDeDGGnqLHHD1W7U5SHSngiDRPTbKqzn\"]},\"lib/juice-contracts-v1/contracts/interfaces/ITerminalV1.sol\":{\"keccak256\":\"0x525ed8f8332f924d309e875d9505405764fb277c7ae0f8b16786c1db57d2a998\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e3ab274c3337ef2e79a49a091e9211ae52e5e5463f16d86811fc9ab6892f4946\",\"dweb:/ipfs/QmfTdKeGgPumyZCLzpxDBwU3cGiXr43WYedgKrPGL5Rqq8\"]},\"lib/juice-contracts-v1/contracts/interfaces/ITicketBooth.sol\":{\"keccak256\":\"0x78a66e7e017b1eaefc51f78cacaee9358236bce7c95e2c6a7c14a81ceee2387b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6636b8e9b3159779831a8fd3898005d0fa4a8bdfa43718d7436382e48e97e962\",\"dweb:/ipfs/QmUn8qc7JrAppkzcENm5pPZpB896QSPAKsvRSLQzoXH4Db\"]},\"lib/juice-contracts-v1/contracts/interfaces/ITickets.sol\":{\"keccak256\":\"0x7887f7dd3e898200cc35d41bb7e39458df297758bbfc17142a5cc8e299f9ecc3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bae7e3c5d69ab7c2cbea1b1c20b5e14e0c65d7d6ebf20992f0148d1c70a04980\",\"dweb:/ipfs/QmRyD1Vh3VL88SWis1MSWpShJdKfoVXEeGYBVyLBzQ7HvN\"]},\"lib/juice-contracts-v1/contracts/interfaces/IYielder.sol\":{\"keccak256\":\"0xcf0017f8de37fe839d3d3c40af8baba3627f45f253839591af97d3125b925b58\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f8ec8672be401074eea32969207eac80239f877fccb2a9cb30d870ed66f4b29f\",\"dweb:/ipfs/QmTxxvBzE2GGbep6UniiePDGE7KdKxnMJLrcEdsiaoYEmY\"]},\"lib/juice-contracts-v2/lib/chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol\":{\"keccak256\":\"0x6e6e4b0835904509406b070ee173b5bc8f677c19421b76be38aea3b1b3d30846\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3beaa37ee61e4ab615e250fbf01601ae481de843fd0ef55e6b44fd9d5fff8a7\",\"dweb:/ipfs/QmeZUVwd26LzK4Mfp8Zba5JbQNkZFfTzFu1A6FVMMZDg9c\"]},\"lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34\",\"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr\"]},\"lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0xab28a56179c1db258c9bf5235b382698cb650debecb51b23d12be9e241374b68\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://daae589a9d6fa7e55f99f86c0a16796ca490f243fb3693632c3711c0646c1d56\",\"dweb:/ipfs/QmR3zpd7wNw3rcUdekwiv6FYHJqksuTCXLVioTxu6Fbxk3\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.6+commit.11564f7e"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "stateMutability": "payable",
+          "type": "function",
+          "name": "deposit"
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "deposited",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getCurrentBalance",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "_amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address payable",
+              "name": "_beneficiary",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "withdraw"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address payable",
+              "name": "_beneficiary",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "withdrawAll",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@chainlink/=lib/juice-contracts-v2/lib/chainlink/",
+        ":@jbx-protocol-v1/=lib/juice-contracts-v1/",
+        ":@jbx-protocol-v2/=lib/juice-contracts-v2/",
+        ":@jbx-protocol-v3/=lib/juice-contracts-v3/",
+        ":@juicebox/=lib/juice-contracts-v2/contracts/",
+        ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+        ":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/",
+        ":chainlink/=lib/juice-contracts-v2/lib/chainlink/",
+        ":ds-test/=lib/juice-contracts-v2/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-std/=lib/forge-std/src/",
+        ":juice-contracts-v1/=lib/juice-contracts-v1/contracts/",
+        ":juice-contracts-v2/=lib/juice-contracts-v2/contracts/",
+        ":juice-contracts-v3/=lib/juice-contracts-v3/contracts/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/",
+        ":openzeppelin-contracts/contracts/=lib/juice-contracts-v2/lib/openzeppelin-contracts/contracts/",
+        ":prb-math/=lib/juice-contracts-v2/lib/prb-math/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 10000000
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "lib/juice-contracts-v1/contracts/interfaces/IYielder.sol": "IYielder"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "lib/juice-contracts-v1/contracts/interfaces/IDirectPaymentAddress.sol": {
+        "keccak256": "0xadcaeb92b5682b85f48c4a8923e82b54bbee28ef31a54e7ec8dea31efe45ee7e",
+        "urls": [
+          "bzz-raw://27ec298aa604532de06f56c2c932cc017b9bfc5b196f0781ebb54909dc7bc4a7",
+          "dweb:/ipfs/QmT5ut8rzEsoebYAv2fmSDWYYKyNULGGD9KaVU1qCDhxhH"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/IFundingCycleBallot.sol": {
+        "keccak256": "0xb3d0d2fdfe1993414d4b58e8cd54a2fc5b38ffb9aa724d7d90e8c42c1e75ab50",
+        "urls": [
+          "bzz-raw://d41c27a4c624abc97d568ef9a1494f9506a2502ee64ab3da15f906d7260648b3",
+          "dweb:/ipfs/QmXENeBpgjfcVJEi74AKdn9cxcDTVW5c28ogn7sW1oaMRT"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/IFundingCycles.sol": {
+        "keccak256": "0x53611fa221c607fdd547d89785238dfc3ca471938c20832d1f86a0796461fa11",
+        "urls": [
+          "bzz-raw://10acd4c6194aefff3d32bd33e835f3a9a55c5867ec86b1f1599c029662e9f33a",
+          "dweb:/ipfs/QmTC62AaZYB2LyjgLUkAjGvLWBHWaH5qefKMjiUuFyaNmf"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/IModAllocator.sol": {
+        "keccak256": "0x7fa3496d09249348a6be4614d282d4da9aa0042fcae1d5c117001df0ac5c10ca",
+        "urls": [
+          "bzz-raw://916e1d2173c1d2151ac10be09b4222f5a053e8cef18462d752873226779c808c",
+          "dweb:/ipfs/QmZD3CNtE3nDeaqataApxJ28GMajaZ2LbWp5d64pxXbzPb"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/IModStore.sol": {
+        "keccak256": "0xd265501b6abeec0bcab11f972c6d36ba47bfda57a53dd85cade4940d3e11132c",
+        "urls": [
+          "bzz-raw://7c3a00b880a7782e12df17b5006cec50405f3b840db7054a27a1ce07bf4146bc",
+          "dweb:/ipfs/QmZi3T8pQwpFPaBfSyFbj2L6MAj1dTSsTigjSo6SWQZmRj"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/IOperatorStore.sol": {
+        "keccak256": "0x1fefddcf072d01ffd86b5743d8f1e6ac32b4c5bc0af54b9cf2e00fb79d22d90d",
+        "urls": [
+          "bzz-raw://76d837c380f40598f9a3854924a19cf89daad9bc6856adca304ca5a4b8d90e87",
+          "dweb:/ipfs/QmWbb6Si6Fic7uWCfLeP9AstCWocKcQe99bae1QbhmrRb5"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/IPrices.sol": {
+        "keccak256": "0xcf6f91d065f44dc4bb516a05656ece8a3da5b825cbd331eabe48f5dbe515d0f8",
+        "urls": [
+          "bzz-raw://a4b53205efc2fa42ecc4d1cf8c92dddf407b9df7b92a8b177fcca748eff56316",
+          "dweb:/ipfs/Qme8PKKC5GFBGkb2JCE3UFBwnnsxKxxiNPCU3mvmAjDxTn"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/IProjects.sol": {
+        "keccak256": "0xdc9b7c9924ea448c7aaab16d5a56b9b3b09b58406ae34026687337eee7ba4a4e",
+        "urls": [
+          "bzz-raw://a6c8ea8188c310082c2ad6205725323b9a47208a52820f51c1b8b0a80009331b",
+          "dweb:/ipfs/Qmanm8gvVL6tv2qNm5UC9TLZ49pLAmqHJRT6Q1rXW2s42g"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/ITerminal.sol": {
+        "keccak256": "0x45efad59fd33dab1b05c0d59d1f623fbd9fc67373cf7b4da603078369611cd88",
+        "urls": [
+          "bzz-raw://093b1157f9a56dd5d38d9aff46d2e76f380dbf5f6792bd1453c17e3b361cf767",
+          "dweb:/ipfs/QmSYJoCBuhjJp3tX1yx4NfdEQTrf9R4kau8UiHErjky88L"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/ITerminalDirectory.sol": {
+        "keccak256": "0xee026727319ec7f26119fe026c2d5eb3b6769e7bd00f7b39c543b130617cb8bf",
+        "urls": [
+          "bzz-raw://7e8e337cb7dc8501afd37fc5a285e930aeec4fe4d36efcc39382eb3cb50212d0",
+          "dweb:/ipfs/QmZqD4AbrAwz7kyDeDGGnqLHHD1W7U5SHSngiDRPTbKqzn"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/ITerminalV1.sol": {
+        "keccak256": "0x525ed8f8332f924d309e875d9505405764fb277c7ae0f8b16786c1db57d2a998",
+        "urls": [
+          "bzz-raw://e3ab274c3337ef2e79a49a091e9211ae52e5e5463f16d86811fc9ab6892f4946",
+          "dweb:/ipfs/QmfTdKeGgPumyZCLzpxDBwU3cGiXr43WYedgKrPGL5Rqq8"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/ITicketBooth.sol": {
+        "keccak256": "0x78a66e7e017b1eaefc51f78cacaee9358236bce7c95e2c6a7c14a81ceee2387b",
+        "urls": [
+          "bzz-raw://6636b8e9b3159779831a8fd3898005d0fa4a8bdfa43718d7436382e48e97e962",
+          "dweb:/ipfs/QmUn8qc7JrAppkzcENm5pPZpB896QSPAKsvRSLQzoXH4Db"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/ITickets.sol": {
+        "keccak256": "0x7887f7dd3e898200cc35d41bb7e39458df297758bbfc17142a5cc8e299f9ecc3",
+        "urls": [
+          "bzz-raw://bae7e3c5d69ab7c2cbea1b1c20b5e14e0c65d7d6ebf20992f0148d1c70a04980",
+          "dweb:/ipfs/QmRyD1Vh3VL88SWis1MSWpShJdKfoVXEeGYBVyLBzQ7HvN"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v1/contracts/interfaces/IYielder.sol": {
+        "keccak256": "0xcf0017f8de37fe839d3d3c40af8baba3627f45f253839591af97d3125b925b58",
+        "urls": [
+          "bzz-raw://f8ec8672be401074eea32969207eac80239f877fccb2a9cb30d870ed66f4b29f",
+          "dweb:/ipfs/QmTxxvBzE2GGbep6UniiePDGE7KdKxnMJLrcEdsiaoYEmY"
+        ],
+        "license": "MIT"
+      },
+      "lib/juice-contracts-v2/lib/chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol": {
+        "keccak256": "0x6e6e4b0835904509406b070ee173b5bc8f677c19421b76be38aea3b1b3d30846",
+        "urls": [
+          "bzz-raw://b3beaa37ee61e4ab615e250fbf01601ae481de843fd0ef55e6b44fd9d5fff8a7",
+          "dweb:/ipfs/QmeZUVwd26LzK4Mfp8Zba5JbQNkZFfTzFu1A6FVMMZDg9c"
+        ],
+        "license": "MIT"
+      },
+      "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
+        "keccak256": "0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b",
+        "urls": [
+          "bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34",
+          "dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr"
+        ],
+        "license": "MIT"
+      },
+      "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol": {
+        "keccak256": "0xab28a56179c1db258c9bf5235b382698cb650debecb51b23d12be9e241374b68",
+        "urls": [
+          "bzz-raw://daae589a9d6fa7e55f99f86c0a16796ca490f243fb3693632c3711c0646c1d56",
+          "dweb:/ipfs/QmR3zpd7wNw3rcUdekwiv6FYHJqksuTCXLVioTxu6Fbxk3"
+        ],
+        "license": "MIT"
+      },
+      "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": {
+        "keccak256": "0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1",
+        "urls": [
+          "bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f",
+          "dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
+        ],
+        "license": "MIT"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "lib/juice-contracts-v1/contracts/interfaces/IYielder.sol",
+    "id": 35912,
+    "exportedSymbols": {
+      "FundingCycleMetadata": [
+        34894
+      ],
+      "IERC20": [
+        55112
+      ],
+      "ITerminalV1": [
+        35253
+      ],
+      "IYielder": [
+        35911
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:564:55",
+    "nodes": [
+      {
+        "id": 35881,
+        "nodeType": "PragmaDirective",
+        "src": "32:23:55",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 35882,
+        "nodeType": "ImportDirective",
+        "src": "57:56:55",
+        "nodes": [],
+        "absolutePath": "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "file": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 35912,
+        "sourceUnit": 55113,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 35883,
+        "nodeType": "ImportDirective",
+        "src": "115:27:55",
+        "nodes": [],
+        "absolutePath": "lib/juice-contracts-v1/contracts/interfaces/ITerminalV1.sol",
+        "file": "./ITerminalV1.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 35912,
+        "sourceUnit": 35254,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 35911,
+        "nodeType": "ContractDefinition",
+        "src": "226:369:55",
+        "nodes": [
+          {
+            "id": 35888,
+            "nodeType": "FunctionDefinition",
+            "src": "251:53:55",
+            "nodes": [],
+            "functionSelector": "eef49ee3",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deposited",
+            "nameLocation": "260:9:55",
+            "parameters": {
+              "id": 35884,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "269:2:55"
+            },
+            "returnParameters": {
+              "id": 35887,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 35886,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 35888,
+                  "src": "295:7:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 35885,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "295:7:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "294:9:55"
+            },
+            "scope": 35911,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 35893,
+            "nodeType": "FunctionDefinition",
+            "src": "310:61:55",
+            "nodes": [],
+            "functionSelector": "a5749710",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCurrentBalance",
+            "nameLocation": "319:17:55",
+            "parameters": {
+              "id": 35889,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "336:2:55"
+            },
+            "returnParameters": {
+              "id": 35892,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 35891,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 35893,
+                  "src": "362:7:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 35890,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "362:7:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "361:9:55"
+            },
+            "scope": 35911,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 35896,
+            "nodeType": "FunctionDefinition",
+            "src": "377:36:55",
+            "nodes": [],
+            "functionSelector": "d0e30db0",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deposit",
+            "nameLocation": "386:7:55",
+            "parameters": {
+              "id": 35894,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "393:2:55"
+            },
+            "returnParameters": {
+              "id": 35895,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "412:0:55"
+            },
+            "scope": 35911,
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 35903,
+            "nodeType": "FunctionDefinition",
+            "src": "419:74:55",
+            "nodes": [],
+            "functionSelector": "00f714ce",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "428:8:55",
+            "parameters": {
+              "id": 35901,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 35898,
+                  "mutability": "mutable",
+                  "name": "_amount",
+                  "nameLocation": "445:7:55",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 35903,
+                  "src": "437:15:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 35897,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "437:7:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 35900,
+                  "mutability": "mutable",
+                  "name": "_beneficiary",
+                  "nameLocation": "470:12:55",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 35903,
+                  "src": "454:28:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 35899,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "454:15:55",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "436:47:55"
+            },
+            "returnParameters": {
+              "id": 35902,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "492:0:55"
+            },
+            "scope": 35911,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 35910,
+            "nodeType": "FunctionDefinition",
+            "src": "499:94:55",
+            "nodes": [],
+            "functionSelector": "fa09e630",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdrawAll",
+            "nameLocation": "508:11:55",
+            "parameters": {
+              "id": 35906,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 35905,
+                  "mutability": "mutable",
+                  "name": "_beneficiary",
+                  "nameLocation": "536:12:55",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 35910,
+                  "src": "520:28:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 35904,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "520:15:55",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "519:30:55"
+            },
+            "returnParameters": {
+              "id": 35909,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 35908,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 35910,
+                  "src": "584:7:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 35907,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "584:7:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "583:9:55"
+            },
+            "scope": 35911,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          35911
+        ],
+        "name": "IYielder",
+        "nameLocation": "236:8:55",
+        "scope": 35912,
+        "usedErrors": []
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 55
+}
