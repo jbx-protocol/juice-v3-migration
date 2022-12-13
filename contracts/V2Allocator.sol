@@ -9,24 +9,36 @@ import '@jbx-protocol-v2/contracts/libraries/JBTokens.sol';
 import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
 
 /**
- @title
- Juicebox split allocator for allocating v2 treasury funds to v3 treasury
+  @notice
+  Juicebox split allocator for allocating V2 treasury funds to a V3 treasury.
+
+  @dev
+  Adheres to -
+  IJBSplitAllocator: Adhere to Allocator pattern to receive payout distributions for allocation. 
+
+  @dev
+  Inherits from -
+  ERC165: Introspection on interface adherance. 
 */
 contract V2Allocator is ERC165, IJBSplitAllocator {
- //*********************************************************************//
+  //*********************************************************************//
   // --------------------------- custom errors ------------------------- //
   //*********************************************************************//
+
   error TERMINAL_NOT_FOUND();
 
+  //*********************************************************************//
+  // --------------------- public stored properties -------------------- //
+  //*********************************************************************//
 
   /**
     @notice
-    The jb directory address.
+    The V3 directory address.
   */
   IJBDirectory public immutable directory;
 
   /**
-    @param _directory directory address. 
+    @param _directory The V3 directory address.  
   */
   constructor(IJBDirectory _directory) {
     directory = _directory;
@@ -34,23 +46,27 @@ contract V2Allocator is ERC165, IJBSplitAllocator {
 
   /**
     @notice
-    Allocate hook that will transfer treasury funds to v3.
+    Allocate hook that will transfer treasury funds to V3.
 
-    @param _data allocation config which specifies the beneficiary, split info
+    @param _data The allocation config which specifies the destination of the funds.
   */
-  function allocate(JBSplitAllocationData calldata _data) external payable override {    
-    // eth terminal
-    IJBPaymentTerminal _terminal = directory.primaryTerminalOf( _data.split.projectId, JBTokens.ETH);
+  function allocate(JBSplitAllocationData calldata _data) external payable override {
+    // Keep a reference to the ID of the project that will be receiving funds.
+    uint256 _v3ProjectId = _data.split.projectId;
 
+    // Get the ETH payment terminal for the destination project in the V3 directory.
+    IJBPaymentTerminal _terminal = directory.primaryTerminalOf(_v3ProjectId, JBTokens.ETH);
+
+    // Make sure there is an ETH terminal.
     if (address(_terminal) == address(0)) revert TERMINAL_NOT_FOUND();
-    
-    // add to balance of v3 terminal for the project
+
+    // Add the funds to the balance of the V3 terminal.
     _terminal.addToBalanceOf{value: msg.value}(
-        _data.split.projectId,
-        msg.value,
-        JBTokens.ETH,
-        "v2 -> v3 allocation",
-        bytes("")
+      _v3ProjectId,
+      msg.value,
+      JBTokens.ETH,
+      'v2 -> v3 allocation',
+      bytes('')
     );
   }
 
@@ -64,4 +80,3 @@ contract V2Allocator is ERC165, IJBSplitAllocator {
       _interfaceId == type(IJBSplitAllocator).interfaceId || super.supportsInterface(_interfaceId);
   }
 }
-

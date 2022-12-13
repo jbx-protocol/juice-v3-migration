@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.6;
+pragma solidity ^0.8.6;
 
 import '@jbx-protocol-v2/contracts/libraries/JBCurrencies.sol';
 import '@jbx-protocol-v2/contracts/libraries/JBConstants.sol';

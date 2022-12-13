@@ -1,27 +1,29 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-import { ITicketBooth, ITickets } from '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
-import { IProjects } from '@jbx-protocol-v1/contracts/interfaces/IProjects.sol';
-import { IJBProjects } from '@jbx-protocol-v2/contracts/interfaces/IJBProjects.sol';
-import { IJBTokenStore as IJBV2TokenStore } from '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
-import { IJBTokenStore as IJBV3TokenStore } from '@jbx-protocol-v3/contracts/interfaces/IJBTokenStore.sol';
-import { JBV3Token } from './JBV3Token.sol';
+import {ITicketBooth, ITickets} from '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
+import {IProjects} from '@jbx-protocol-v1/contracts/interfaces/IProjects.sol';
+import {IJBProjects} from '@jbx-protocol-v2/contracts/interfaces/IJBProjects.sol';
+import {IJBTokenStore as IJBV2TokenStore} from '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
+import {IJBTokenStore as IJBV3TokenStore} from '@jbx-protocol-v3/contracts/interfaces/IJBTokenStore.sol';
+import {JBV3Token} from './JBV3Token.sol';
 
 /** 
   @notice
-  V3 token deployer which is used by owners of v1 & v2 projects to deploy v3 token for their v3 project.
+  V3 token deployer which is used by owners of V1 and/or V2 projects to deploy V3 token for their V3 project.
 */
 contract JBV3TokenDeployer {
   //*********************************************************************//
   // --------------------------- custom errors ------------------------- //
   //*********************************************************************//
+
   error NOT_OWNER();
 
   //*********************************************************************//
   // --------------------------- events ------------------------- //
   //*********************************************************************//
-  event Deployed(uint256 v3ProjectId, address v3Token, address owner);
+
+  event Deploy(uint256 v3ProjectId, address v3Token, address owner);
 
   /** 
     @notice
@@ -45,9 +47,10 @@ contract JBV3TokenDeployer {
   // -------------------------- constructor ---------------------------- //
   //*********************************************************************//
   /** 
-      @param _projectDirectory V3 & V2 project directory address.
-      @param _v1ProjectDirectory V1 project directory address.
-    */
+    @param _projectDirectory The V3 & V2 project directory address.
+    @param _v1ProjectDirectory The V1 project directory address.
+    @param _tokenStore The token store address.
+  */
   constructor(
     IJBProjects _projectDirectory,
     IProjects _v1ProjectDirectory,
@@ -59,29 +62,34 @@ contract JBV3TokenDeployer {
   }
 
   /**
-      @param _name The name of the token.
-      @param _symbol The symbol that the token should be represented by.
-      @param _projectId The ID of the project that this token should be exclusively used for. Send 0 to support any project.
-      @param _v1TicketBooth V1 Token Booth Instance.
-      @param _v2TokenStore V2 Token Store Instance.
-      @param _v1ProjectId V1 Project Id.
-    */
+    @notice
+    Deploy the V3 token and attach it to a V3 project.
+
+    @dev
+    Only the V3 project owner can deploy the token.
+
+    @param _name The name of the token.
+    @param _symbol The symbol that the token should be represented by.
+    @param _projectId The V3 ID of the project that this token should exclusively be used for.
+    @param _v1TicketBooth V1 Token Booth instance, if V1 migration is desired.
+    @param _v2TokenStore V2 Token Store instance, if V2 migration is desired.
+    @param _v1ProjectId V1 project ID that this token should include.
+
+    @return v3Token The address of the new token.
+  */
   function deploy(
     string memory _name,
     string memory _symbol,
     uint256 _projectId,
     ITicketBooth _v1TicketBooth,
     IJBV2TokenStore _v2TokenStore,
-    uint128 _v1ProjectId
-  ) external {
-    // only the project owner an deploy the token
-    if (_v1ProjectId != 0 && v1ProjectDirectory.ownerOf(_v1ProjectId) != msg.sender)
-      revert NOT_OWNER();
+    uint256 _v1ProjectId
+  ) external returns (JBV3Token v3Token) {
+    // Make sure only the V3 project owner can deploy the token.
+    if (_projectId != 0 && projectDirectory.ownerOf(_projectId) != msg.sender) revert NOT_OWNER();
 
-    if (_projectId != 0 && projectDirectory.ownerOf(_projectId) != msg.sender)
-      revert NOT_OWNER();
-
-    JBV3Token _v3Token = new JBV3Token(
+    // Deploy the token.
+    v3Token = new JBV3Token(
       _name,
       _symbol,
       _projectId,
@@ -89,12 +97,13 @@ contract JBV3TokenDeployer {
       _v2TokenStore,
       _v1ProjectId
     );
-    // attachhing the token to the project
-    tokenStore.setFor(_projectId, _v3Token);
 
-    // transferring the ownership to the project owner
-    _v3Token.transferOwnership(address(tokenStore));
+    // Attach the token to the token store.
+    tokenStore.setFor(_projectId, v3Token);
 
-    emit Deployed(_projectId, address(_v3Token), msg.sender);
+    // Transfer the ownership to the token store.
+    v3Token.transferOwnership(address(tokenStore));
+
+    emit Deploy(_projectId, address(v3Token), msg.sender);
   }
 }
