@@ -291,86 +291,86 @@
   },
   "ast": {
     "absolutePath": "lib/juice-contracts-v1/contracts/interfaces/IFundingCycleBallot.sol",
-    "id": 34120,
+    "id": 10968,
     "exportedSymbols": {
       "AggregatorV3Interface": [
-        49552
+        24133
       ],
       "BallotState": [
-        34103
+        10951
       ],
       "FundingCycle": [
-        34158
+        11006
       ],
       "FundingCycleMetadata": [
-        34894
+        11352
       ],
       "FundingCycleProperties": [
-        34172
+        11020
       ],
       "IDirectPaymentAddress": [
-        34095
+        35983
       ],
       "IERC165": [
-        59033
+        38688
       ],
       "IERC20": [
-        55112
+        37510
       ],
       "IERC721": [
-        56409
+        37432
       ],
       "IFundingCycleBallot": [
-        34119
+        10967
       ],
       "IFundingCycles": [
-        34295
+        11143
       ],
       "IModAllocator": [
-        34319
+        11167
       ],
       "IModStore": [
-        34420
+        11268
       ],
       "IOperatorStore": [
-        34507
+        36151
       ],
       "IPrices": [
-        34553
+        11324
       ],
       "IProjects": [
-        34725
+        36436
       ],
       "ITerminal": [
-        34775
+        36486
       ],
       "ITerminalDirectory": [
-        34866
+        36074
       ],
       "ITerminalV1": [
-        35253
+        11711
       ],
       "ITicketBooth": [
-        35849
+        36726
       ],
       "ITickets": [
-        35869
+        33815
       ],
       "IYielder": [
-        35911
+        12109
       ],
       "PayoutMod": [
-        34338
+        11186
       ],
       "TicketMod": [
-        34347
+        11195
       ]
     },
     "nodeType": "SourceUnit",
     "src": "32:344:39",
     "nodes": [
       {
-        "id": 34097,
+        "id": 10945,
         "nodeType": "PragmaDirective",
         "src": "32:23:39",
         "nodes": [],
@@ -382,48 +382,48 @@
         ]
       },
       {
-        "id": 34098,
+        "id": 10946,
         "nodeType": "ImportDirective",
         "src": "57:27:39",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v1/contracts/interfaces/ITerminalV1.sol",
         "file": "./ITerminalV1.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 34120,
-        "sourceUnit": 35254,
+        "scope": 10968,
+        "sourceUnit": 11712,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 34103,
+        "id": 10951,
         "nodeType": "EnumDefinition",
         "src": "86:70:39",
         "nodes": [],
         "canonicalName": "BallotState",
         "members": [
           {
-            "id": 34099,
+            "id": 10947,
             "name": "Approved",
             "nameLocation": "109:8:39",
             "nodeType": "EnumValue",
             "src": "109:8:39"
           },
           {
-            "id": 34100,
+            "id": 10948,
             "name": "Active",
             "nameLocation": "123:6:39",
             "nodeType": "EnumValue",
             "src": "123:6:39"
           },
           {
-            "id": 34101,
+            "id": 10949,
             "name": "Failed",
             "nameLocation": "135:6:39",
             "nodeType": "EnumValue",
             "src": "135:6:39"
           },
           {
-            "id": 34102,
+            "id": 10950,
             "name": "Standby",
             "nameLocation": "147:7:39",
             "nodeType": "EnumValue",
@@ -434,12 +434,12 @@
         "nameLocation": "91:11:39"
       },
       {
-        "id": 34119,
+        "id": 10967,
         "nodeType": "ContractDefinition",
         "src": "158:217:39",
         "nodes": [
           {
-            "id": 34108,
+            "id": 10956,
             "nodeType": "FunctionDefinition",
             "src": "194:52:39",
             "nodes": [],
@@ -450,23 +450,23 @@
             "name": "duration",
             "nameLocation": "203:8:39",
             "parameters": {
-              "id": 34104,
+              "id": 10952,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "211:2:39"
             },
             "returnParameters": {
-              "id": 34107,
+              "id": 10955,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34106,
+                  "id": 10954,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34108,
+                  "scope": 10956,
                   "src": "237:7:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -475,7 +475,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34105,
+                    "id": 10953,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "237:7:39",
@@ -489,13 +489,13 @@
               ],
               "src": "236:9:39"
             },
-            "scope": 34119,
+            "scope": 10967,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 34118,
+            "id": 10966,
             "nodeType": "FunctionDefinition",
             "src": "252:121:39",
             "nodes": [],
@@ -506,17 +506,17 @@
             "name": "state",
             "nameLocation": "261:5:39",
             "parameters": {
-              "id": 34113,
+              "id": 10961,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34110,
+                  "id": 10958,
                   "mutability": "mutable",
                   "name": "_fundingCycleId",
                   "nameLocation": "275:15:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34118,
+                  "scope": 10966,
                   "src": "267:23:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -525,7 +525,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34109,
+                    "id": 10957,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "267:7:39",
@@ -538,12 +538,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 34112,
+                  "id": 10960,
                   "mutability": "mutable",
                   "name": "_configured",
                   "nameLocation": "300:11:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34118,
+                  "scope": 10966,
                   "src": "292:19:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -552,7 +552,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34111,
+                    "id": 10959,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "292:7:39",
@@ -567,38 +567,38 @@
               "src": "266:46:39"
             },
             "returnParameters": {
-              "id": 34117,
+              "id": 10965,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34116,
+                  "id": 10964,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34118,
+                  "scope": 10966,
                   "src": "360:11:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_BallotState_$34103",
+                    "typeIdentifier": "t_enum$_BallotState_$10951",
                     "typeString": "enum BallotState"
                   },
                   "typeName": {
-                    "id": 34115,
+                    "id": 10963,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 34114,
+                      "id": 10962,
                       "name": "BallotState",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 34103,
+                      "referencedDeclaration": 10951,
                       "src": "360:11:39"
                     },
-                    "referencedDeclaration": 34103,
+                    "referencedDeclaration": 10951,
                     "src": "360:11:39",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_BallotState_$34103",
+                      "typeIdentifier": "t_enum$_BallotState_$10951",
                       "typeString": "enum BallotState"
                     }
                   },
@@ -607,7 +607,7 @@
               ],
               "src": "359:13:39"
             },
-            "scope": 34119,
+            "scope": 10967,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -619,11 +619,11 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          34119
+          10967
         ],
         "name": "IFundingCycleBallot",
         "nameLocation": "168:19:39",
-        "scope": 34120,
+        "scope": 10968,
         "usedErrors": []
       }
     ],

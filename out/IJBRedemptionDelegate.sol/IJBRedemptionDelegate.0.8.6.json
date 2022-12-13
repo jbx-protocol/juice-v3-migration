@@ -310,26 +310,26 @@
   },
   "ast": {
     "absolutePath": "lib/juice-contracts-v2/contracts/interfaces/IJBRedemptionDelegate.sol",
-    "id": 47751,
+    "id": 38358,
     "exportedSymbols": {
       "IERC165": [
-        59033
+        38688
       ],
       "IJBRedemptionDelegate": [
-        47750
+        38357
       ],
       "JBDidRedeemData": [
-        49260
+        35691
       ],
       "JBTokenAmount": [
-        49506
+        38327
       ]
     },
     "nodeType": "SourceUnit",
     "src": "32:1097:91",
     "nodes": [
       {
-        "id": 47737,
+        "id": 38344,
         "nodeType": "PragmaDirective",
         "src": "32:23:91",
         "nodes": [],
@@ -341,43 +341,43 @@
         ]
       },
       {
-        "id": 47738,
+        "id": 38345,
         "nodeType": "ImportDirective",
         "src": "57:65:91",
         "nodes": [],
         "absolutePath": "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
         "file": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 47751,
-        "sourceUnit": 59034,
+        "scope": 38358,
+        "sourceUnit": 38689,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 47739,
+        "id": 38346,
         "nodeType": "ImportDirective",
         "src": "123:42:91",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v2/contracts/structs/JBDidRedeemData.sol",
         "file": "./../structs/JBDidRedeemData.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 47751,
-        "sourceUnit": 49261,
+        "scope": 38358,
+        "sourceUnit": 35692,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 47750,
+        "id": 38357,
         "nodeType": "ContractDefinition",
         "src": "398:730:91",
         "nodes": [
           {
-            "id": 47749,
+            "id": 38356,
             "nodeType": "FunctionDefinition",
             "src": "1066:60:91",
             "nodes": [],
             "documentation": {
-              "id": 47743,
+              "id": 38350,
               "nodeType": "StructuredDocumentation",
               "src": "445:618:91",
               "text": "@notice\nThis function is called by JBPaymentTerminal.redeemTokensOf(..), after the execution of its logic\n@dev\nCritical business logic should be protected by an appropriate access control\n@param _data the data passed by the terminal, as a JBDidRedeemData struct:\naddress holder;\nuint256 projectId;\nuint256 currentFundingCycleConfiguration;\nuint256 projectTokenCount;\nJBTokenAmount reclaimedAmount;\naddress payable beneficiary;\nstring memo;\nbytes metadata;"
@@ -389,38 +389,38 @@
             "name": "didRedeem",
             "nameLocation": "1075:9:91",
             "parameters": {
-              "id": 47747,
+              "id": 38354,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 47746,
+                  "id": 38353,
                   "mutability": "mutable",
                   "name": "_data",
                   "nameLocation": "1110:5:91",
                   "nodeType": "VariableDeclaration",
-                  "scope": 47749,
+                  "scope": 38356,
                   "src": "1085:30:91",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_JBDidRedeemData_$49260_calldata_ptr",
+                    "typeIdentifier": "t_struct$_JBDidRedeemData_$35691_calldata_ptr",
                     "typeString": "struct JBDidRedeemData"
                   },
                   "typeName": {
-                    "id": 47745,
+                    "id": 38352,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 47744,
+                      "id": 38351,
                       "name": "JBDidRedeemData",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 49260,
+                      "referencedDeclaration": 35691,
                       "src": "1085:15:91"
                     },
-                    "referencedDeclaration": 49260,
+                    "referencedDeclaration": 35691,
                     "src": "1085:15:91",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_JBDidRedeemData_$49260_storage_ptr",
+                      "typeIdentifier": "t_struct$_JBDidRedeemData_$35691_storage_ptr",
                       "typeString": "struct JBDidRedeemData"
                     }
                   },
@@ -430,12 +430,12 @@
               "src": "1084:32:91"
             },
             "returnParameters": {
-              "id": 47748,
+              "id": 38355,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1125:0:91"
             },
-            "scope": 47750,
+            "scope": 38357,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -445,13 +445,13 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 47741,
+              "id": 38348,
               "name": "IERC165",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 59033,
+              "referencedDeclaration": 38688,
               "src": "433:7:91"
             },
-            "id": 47742,
+            "id": 38349,
             "nodeType": "InheritanceSpecifier",
             "src": "433:7:91"
           }
@@ -459,19 +459,19 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 47740,
+          "id": 38347,
           "nodeType": "StructuredDocumentation",
           "src": "167:230:91",
           "text": "@title\nRedemption delegate\n@notice\nDelegate called after JBTerminal.redeemTokensOf(..) logic completion (if passed by the funding cycle datasource)\n@dev\nAdheres to:\nIERC165 for adequate interface integration"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          47750,
-          59033
+          38357,
+          38688
         ],
         "name": "IJBRedemptionDelegate",
         "nameLocation": "408:21:91",
-        "scope": 47751,
+        "scope": 38358,
         "usedErrors": []
       }
     ],
