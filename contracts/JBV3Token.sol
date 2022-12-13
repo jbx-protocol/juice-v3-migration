@@ -87,22 +87,22 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     @return The total supply of this ERC20, as a fixed point number.
   */
   function totalSupply() public view override returns (uint256) {
-    uint256 v1TotalSupply;
-    uint256 v2TotalSupply;
+    uint256 _nonMigratedSupply;
+
     // If a V1 token is set get the remaining non-migrated supply.
-    if(v1ProjectId != 0 || address(v1TicketBooth) != address(0)) {
-      v1TotalSupply = v1TicketBooth.totalSupplyOf(v1ProjectId)
+    if(v1ProjectId != 0 && address(v1TicketBooth) != address(0)) {
+      _nonMigratedSupply = v1TicketBooth.totalSupplyOf(v1ProjectId)
         - v1TicketBooth.balanceOf(address(this), v1ProjectId);
     }
 
     if (address(v2TokenStore) != address(0)) {
-      v2TotalSupply = v2TokenStore.totalSupplyOf(projectId) -
+      _nonMigratedSupply += v2TokenStore.totalSupplyOf(projectId) -
         v2TokenStore.balanceOf(address(this), projectId);
     }
 
     return
       super.totalSupply() +
-      v1TotalSupply + v2TotalSupply;
+      _nonMigratedSupply;
   }
 
   /** 
