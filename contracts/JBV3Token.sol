@@ -82,17 +82,21 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
   */
   function totalSupply() public view override returns (uint256) {
     uint256 v1TotalSupply;
+    uint256 v2TotalSupply;
     // If a V1 token is set get the remaining non-migrated supply.
-    if(v1ProjectId != 0) {
+    if(v1ProjectId != 0 || address(v1TicketBooth) != address(0)) {
       v1TotalSupply = v1TicketBooth.totalSupplyOf(v1ProjectId)
         - v1TicketBooth.balanceOf(address(this), v1ProjectId);
     }
 
+    if (address(v2TokenStore) != address(0)) {
+      v2TotalSupply = v2TokenStore.totalSupplyOf(projectId) -
+        v2TokenStore.balanceOf(address(this), projectId);
+    }
+
     return
       super.totalSupply() +
-      v1TotalSupply +
-      v2TokenStore.totalSupplyOf(projectId) -
-      v2TokenStore.balanceOf(address(this), projectId);
+      v1TotalSupply + v2TotalSupply;
   }
 
   /** 
@@ -284,7 +288,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
   */
   function _migrateV1Tokens(uint256 _v1ProjectId) internal returns (uint256) {
     // return 0 if a ticket booth does not exist
-    if (address(v1TicketBooth) == address(0)) return 0;
+    if (address(v1TicketBooth) == address(0) || v1ProjectId == 0) return 0;
     // local reference to the the project's v1 token instance
     ITickets _v1Token = v1TicketBooth.ticketsOf(_v1ProjectId);
 
