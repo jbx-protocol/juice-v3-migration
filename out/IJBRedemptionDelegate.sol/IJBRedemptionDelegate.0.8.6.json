@@ -310,28 +310,28 @@
   },
   "ast": {
     "absolutePath": "lib/juice-contracts-v2/contracts/interfaces/IJBRedemptionDelegate.sol",
-    "id": 38358,
+    "id": 38445,
     "exportedSymbols": {
       "IERC165": [
-        38688
+        38775
       ],
       "IJBRedemptionDelegate": [
-        38357
+        38444
       ],
       "JBDidRedeemData": [
-        35691
+        35778
       ],
       "JBTokenAmount": [
-        38327
+        38414
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "32:1097:91",
+    "src": "32:1097:92",
     "nodes": [
       {
-        "id": 38344,
+        "id": 38431,
         "nodeType": "PragmaDirective",
-        "src": "32:23:91",
+        "src": "32:23:92",
         "nodes": [],
         "literals": [
           "solidity",
@@ -341,45 +341,45 @@
         ]
       },
       {
-        "id": 38345,
+        "id": 38432,
         "nodeType": "ImportDirective",
-        "src": "57:65:91",
+        "src": "57:65:92",
         "nodes": [],
         "absolutePath": "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
         "file": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 38358,
-        "sourceUnit": 38689,
+        "scope": 38445,
+        "sourceUnit": 38776,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 38346,
+        "id": 38433,
         "nodeType": "ImportDirective",
-        "src": "123:42:91",
+        "src": "123:42:92",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v2/contracts/structs/JBDidRedeemData.sol",
         "file": "./../structs/JBDidRedeemData.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 38358,
-        "sourceUnit": 35692,
+        "scope": 38445,
+        "sourceUnit": 35779,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 38357,
+        "id": 38444,
         "nodeType": "ContractDefinition",
-        "src": "398:730:91",
+        "src": "398:730:92",
         "nodes": [
           {
-            "id": 38356,
+            "id": 38443,
             "nodeType": "FunctionDefinition",
-            "src": "1066:60:91",
+            "src": "1066:60:92",
             "nodes": [],
             "documentation": {
-              "id": 38350,
+              "id": 38437,
               "nodeType": "StructuredDocumentation",
-              "src": "445:618:91",
+              "src": "445:618:92",
               "text": "@notice\nThis function is called by JBPaymentTerminal.redeemTokensOf(..), after the execution of its logic\n@dev\nCritical business logic should be protected by an appropriate access control\n@param _data the data passed by the terminal, as a JBDidRedeemData struct:\naddress holder;\nuint256 projectId;\nuint256 currentFundingCycleConfiguration;\nuint256 projectTokenCount;\nJBTokenAmount reclaimedAmount;\naddress payable beneficiary;\nstring memo;\nbytes metadata;"
             },
             "functionSelector": "2400e8f7",
@@ -387,55 +387,55 @@
             "kind": "function",
             "modifiers": [],
             "name": "didRedeem",
-            "nameLocation": "1075:9:91",
+            "nameLocation": "1075:9:92",
             "parameters": {
-              "id": 38354,
+              "id": 38441,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 38353,
+                  "id": 38440,
                   "mutability": "mutable",
                   "name": "_data",
-                  "nameLocation": "1110:5:91",
+                  "nameLocation": "1110:5:92",
                   "nodeType": "VariableDeclaration",
-                  "scope": 38356,
-                  "src": "1085:30:91",
+                  "scope": 38443,
+                  "src": "1085:30:92",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_JBDidRedeemData_$35691_calldata_ptr",
+                    "typeIdentifier": "t_struct$_JBDidRedeemData_$35778_calldata_ptr",
                     "typeString": "struct JBDidRedeemData"
                   },
                   "typeName": {
-                    "id": 38352,
+                    "id": 38439,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 38351,
+                      "id": 38438,
                       "name": "JBDidRedeemData",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 35691,
-                      "src": "1085:15:91"
+                      "referencedDeclaration": 35778,
+                      "src": "1085:15:92"
                     },
-                    "referencedDeclaration": 35691,
-                    "src": "1085:15:91",
+                    "referencedDeclaration": 35778,
+                    "src": "1085:15:92",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_JBDidRedeemData_$35691_storage_ptr",
+                      "typeIdentifier": "t_struct$_JBDidRedeemData_$35778_storage_ptr",
                       "typeString": "struct JBDidRedeemData"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1084:32:91"
+              "src": "1084:32:92"
             },
             "returnParameters": {
-              "id": 38355,
+              "id": 38442,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1125:0:91"
+              "src": "1125:0:92"
             },
-            "scope": 38357,
+            "scope": 38444,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -445,37 +445,37 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 38348,
+              "id": 38435,
               "name": "IERC165",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 38688,
-              "src": "433:7:91"
+              "referencedDeclaration": 38775,
+              "src": "433:7:92"
             },
-            "id": 38349,
+            "id": 38436,
             "nodeType": "InheritanceSpecifier",
-            "src": "433:7:91"
+            "src": "433:7:92"
           }
         ],
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 38347,
+          "id": 38434,
           "nodeType": "StructuredDocumentation",
-          "src": "167:230:91",
+          "src": "167:230:92",
           "text": "@title\nRedemption delegate\n@notice\nDelegate called after JBTerminal.redeemTokensOf(..) logic completion (if passed by the funding cycle datasource)\n@dev\nAdheres to:\nIERC165 for adequate interface integration"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          38357,
-          38688
+          38444,
+          38775
         ],
         "name": "IJBRedemptionDelegate",
-        "nameLocation": "408:21:91",
-        "scope": 38358,
+        "nameLocation": "408:21:92",
+        "scope": 38445,
         "usedErrors": []
       }
     ],
     "license": "MIT"
   },
-  "id": 91
+  "id": 92
 }
