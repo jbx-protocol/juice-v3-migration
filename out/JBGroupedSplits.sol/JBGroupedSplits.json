@@ -1,0 +1,146 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "lib/juice-contracts-v2/contracts/structs/JBGroupedSplits.sol",
+    "id": 49575,
+    "exportedSymbols": {
+      "IERC165": [
+        59703
+      ],
+      "IJBSplitAllocator": [
+        48206
+      ],
+      "JBGroupedSplits": [
+        49574
+      ],
+      "JBSplit": [
+        49670
+      ],
+      "JBSplitAllocationData": [
+        49687
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:218:117",
+    "nodes": [
+      {
+        "id": 49566,
+        "nodeType": "PragmaDirective",
+        "src": "32:23:117",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 49567,
+        "nodeType": "ImportDirective",
+        "src": "57:23:117",
+        "nodes": [],
+        "absolutePath": "lib/juice-contracts-v2/contracts/structs/JBSplit.sol",
+        "file": "./JBSplit.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 49575,
+        "sourceUnit": 49671,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 49574,
+        "nodeType": "StructDefinition",
+        "src": "186:63:117",
+        "nodes": [],
+        "canonicalName": "JBGroupedSplits",
+        "members": [
+          {
+            "constant": false,
+            "id": 49569,
+            "mutability": "mutable",
+            "name": "group",
+            "nameLocation": "221:5:117",
+            "nodeType": "VariableDeclaration",
+            "scope": 49574,
+            "src": "213:13:117",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 49568,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "213:7:117",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 49573,
+            "mutability": "mutable",
+            "name": "splits",
+            "nameLocation": "240:6:117",
+            "nodeType": "VariableDeclaration",
+            "scope": 49574,
+            "src": "230:16:117",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_JBSplit_$49670_storage_$dyn_storage_ptr",
+              "typeString": "struct JBSplit[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 49571,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 49570,
+                  "name": "JBSplit",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 49670,
+                  "src": "230:7:117"
+                },
+                "referencedDeclaration": 49670,
+                "src": "230:7:117",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_JBSplit_$49670_storage_ptr",
+                  "typeString": "struct JBSplit"
+                }
+              },
+              "id": 49572,
+              "nodeType": "ArrayTypeName",
+              "src": "230:9:117",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_JBSplit_$49670_storage_$dyn_storage_ptr",
+                "typeString": "struct JBSplit[]"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "name": "JBGroupedSplits",
+        "nameLocation": "193:15:117",
+        "scope": 49575,
+        "visibility": "public"
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 117
+}
