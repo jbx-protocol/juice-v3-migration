@@ -27,12 +27,6 @@ contract JBV3TokenDeployer {
 
   /** 
     @notice
-    The V1 project directory instance. 
-  */
-  IProjects public immutable v1ProjectDirectory;
-
-  /** 
-    @notice
     The V3 & V2 project directory instance (since both use 1 directory instance)
   */
   IJBProjects public immutable projectDirectory;
@@ -48,16 +42,13 @@ contract JBV3TokenDeployer {
   //*********************************************************************//
   /** 
     @param _projectDirectory The V3 & V2 project directory address.
-    @param _v1ProjectDirectory The V1 project directory address.
     @param _tokenStore The token store address.
   */
   constructor(
     IJBProjects _projectDirectory,
-    IProjects _v1ProjectDirectory,
     IJBV3TokenStore _tokenStore
   ) {
     projectDirectory = _projectDirectory;
-    v1ProjectDirectory = _v1ProjectDirectory;
     tokenStore = _tokenStore;
   }
 
