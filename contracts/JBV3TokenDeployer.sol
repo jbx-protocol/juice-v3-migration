@@ -37,19 +37,37 @@ contract JBV3TokenDeployer {
   */
   IJBV3TokenStore public immutable tokenStore;
 
+  /** 
+    @notice
+    The V1 Token Booth instance. 
+  */
+  ITicketBooth public immutable v1TicketBooth;
+
+  /** 
+    @notice
+    The V2 Token Store instance. 
+  */
+  IJBV2TokenStore public immutable v2TokenStore;
+
   //*********************************************************************//
   // -------------------------- constructor ---------------------------- //
   //*********************************************************************//
   /** 
     @param _projectDirectory The V3 & V2 project directory address.
     @param _tokenStore The token store address.
+    @param _v1TicketBooth V1 Token Booth instance
+    @param _v2TokenStore V2 Token Store instance
   */
   constructor(
     IJBProjects _projectDirectory,
-    IJBV3TokenStore _tokenStore
+    IJBV3TokenStore _tokenStore,
+    ITicketBooth _v1TicketBooth,
+    IJBV2TokenStore _v2TokenStore
   ) {
     projectDirectory = _projectDirectory;
     tokenStore = _tokenStore;
+    v1TicketBooth = _v1TicketBooth;
+    v2TokenStore = _v2TokenStore;
   }
 
   /**
@@ -62,8 +80,6 @@ contract JBV3TokenDeployer {
     @param _name The name of the token.
     @param _symbol The symbol that the token should be represented by.
     @param _projectId The V3 ID of the project that this token should exclusively be used for.
-    @param _v1TicketBooth V1 Token Booth instance, if V1 migration is desired.
-    @param _v2TokenStore V2 Token Store instance, if V2 migration is desired.
     @param _v1ProjectId V1 project ID that this token should include.
 
     @return v3Token The address of the new token.
@@ -72,8 +88,6 @@ contract JBV3TokenDeployer {
     string memory _name,
     string memory _symbol,
     uint256 _projectId,
-    ITicketBooth _v1TicketBooth,
-    IJBV2TokenStore _v2TokenStore,
     uint256 _v1ProjectId
   ) external returns (JBV3Token v3Token) {
     // Make sure only the V3 project owner can deploy the token.
@@ -84,8 +98,8 @@ contract JBV3TokenDeployer {
       _name,
       _symbol,
       _projectId,
-      _v1TicketBooth,
-      _v2TokenStore,
+      v1TicketBooth,
+      v2TokenStore,
       _v1ProjectId
     );
 
