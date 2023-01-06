@@ -304,6 +304,8 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
       msg.sender,
       v1ProjectId
     );
+    // don't include the locked tokens
+    _tokensToMintFromUnclaimedBalance -= v1TicketBooth.lockedBalanceOf(msg.sender, v1ProjectId);
 
     // Get a reference to the migrating account's ERC20 balance.
     uint256 _tokensToMintFromERC20s = _v1Token == ITickets(address(0))
