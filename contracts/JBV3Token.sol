@@ -7,6 +7,7 @@ import {IJBController} from '@jbx-protocol-v2/contracts/interfaces/IJBController
 import {IJBTokenStore} from '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
 import {ITicketBooth, ITickets} from '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
 import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol';
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import '@openzeppelin/contracts/access/Ownable.sol';
 
 /** 
@@ -22,7 +23,7 @@ import '@openzeppelin/contracts/access/Ownable.sol';
   ERC20Permit: General ERC20 token standard for allowing approvals to be made via signatures,. 
   Ownable: Includes convenience functionality for checking a message sender's permissions before executing certain transactions.
 */
-contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
+contract JBV3Token is ERC20Permit, Ownable, ReentrancyGuard, IJBTokenV3 {
   //*********************************************************************//
   // --------------------------- custom errors ------------------------- //
   //*********************************************************************//
@@ -271,7 +272,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     @notice
     Migrate v1 & v2 tokens to v3.
   */
-  function migrate() external {
+  function migrate() external nonReentrant {
     uint256 _tokensToMint;
 
     unchecked {
