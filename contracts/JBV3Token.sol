@@ -6,7 +6,7 @@ import {IJBToken as IJBTokenV3} from '@jbx-protocol-v3/contracts/interfaces/IJBT
 import {IJBController} from '@jbx-protocol-v2/contracts/interfaces/IJBController.sol';
 import {IJBTokenStore} from '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
 import {ITicketBooth, ITickets} from '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
-import '@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol';
+import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
 
 /** 
@@ -345,7 +345,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     // Keep a reference to the the project's V2 token instance.
     IJBTokenV2 _v2Token = v2TokenStore.tokenOf(projectId);
 
-    // Get a reference to the migrating account's unclaimed balane.
+    // Get a reference to the migrating account's unclaimed balance.
     uint256 _tokensToMintFromUnclaimedBalance = v2TokenStore.unclaimedBalanceOf(
       msg.sender,
       projectId
