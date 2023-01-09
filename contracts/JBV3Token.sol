@@ -6,7 +6,8 @@ import {IJBToken as IJBTokenV3} from '@jbx-protocol-v3/contracts/interfaces/IJBT
 import {IJBController} from '@jbx-protocol-v2/contracts/interfaces/IJBController.sol';
 import {IJBTokenStore} from '@jbx-protocol-v2/contracts/interfaces/IJBTokenStore.sol';
 import {ITicketBooth, ITickets} from '@jbx-protocol-v1/contracts/interfaces/ITicketBooth.sol';
-import '@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol';
+import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol';
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import '@openzeppelin/contracts/access/Ownable.sol';
 
 /** 
@@ -19,10 +20,10 @@ import '@openzeppelin/contracts/access/Ownable.sol';
 
   @dev
   Inherits from -
-  ERC20Permit: General token standard for fungible membership. 
+  ERC20Permit: General ERC20 token standard for allowing approvals to be made via signatures,. 
   Ownable: Includes convenience functionality for checking a message sender's permissions before executing certain transactions.
 */
-contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
+contract JBV3Token is ERC20Permit, Ownable, ReentrancyGuard, IJBTokenV3 {
   //*********************************************************************//
   // --------------------------- custom errors ------------------------- //
   //*********************************************************************//
@@ -176,7 +177,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     @dev
     Only the owner of this contract can mint more of it.
 
-    @param _projectId The ID of the project to which the token belongs. This is ignored.
+    @param _projectId The ID of the project to which the token belongs.
     @param _account The account to mint the tokens for.
     @param _amount The amount of tokens to mint, as a fixed point number with 18 decimals.
   */
@@ -185,7 +186,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     address _account,
     uint256 _amount
   ) external override onlyOwner {
-    // Can't transfer for a wrong project.
+    // Can't mint for a wrong project.
     if (_projectId != projectId) revert BAD_PROJECT();
     return _mint(_account, _amount);
   }
@@ -206,7 +207,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     address _account,
     uint256 _amount
   ) external override onlyOwner {
-    // Can't transfer for a wrong project.
+    // Can't burn for a wrong project.
     if (_projectId != projectId) revert BAD_PROJECT();
     return _burn(_account, _amount);
   }
@@ -224,7 +225,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     address _spender,
     uint256 _amount
   ) external override {
-    // Can't transfer for a wrong project.
+    // Can't approve for a wrong project.
     if (_projectId != projectId) revert BAD_PROJECT();
     approve(_spender, _amount);
   }
@@ -271,7 +272,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     @notice
     Migrate v1 & v2 tokens to v3.
   */
-  function migrate() external {
+  function migrate() external nonReentrant {
     uint256 _tokensToMint;
 
     unchecked {
@@ -304,6 +305,8 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
       msg.sender,
       v1ProjectId
     );
+    // don't include the locked tokens
+    _tokensToMintFromUnclaimedBalance -= v1TicketBooth.lockedBalanceOf(msg.sender, v1ProjectId);
 
     // Get a reference to the migrating account's ERC20 balance.
     uint256 _tokensToMintFromERC20s = _v1Token == ITickets(address(0))
@@ -345,7 +348,7 @@ contract JBV3Token is ERC20Permit, Ownable, IJBTokenV3 {
     // Keep a reference to the the project's V2 token instance.
     IJBTokenV2 _v2Token = v2TokenStore.tokenOf(projectId);
 
-    // Get a reference to the migrating account's unclaimed balane.
+    // Get a reference to the migrating account's unclaimed balance.
     uint256 _tokensToMintFromUnclaimedBalance = v2TokenStore.unclaimedBalanceOf(
       msg.sender,
       projectId

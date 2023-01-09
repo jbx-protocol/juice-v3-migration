@@ -69,8 +69,8 @@ contract JBV3TokenDeployer {
     @return v3Token The address of the new token.
   */
   function deploy(
-    string memory _name,
-    string memory _symbol,
+    string calldata _name,
+    string calldata _symbol,
     uint256 _projectId,
     ITicketBooth _v1TicketBooth,
     IJBV2TokenStore _v2TokenStore,
