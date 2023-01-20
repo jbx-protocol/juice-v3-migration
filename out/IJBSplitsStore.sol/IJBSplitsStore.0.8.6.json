@@ -255,7 +255,7 @@
     "set(uint256,uint256,(uint256,(bool,bool,uint256,uint256,address,uint256,address)[])[])": "f2da44b6",
     "splitsOf(uint256,uint256,uint256)": "69e11cc5"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"domain\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"group\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferClaimed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"preferAddToBalance\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"percent\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"lockedUntil\",\"type\":\"uint256\"},{\"internalType\":\"contract IJBSplitAllocator\",\"name\":\"allocator\",\"type\":\"address\"}],\"indexed\":false,\"internalType\":\"struct JBSplit\",\"name\":\"split\",\"type\":\"tuple\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetSplit\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"directory\",\"outputs\":[{\"internalType\":\"contract IJBDirectory\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"projects\",\"outputs\":[{\"internalType\":\"contract IJBProjects\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_domain\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"group\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferClaimed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"preferAddToBalance\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"percent\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"lockedUntil\",\"type\":\"uint256\"},{\"internalType\":\"contract IJBSplitAllocator\",\"name\":\"allocator\",\"type\":\"address\"}],\"internalType\":\"struct JBSplit[]\",\"name\":\"splits\",\"type\":\"tuple[]\"}],\"internalType\":\"struct JBGroupedSplits[]\",\"name\":\"_groupedSplits\",\"type\":\"tuple[]\"}],\"name\":\"set\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_domain\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_group\",\"type\":\"uint256\"}],\"name\":\"splitsOf\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferClaimed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"preferAddToBalance\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"percent\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"lockedUntil\",\"type\":\"uint256\"},{\"internalType\":\"contract IJBSplitAllocator\",\"name\":\"allocator\",\"type\":\"address\"}],\"internalType\":\"struct JBSplit[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/juice-contracts-v2/contracts/interfaces/IJBSplitsStore.sol\":\"IJBSplitsStore\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":@chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":@jbx-protocol-v1/=lib/juice-contracts-v1/\",\":@jbx-protocol-v2/=lib/juice-contracts-v2/\",\":@jbx-protocol-v3/=lib/juice-contracts-v3/\",\":@juicebox/=lib/juice-contracts-v2/contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/\",\":chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":ds-test/=lib/juice-contracts-v2/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":juice-contracts-v1/=lib/juice-contracts-v1/contracts/\",\":juice-contracts-v2/=lib/juice-contracts-v2/contracts/\",\":juice-contracts-v3/=lib/juice-contracts-v3/contracts/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":openzeppelin-contracts/contracts/=lib/juice-contracts-v2/lib/openzeppelin-contracts/contracts/\",\":prb-math/=lib/juice-contracts-v2/lib/prb-math/\"]},\"sources\":{\"lib/juice-contracts-v2/contracts/enums/JBBallotState.sol\":{\"keccak256\":\"0x891fcac63470398b3a11239da7feba6b07d640809fcefd2404303b823d7378f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e6adfceaf284b669a8c1cbcf2da7f18ab31a2d1066f9db8bc914349e7401de7\",\"dweb:/ipfs/QmXLHVRPPZdXUkgAHQbHUtEzAvCJk1P6rJ7wrwfTcfW6fw\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBDirectory.sol\":{\"keccak256\":\"0x715321646db00514d1355ed43c40cd3f01e94959552fd07797b315d9c49cdb1d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c34c9e1c727ffc63dd42fb6e6ffb3116c8ba15d6a322a300f10f29478974768d\",\"dweb:/ipfs/QmYToaGrbMyyWAuyepYcDd8M6KcmosY8AWhT3uJmPM6Pvy\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBFundingCycleBallot.sol\":{\"keccak256\":\"0x151c7f0cfd067492e6d43fb2388daaf1e4dc2490b096fed9ee4db87bbbc6217d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5d2916495d4485fb8df71d0223068c1a4b58807fa1793a46d0d8d2bb4f88d8f0\",\"dweb:/ipfs/QmSgfwzUYv87SMN2eZEgXPNXymT6stNkKodBEiT5BUsQsw\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBFundingCycleStore.sol\":{\"keccak256\":\"0xaead823851433be0c2ddc8f8086813e6cd647de3a1bc0f7570a5d6b38c378b5a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7f11fd52ba9ef67b40811d8a2298ae8b69447d2565b3f1069cbb8f0f13bc65e7\",\"dweb:/ipfs/QmVbBzpTxZWar9xvj6x1vW91hJDv2iPVq7aG6waMxaHUPQ\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBPaymentTerminal.sol\":{\"keccak256\":\"0xb7826f5ed609359ce322c09e83236c47ba385df1c3cad3607e56fd0a2e00eee2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cbb0de0e73f73a04fcfc8f08cab3588b6d608cf5268af737cff6a530f6062c95\",\"dweb:/ipfs/QmPGb8aEbZNHNnrCvuGH52RLvV3kjL3agxQiFrjHoLHaup\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBProjects.sol\":{\"keccak256\":\"0x7cfc021d0bd7e73b1ba8f4845d7d35e3419d6a14d3d25ca3a8010e7f91062fe4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ff265e13e60da56b93104260ed69ab01153437ec2af9d453781f22ca295eaef9\",\"dweb:/ipfs/QmfGCSLX2Wy26ojf4U12udsdtjSSacbLcZGwCjTw7MjWF8\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBSplitAllocator.sol\":{\"keccak256\":\"0x5efb6f51fc161f42ff58989386ad99028e4039a0ba897d66f358c3dfcf686105\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://171df7cf5285170894d7d7d00ecb14271204b55d330fa65e1bf9ebfb21741c29\",\"dweb:/ipfs/QmXBmzjVVgGd1hZoStw2qoypJnqyWgYeMXMLyYS7f6Zonu\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBSplitsStore.sol\":{\"keccak256\":\"0x66dab3dd394e318b850401ca92c2963b906cc0ad5562fa5d4f6f850175d1c77a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://948dae4e7eddc75f32fe75b25f97a7bad0e7b335a8a5a8dfd81b532dd325dd27\",\"dweb:/ipfs/QmZY1s7r85NWVdqhmUE71Pkuo7CPk8SMgAwUrj8bLpTaWC\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBTokenUriResolver.sol\":{\"keccak256\":\"0xd267fd8ca7c21c2c71794acdb9a98314c33a35fc559e0bf0897a6686d196d174\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://aa7053d4300ed1374f3f993e6e2163d0a05ee780e4e99eb007b55eabc93c724e\",\"dweb:/ipfs/QmYZAUn7VCwqpDWYZNCXLNYMRQpD334YgPRiGCfxQApzuT\"]},\"lib/juice-contracts-v2/contracts/structs/JBFundingCycle.sol\":{\"keccak256\":\"0xcdd3ac9b6fa67e62ada88d09b73bc35ade1cd77d43db712289266a788928b4c2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8ba0be407022bbeb0e9272884653209ee262b8a4e00ffbba1298c3b119feccba\",\"dweb:/ipfs/QmbtLQzSN3hut4jYVsYPiYDfRkDdGkZmTWBnV2wJKrdM3K\"]},\"lib/juice-contracts-v2/contracts/structs/JBFundingCycleData.sol\":{\"keccak256\":\"0x2aa6368bf4dfc5797e8b02a978293de0c777fae2658de2c825a103587240f3b0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2d7a980ab9b67ad1569d4407b747903cab668a332214117f5ad44feb50af0a3a\",\"dweb:/ipfs/QmSuEzmrmDSihrTKYCk8miq7VQi7WD6jmQePkjDyzt7UpC\"]},\"lib/juice-contracts-v2/contracts/structs/JBGroupedSplits.sol\":{\"keccak256\":\"0x80be1b220da4ac04851ea540ebb94c1ec2b0442ec5bd1e88fdf78a56becd8b5a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b73e5da7d38bfadd565c202aa1a5a6c08a51542699e8e3683b8888009bc62563\",\"dweb:/ipfs/QmUNTy4XVvfAMqP7wCjj84deTvCehkBL1diZoWkyMCVsPw\"]},\"lib/juice-contracts-v2/contracts/structs/JBProjectMetadata.sol\":{\"keccak256\":\"0x90ad7b1014c0a9f945fe7a2efde9d5de41e40574fa27969070b1d2ff52033ea0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1fafc65a9fd74605b7d6c6f0a92b3237a8e3efdd160affb8c117bad00dcf9494\",\"dweb:/ipfs/QmQkcVt11WLqrxHVrcDCF6dNxzg2kKHEghAgSbfLF6CHkt\"]},\"lib/juice-contracts-v2/contracts/structs/JBSplit.sol\":{\"keccak256\":\"0xc80a16606da8abf76d0f73abc38aee041e24f29342c1939018f70c286e89f105\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d257df1f322904fdbf34a0d28880cc96a1ba3905d19488d83156a7d3476d820f\",\"dweb:/ipfs/QmP6WFuoK6ePEQ2zxRnpu1kWDdFSUTGaEV57eZ4gs9FqC8\"]},\"lib/juice-contracts-v2/contracts/structs/JBSplitAllocationData.sol\":{\"keccak256\":\"0x39f5c41bd31d36774744698ac94484b6cab62d7038df2f29d947668959782e63\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cf81d025aa0f6f93bdcd0b863730f7c574de7c3c4a595ba88e342f46c4b724e4\",\"dweb:/ipfs/QmaQ1frbYciPVV1Qmsfmgts9fgbXKZLQ8jGf9XRikHSmci\"]},\"lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0xab28a56179c1db258c9bf5235b382698cb650debecb51b23d12be9e241374b68\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://daae589a9d6fa7e55f99f86c0a16796ca490f243fb3693632c3711c0646c1d56\",\"dweb:/ipfs/QmR3zpd7wNw3rcUdekwiv6FYHJqksuTCXLVioTxu6Fbxk3\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"domain\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"group\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferClaimed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"preferAddToBalance\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"percent\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"lockedUntil\",\"type\":\"uint256\"},{\"internalType\":\"contract IJBSplitAllocator\",\"name\":\"allocator\",\"type\":\"address\"}],\"indexed\":false,\"internalType\":\"struct JBSplit\",\"name\":\"split\",\"type\":\"tuple\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetSplit\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"directory\",\"outputs\":[{\"internalType\":\"contract IJBDirectory\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"projects\",\"outputs\":[{\"internalType\":\"contract IJBProjects\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_domain\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"group\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferClaimed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"preferAddToBalance\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"percent\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"lockedUntil\",\"type\":\"uint256\"},{\"internalType\":\"contract IJBSplitAllocator\",\"name\":\"allocator\",\"type\":\"address\"}],\"internalType\":\"struct JBSplit[]\",\"name\":\"splits\",\"type\":\"tuple[]\"}],\"internalType\":\"struct JBGroupedSplits[]\",\"name\":\"_groupedSplits\",\"type\":\"tuple[]\"}],\"name\":\"set\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_domain\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_group\",\"type\":\"uint256\"}],\"name\":\"splitsOf\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferClaimed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"preferAddToBalance\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"percent\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"lockedUntil\",\"type\":\"uint256\"},{\"internalType\":\"contract IJBSplitAllocator\",\"name\":\"allocator\",\"type\":\"address\"}],\"internalType\":\"struct JBSplit[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/juice-contracts-v2/contracts/interfaces/IJBSplitsStore.sol\":\"IJBSplitsStore\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":@chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":@jbx-protocol-v1/=lib/juice-contracts-v1/\",\":@jbx-protocol-v2/=lib/juice-contracts-v2/\",\":@jbx-protocol-v3/=lib/juice-contracts-v3/\",\":@juicebox/=lib/juice-contracts-v2/contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/\",\":chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":juice-contracts-v1/=lib/juice-contracts-v1/contracts/\",\":juice-contracts-v2/=lib/juice-contracts-v2/contracts/\",\":juice-contracts-v3/=lib/juice-contracts-v3/contracts/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":openzeppelin-contracts/contracts/=lib/juice-contracts-v2/lib/openzeppelin-contracts/contracts/\",\":prb-math/=lib/juice-contracts-v2/lib/prb-math/\"]},\"sources\":{\"lib/juice-contracts-v2/contracts/enums/JBBallotState.sol\":{\"keccak256\":\"0x891fcac63470398b3a11239da7feba6b07d640809fcefd2404303b823d7378f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e6adfceaf284b669a8c1cbcf2da7f18ab31a2d1066f9db8bc914349e7401de7\",\"dweb:/ipfs/QmXLHVRPPZdXUkgAHQbHUtEzAvCJk1P6rJ7wrwfTcfW6fw\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBDirectory.sol\":{\"keccak256\":\"0x715321646db00514d1355ed43c40cd3f01e94959552fd07797b315d9c49cdb1d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c34c9e1c727ffc63dd42fb6e6ffb3116c8ba15d6a322a300f10f29478974768d\",\"dweb:/ipfs/QmYToaGrbMyyWAuyepYcDd8M6KcmosY8AWhT3uJmPM6Pvy\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBFundingCycleBallot.sol\":{\"keccak256\":\"0x151c7f0cfd067492e6d43fb2388daaf1e4dc2490b096fed9ee4db87bbbc6217d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5d2916495d4485fb8df71d0223068c1a4b58807fa1793a46d0d8d2bb4f88d8f0\",\"dweb:/ipfs/QmSgfwzUYv87SMN2eZEgXPNXymT6stNkKodBEiT5BUsQsw\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBFundingCycleStore.sol\":{\"keccak256\":\"0xaead823851433be0c2ddc8f8086813e6cd647de3a1bc0f7570a5d6b38c378b5a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7f11fd52ba9ef67b40811d8a2298ae8b69447d2565b3f1069cbb8f0f13bc65e7\",\"dweb:/ipfs/QmVbBzpTxZWar9xvj6x1vW91hJDv2iPVq7aG6waMxaHUPQ\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBPaymentTerminal.sol\":{\"keccak256\":\"0xb7826f5ed609359ce322c09e83236c47ba385df1c3cad3607e56fd0a2e00eee2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cbb0de0e73f73a04fcfc8f08cab3588b6d608cf5268af737cff6a530f6062c95\",\"dweb:/ipfs/QmPGb8aEbZNHNnrCvuGH52RLvV3kjL3agxQiFrjHoLHaup\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBProjects.sol\":{\"keccak256\":\"0x7cfc021d0bd7e73b1ba8f4845d7d35e3419d6a14d3d25ca3a8010e7f91062fe4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ff265e13e60da56b93104260ed69ab01153437ec2af9d453781f22ca295eaef9\",\"dweb:/ipfs/QmfGCSLX2Wy26ojf4U12udsdtjSSacbLcZGwCjTw7MjWF8\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBSplitAllocator.sol\":{\"keccak256\":\"0x5efb6f51fc161f42ff58989386ad99028e4039a0ba897d66f358c3dfcf686105\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://171df7cf5285170894d7d7d00ecb14271204b55d330fa65e1bf9ebfb21741c29\",\"dweb:/ipfs/QmXBmzjVVgGd1hZoStw2qoypJnqyWgYeMXMLyYS7f6Zonu\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBSplitsStore.sol\":{\"keccak256\":\"0x66dab3dd394e318b850401ca92c2963b906cc0ad5562fa5d4f6f850175d1c77a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://948dae4e7eddc75f32fe75b25f97a7bad0e7b335a8a5a8dfd81b532dd325dd27\",\"dweb:/ipfs/QmZY1s7r85NWVdqhmUE71Pkuo7CPk8SMgAwUrj8bLpTaWC\"]},\"lib/juice-contracts-v2/contracts/interfaces/IJBTokenUriResolver.sol\":{\"keccak256\":\"0xd267fd8ca7c21c2c71794acdb9a98314c33a35fc559e0bf0897a6686d196d174\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://aa7053d4300ed1374f3f993e6e2163d0a05ee780e4e99eb007b55eabc93c724e\",\"dweb:/ipfs/QmYZAUn7VCwqpDWYZNCXLNYMRQpD334YgPRiGCfxQApzuT\"]},\"lib/juice-contracts-v2/contracts/structs/JBFundingCycle.sol\":{\"keccak256\":\"0xcdd3ac9b6fa67e62ada88d09b73bc35ade1cd77d43db712289266a788928b4c2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8ba0be407022bbeb0e9272884653209ee262b8a4e00ffbba1298c3b119feccba\",\"dweb:/ipfs/QmbtLQzSN3hut4jYVsYPiYDfRkDdGkZmTWBnV2wJKrdM3K\"]},\"lib/juice-contracts-v2/contracts/structs/JBFundingCycleData.sol\":{\"keccak256\":\"0x2aa6368bf4dfc5797e8b02a978293de0c777fae2658de2c825a103587240f3b0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2d7a980ab9b67ad1569d4407b747903cab668a332214117f5ad44feb50af0a3a\",\"dweb:/ipfs/QmSuEzmrmDSihrTKYCk8miq7VQi7WD6jmQePkjDyzt7UpC\"]},\"lib/juice-contracts-v2/contracts/structs/JBGroupedSplits.sol\":{\"keccak256\":\"0x80be1b220da4ac04851ea540ebb94c1ec2b0442ec5bd1e88fdf78a56becd8b5a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b73e5da7d38bfadd565c202aa1a5a6c08a51542699e8e3683b8888009bc62563\",\"dweb:/ipfs/QmUNTy4XVvfAMqP7wCjj84deTvCehkBL1diZoWkyMCVsPw\"]},\"lib/juice-contracts-v2/contracts/structs/JBProjectMetadata.sol\":{\"keccak256\":\"0x90ad7b1014c0a9f945fe7a2efde9d5de41e40574fa27969070b1d2ff52033ea0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1fafc65a9fd74605b7d6c6f0a92b3237a8e3efdd160affb8c117bad00dcf9494\",\"dweb:/ipfs/QmQkcVt11WLqrxHVrcDCF6dNxzg2kKHEghAgSbfLF6CHkt\"]},\"lib/juice-contracts-v2/contracts/structs/JBSplit.sol\":{\"keccak256\":\"0xc80a16606da8abf76d0f73abc38aee041e24f29342c1939018f70c286e89f105\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d257df1f322904fdbf34a0d28880cc96a1ba3905d19488d83156a7d3476d820f\",\"dweb:/ipfs/QmP6WFuoK6ePEQ2zxRnpu1kWDdFSUTGaEV57eZ4gs9FqC8\"]},\"lib/juice-contracts-v2/contracts/structs/JBSplitAllocationData.sol\":{\"keccak256\":\"0x39f5c41bd31d36774744698ac94484b6cab62d7038df2f29d947668959782e63\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cf81d025aa0f6f93bdcd0b863730f7c574de7c3c4a595ba88e342f46c4b724e4\",\"dweb:/ipfs/QmaQ1frbYciPVV1Qmsfmgts9fgbXKZLQ8jGf9XRikHSmci\"]},\"lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0xab28a56179c1db258c9bf5235b382698cb650debecb51b23d12be9e241374b68\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://daae589a9d6fa7e55f99f86c0a16796ca490f243fb3693632c3711c0646c1d56\",\"dweb:/ipfs/QmR3zpd7wNw3rcUdekwiv6FYHJqksuTCXLVioTxu6Fbxk3\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.6+commit.11564f7e"
@@ -522,7 +522,7 @@
         ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
         ":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/",
         ":chainlink/=lib/juice-contracts-v2/lib/chainlink/",
-        ":ds-test/=lib/juice-contracts-v2/lib/ds-test/src/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
         ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
         ":forge-std/=lib/forge-std/src/",
         ":juice-contracts-v1/=lib/juice-contracts-v1/contracts/",
@@ -686,67 +686,67 @@
   },
   "ast": {
     "absolutePath": "lib/juice-contracts-v2/contracts/interfaces/IJBSplitsStore.sol",
-    "id": 48067,
+    "id": 38268,
     "exportedSymbols": {
       "IERC165": [
-        59507
+        38868
       ],
       "IERC721": [
-        56883
+        37612
       ],
       "IJBDirectory": [
-        46903
+        31924
       ],
       "IJBFundingCycleBallot": [
-        46938
+        40432
       ],
       "IJBFundingCycleStore": [
-        47074
+        38633
       ],
       "IJBPaymentTerminal": [
-        47247
+        31994
       ],
       "IJBProjects": [
-        47731
+        38202
       ],
       "IJBSplitAllocator": [
-        48010
+        32009
       ],
       "IJBSplitsStore": [
-        48066
+        38267
       ],
       "IJBTokenUriResolver": [
-        48383
+        62435
       ],
       "JBBallotState": [
-        46308
+        62441
       ],
       "JBFundingCycle": [
-        49307
+        35849
       ],
       "JBFundingCycleData": [
-        49320
+        35862
       ],
       "JBGroupedSplits": [
-        49378
+        35912
       ],
       "JBProjectMetadata": [
-        49422
+        35946
       ],
       "JBSplit": [
-        49474
+        35998
       ],
       "JBSplitAllocationData": [
-        49491
+        32036
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "32:711:94",
+    "src": "32:711:98",
     "nodes": [
       {
-        "id": 48012,
+        "id": 38213,
         "nodeType": "PragmaDirective",
-        "src": "32:23:94",
+        "src": "32:23:98",
         "nodes": [],
         "literals": [
           "solidity",
@@ -756,84 +756,84 @@
         ]
       },
       {
-        "id": 48013,
+        "id": 38214,
         "nodeType": "ImportDirective",
-        "src": "57:42:94",
+        "src": "57:42:98",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v2/contracts/structs/JBGroupedSplits.sol",
         "file": "./../structs/JBGroupedSplits.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 48067,
-        "sourceUnit": 49379,
+        "scope": 38268,
+        "sourceUnit": 35913,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 48014,
+        "id": 38215,
         "nodeType": "ImportDirective",
-        "src": "100:34:94",
+        "src": "100:34:98",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v2/contracts/structs/JBSplit.sol",
         "file": "./../structs/JBSplit.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 48067,
-        "sourceUnit": 49475,
+        "scope": 38268,
+        "sourceUnit": 35999,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 48015,
+        "id": 38216,
         "nodeType": "ImportDirective",
-        "src": "135:28:94",
+        "src": "135:28:98",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v2/contracts/interfaces/IJBDirectory.sol",
         "file": "./IJBDirectory.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 48067,
-        "sourceUnit": 46904,
+        "scope": 38268,
+        "sourceUnit": 31925,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 48016,
+        "id": 38217,
         "nodeType": "ImportDirective",
-        "src": "164:27:94",
+        "src": "164:27:98",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v2/contracts/interfaces/IJBProjects.sol",
         "file": "./IJBProjects.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 48067,
-        "sourceUnit": 47732,
+        "scope": 38268,
+        "sourceUnit": 38203,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 48066,
+        "id": 38267,
         "nodeType": "ContractDefinition",
-        "src": "193:549:94",
+        "src": "193:549:98",
         "nodes": [
           {
-            "id": 48029,
+            "id": 38230,
             "nodeType": "EventDefinition",
-            "src": "222:144:94",
+            "src": "222:144:98",
             "nodes": [],
             "anonymous": false,
             "name": "SetSplit",
-            "nameLocation": "228:8:94",
+            "nameLocation": "228:8:98",
             "parameters": {
-              "id": 48028,
+              "id": 38229,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 48018,
+                  "id": 38219,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "projectId",
-                  "nameLocation": "258:9:94",
+                  "nameLocation": "258:9:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48029,
-                  "src": "242:25:94",
+                  "scope": 38230,
+                  "src": "242:25:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -841,10 +841,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 48017,
+                    "id": 38218,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "242:7:94",
+                    "src": "242:7:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -854,14 +854,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 48020,
+                  "id": 38221,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "domain",
-                  "nameLocation": "289:6:94",
+                  "nameLocation": "289:6:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48029,
-                  "src": "273:22:94",
+                  "scope": 38230,
+                  "src": "273:22:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -869,10 +869,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 48019,
+                    "id": 38220,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "273:7:94",
+                    "src": "273:7:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -882,14 +882,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 48022,
+                  "id": 38223,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "group",
-                  "nameLocation": "317:5:94",
+                  "nameLocation": "317:5:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48029,
-                  "src": "301:21:94",
+                  "scope": 38230,
+                  "src": "301:21:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -897,10 +897,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 48021,
+                    "id": 38222,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "301:7:94",
+                    "src": "301:7:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -910,34 +910,34 @@
                 },
                 {
                   "constant": false,
-                  "id": 48025,
+                  "id": 38226,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "split",
-                  "nameLocation": "336:5:94",
+                  "nameLocation": "336:5:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48029,
-                  "src": "328:13:94",
+                  "scope": 38230,
+                  "src": "328:13:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_JBSplit_$49474_memory_ptr",
+                    "typeIdentifier": "t_struct$_JBSplit_$35998_memory_ptr",
                     "typeString": "struct JBSplit"
                   },
                   "typeName": {
-                    "id": 48024,
+                    "id": 38225,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 48023,
+                      "id": 38224,
                       "name": "JBSplit",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 49474,
-                      "src": "328:7:94"
+                      "referencedDeclaration": 35998,
+                      "src": "328:7:98"
                     },
-                    "referencedDeclaration": 49474,
-                    "src": "328:7:94",
+                    "referencedDeclaration": 35998,
+                    "src": "328:7:98",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_JBSplit_$49474_storage_ptr",
+                      "typeIdentifier": "t_struct$_JBSplit_$35998_storage_ptr",
                       "typeString": "struct JBSplit"
                     }
                   },
@@ -945,14 +945,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 48027,
+                  "id": 38228,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "caller",
-                  "nameLocation": "355:6:94",
+                  "nameLocation": "355:6:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48029,
-                  "src": "347:14:94",
+                  "scope": 38230,
+                  "src": "347:14:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -960,10 +960,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 48026,
+                    "id": 38227,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "347:7:94",
+                    "src": "347:7:98",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -973,159 +973,159 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "236:129:94"
+              "src": "236:129:98"
             }
           },
           {
-            "id": 48035,
+            "id": 38236,
             "nodeType": "FunctionDefinition",
-            "src": "370:56:94",
+            "src": "370:56:98",
             "nodes": [],
             "functionSelector": "8b79543c",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "projects",
-            "nameLocation": "379:8:94",
+            "nameLocation": "379:8:98",
             "parameters": {
-              "id": 48030,
+              "id": 38231,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "387:2:94"
+              "src": "387:2:98"
             },
             "returnParameters": {
-              "id": 48034,
+              "id": 38235,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 48033,
+                  "id": 38234,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48035,
-                  "src": "413:11:94",
+                  "scope": 38236,
+                  "src": "413:11:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IJBProjects_$47731",
+                    "typeIdentifier": "t_contract$_IJBProjects_$38202",
                     "typeString": "contract IJBProjects"
                   },
                   "typeName": {
-                    "id": 48032,
+                    "id": 38233,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 48031,
+                      "id": 38232,
                       "name": "IJBProjects",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 47731,
-                      "src": "413:11:94"
+                      "referencedDeclaration": 38202,
+                      "src": "413:11:98"
                     },
-                    "referencedDeclaration": 47731,
-                    "src": "413:11:94",
+                    "referencedDeclaration": 38202,
+                    "src": "413:11:98",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IJBProjects_$47731",
+                      "typeIdentifier": "t_contract$_IJBProjects_$38202",
                       "typeString": "contract IJBProjects"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "412:13:94"
+              "src": "412:13:98"
             },
-            "scope": 48066,
+            "scope": 38267,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 48041,
+            "id": 38242,
             "nodeType": "FunctionDefinition",
-            "src": "430:58:94",
+            "src": "430:58:98",
             "nodes": [],
             "functionSelector": "c41c2f24",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "directory",
-            "nameLocation": "439:9:94",
+            "nameLocation": "439:9:98",
             "parameters": {
-              "id": 48036,
+              "id": 38237,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "448:2:94"
+              "src": "448:2:98"
             },
             "returnParameters": {
-              "id": 48040,
+              "id": 38241,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 48039,
+                  "id": 38240,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48041,
-                  "src": "474:12:94",
+                  "scope": 38242,
+                  "src": "474:12:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IJBDirectory_$46903",
+                    "typeIdentifier": "t_contract$_IJBDirectory_$31924",
                     "typeString": "contract IJBDirectory"
                   },
                   "typeName": {
-                    "id": 48038,
+                    "id": 38239,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 48037,
+                      "id": 38238,
                       "name": "IJBDirectory",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 46903,
-                      "src": "474:12:94"
+                      "referencedDeclaration": 31924,
+                      "src": "474:12:98"
                     },
-                    "referencedDeclaration": 46903,
-                    "src": "474:12:94",
+                    "referencedDeclaration": 31924,
+                    "src": "474:12:98",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IJBDirectory_$46903",
+                      "typeIdentifier": "t_contract$_IJBDirectory_$31924",
                       "typeString": "contract IJBDirectory"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "473:14:94"
+              "src": "473:14:98"
             },
-            "scope": 48066,
+            "scope": 38267,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 48054,
+            "id": 38255,
             "nodeType": "FunctionDefinition",
-            "src": "492:128:94",
+            "src": "492:128:98",
             "nodes": [],
             "functionSelector": "69e11cc5",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "splitsOf",
-            "nameLocation": "501:8:94",
+            "nameLocation": "501:8:98",
             "parameters": {
-              "id": 48048,
+              "id": 38249,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 48043,
+                  "id": 38244,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "523:10:94",
+                  "nameLocation": "523:10:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48054,
-                  "src": "515:18:94",
+                  "scope": 38255,
+                  "src": "515:18:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1133,10 +1133,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 48042,
+                    "id": 38243,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "515:7:94",
+                    "src": "515:7:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1146,13 +1146,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 48045,
+                  "id": 38246,
                   "mutability": "mutable",
                   "name": "_domain",
-                  "nameLocation": "547:7:94",
+                  "nameLocation": "547:7:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48054,
-                  "src": "539:15:94",
+                  "scope": 38255,
+                  "src": "539:15:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1160,10 +1160,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 48044,
+                    "id": 38245,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "539:7:94",
+                    "src": "539:7:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1173,13 +1173,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 48047,
+                  "id": 38248,
                   "mutability": "mutable",
                   "name": "_group",
-                  "nameLocation": "568:6:94",
+                  "nameLocation": "568:6:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48054,
-                  "src": "560:14:94",
+                  "scope": 38255,
+                  "src": "560:14:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1187,10 +1187,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 48046,
+                    "id": 38247,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "560:7:94",
+                    "src": "560:7:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1199,87 +1199,87 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "509:69:94"
+              "src": "509:69:98"
             },
             "returnParameters": {
-              "id": 48053,
+              "id": 38254,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 48052,
+                  "id": 38253,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48054,
-                  "src": "602:16:94",
+                  "scope": 38255,
+                  "src": "602:16:98",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_JBSplit_$49474_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_JBSplit_$35998_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct JBSplit[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 48050,
+                      "id": 38251,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 48049,
+                        "id": 38250,
                         "name": "JBSplit",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 49474,
-                        "src": "602:7:94"
+                        "referencedDeclaration": 35998,
+                        "src": "602:7:98"
                       },
-                      "referencedDeclaration": 49474,
-                      "src": "602:7:94",
+                      "referencedDeclaration": 35998,
+                      "src": "602:7:98",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_JBSplit_$49474_storage_ptr",
+                        "typeIdentifier": "t_struct$_JBSplit_$35998_storage_ptr",
                         "typeString": "struct JBSplit"
                       }
                     },
-                    "id": 48051,
+                    "id": 38252,
                     "nodeType": "ArrayTypeName",
-                    "src": "602:9:94",
+                    "src": "602:9:98",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_JBSplit_$49474_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_JBSplit_$35998_storage_$dyn_storage_ptr",
                       "typeString": "struct JBSplit[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "601:18:94"
+              "src": "601:18:98"
             },
-            "scope": 48066,
+            "scope": 38267,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 48065,
+            "id": 38266,
             "nodeType": "FunctionDefinition",
-            "src": "624:116:94",
+            "src": "624:116:98",
             "nodes": [],
             "functionSelector": "f2da44b6",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "set",
-            "nameLocation": "633:3:94",
+            "nameLocation": "633:3:98",
             "parameters": {
-              "id": 48063,
+              "id": 38264,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 48056,
+                  "id": 38257,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "650:10:94",
+                  "nameLocation": "650:10:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48065,
-                  "src": "642:18:94",
+                  "scope": 38266,
+                  "src": "642:18:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1287,10 +1287,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 48055,
+                    "id": 38256,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "642:7:94",
+                    "src": "642:7:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1300,13 +1300,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 48058,
+                  "id": 38259,
                   "mutability": "mutable",
                   "name": "_domain",
-                  "nameLocation": "674:7:94",
+                  "nameLocation": "674:7:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48065,
-                  "src": "666:15:94",
+                  "scope": 38266,
+                  "src": "666:15:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1314,10 +1314,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 48057,
+                    "id": 38258,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "666:7:94",
+                    "src": "666:7:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1327,57 +1327,57 @@
                 },
                 {
                   "constant": false,
-                  "id": 48062,
+                  "id": 38263,
                   "mutability": "mutable",
                   "name": "_groupedSplits",
-                  "nameLocation": "712:14:94",
+                  "nameLocation": "712:14:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 48065,
-                  "src": "687:39:94",
+                  "scope": 38266,
+                  "src": "687:39:98",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_JBGroupedSplits_$49378_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_JBGroupedSplits_$35912_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct JBGroupedSplits[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 48060,
+                      "id": 38261,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 48059,
+                        "id": 38260,
                         "name": "JBGroupedSplits",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 49378,
-                        "src": "687:15:94"
+                        "referencedDeclaration": 35912,
+                        "src": "687:15:98"
                       },
-                      "referencedDeclaration": 49378,
-                      "src": "687:15:94",
+                      "referencedDeclaration": 35912,
+                      "src": "687:15:98",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_JBGroupedSplits_$49378_storage_ptr",
+                        "typeIdentifier": "t_struct$_JBGroupedSplits_$35912_storage_ptr",
                         "typeString": "struct JBGroupedSplits"
                       }
                     },
-                    "id": 48061,
+                    "id": 38262,
                     "nodeType": "ArrayTypeName",
-                    "src": "687:17:94",
+                    "src": "687:17:98",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_JBGroupedSplits_$49378_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_JBGroupedSplits_$35912_storage_$dyn_storage_ptr",
                       "typeString": "struct JBGroupedSplits[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "636:94:94"
+              "src": "636:94:98"
             },
             "returnParameters": {
-              "id": 48064,
+              "id": 38265,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "739:0:94"
+              "src": "739:0:98"
             },
-            "scope": 48066,
+            "scope": 38267,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -1389,15 +1389,15 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          48066
+          38267
         ],
         "name": "IJBSplitsStore",
-        "nameLocation": "203:14:94",
-        "scope": 48067,
+        "nameLocation": "203:14:98",
+        "scope": 38268,
         "usedErrors": []
       }
     ],
     "license": "MIT"
   },
-  "id": 94
+  "id": 98
 }
