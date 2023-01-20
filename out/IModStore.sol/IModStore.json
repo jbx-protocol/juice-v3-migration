@@ -349,7 +349,7 @@
     "setTicketMods(uint256,uint256,(bool,uint16,uint48,address)[])": "ebe352a4",
     "ticketModsOf(uint256,uint256)": "4833b512"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"configuration\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"contract IModAllocator\",\"name\":\"allocator\",\"type\":\"address\"},{\"internalType\":\"uint56\",\"name\":\"projectId\",\"type\":\"uint56\"}],\"indexed\":false,\"internalType\":\"struct PayoutMod\",\"name\":\"mods\",\"type\":\"tuple\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetPayoutMod\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"configuration\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"indexed\":false,\"internalType\":\"struct TicketMod\",\"name\":\"mods\",\"type\":\"tuple\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetTicketMod\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_configuration\",\"type\":\"uint256\"}],\"name\":\"payoutModsOf\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"contract IModAllocator\",\"name\":\"allocator\",\"type\":\"address\"},{\"internalType\":\"uint56\",\"name\":\"projectId\",\"type\":\"uint56\"}],\"internalType\":\"struct PayoutMod[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"projects\",\"outputs\":[{\"internalType\":\"contract IProjects\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_configuration\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"contract IModAllocator\",\"name\":\"allocator\",\"type\":\"address\"},{\"internalType\":\"uint56\",\"name\":\"projectId\",\"type\":\"uint56\"}],\"internalType\":\"struct PayoutMod[]\",\"name\":\"_mods\",\"type\":\"tuple[]\"}],\"name\":\"setPayoutMods\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_configuration\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"internalType\":\"struct TicketMod[]\",\"name\":\"_mods\",\"type\":\"tuple[]\"}],\"name\":\"setTicketMods\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_configuration\",\"type\":\"uint256\"}],\"name\":\"ticketModsOf\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"internalType\":\"struct TicketMod[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/juice-contracts-v1/contracts/interfaces/IModStore.sol\":\"IModStore\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":@chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":@jbx-protocol-v1/=lib/juice-contracts-v1/\",\":@jbx-protocol-v2/=lib/juice-contracts-v2/\",\":@jbx-protocol-v3/=lib/juice-contracts-v3/\",\":@juicebox/=lib/juice-contracts-v2/contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/\",\":chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":ds-test/=lib/juice-contracts-v2/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":juice-contracts-v1/=lib/juice-contracts-v1/contracts/\",\":juice-contracts-v2/=lib/juice-contracts-v2/contracts/\",\":juice-contracts-v3/=lib/juice-contracts-v3/contracts/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":openzeppelin-contracts/contracts/=lib/juice-contracts-v2/lib/openzeppelin-contracts/contracts/\",\":prb-math/=lib/juice-contracts-v2/lib/prb-math/\"]},\"sources\":{\"lib/juice-contracts-v1/contracts/interfaces/IDirectPaymentAddress.sol\":{\"keccak256\":\"0xadcaeb92b5682b85f48c4a8923e82b54bbee28ef31a54e7ec8dea31efe45ee7e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://27ec298aa604532de06f56c2c932cc017b9bfc5b196f0781ebb54909dc7bc4a7\",\"dweb:/ipfs/QmT5ut8rzEsoebYAv2fmSDWYYKyNULGGD9KaVU1qCDhxhH\"]},\"lib/juice-contracts-v1/contracts/interfaces/IModAllocator.sol\":{\"keccak256\":\"0x7fa3496d09249348a6be4614d282d4da9aa0042fcae1d5c117001df0ac5c10ca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://916e1d2173c1d2151ac10be09b4222f5a053e8cef18462d752873226779c808c\",\"dweb:/ipfs/QmZD3CNtE3nDeaqataApxJ28GMajaZ2LbWp5d64pxXbzPb\"]},\"lib/juice-contracts-v1/contracts/interfaces/IModStore.sol\":{\"keccak256\":\"0xd265501b6abeec0bcab11f972c6d36ba47bfda57a53dd85cade4940d3e11132c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7c3a00b880a7782e12df17b5006cec50405f3b840db7054a27a1ce07bf4146bc\",\"dweb:/ipfs/QmZi3T8pQwpFPaBfSyFbj2L6MAj1dTSsTigjSo6SWQZmRj\"]},\"lib/juice-contracts-v1/contracts/interfaces/IOperatorStore.sol\":{\"keccak256\":\"0x1fefddcf072d01ffd86b5743d8f1e6ac32b4c5bc0af54b9cf2e00fb79d22d90d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://76d837c380f40598f9a3854924a19cf89daad9bc6856adca304ca5a4b8d90e87\",\"dweb:/ipfs/QmWbb6Si6Fic7uWCfLeP9AstCWocKcQe99bae1QbhmrRb5\"]},\"lib/juice-contracts-v1/contracts/interfaces/IProjects.sol\":{\"keccak256\":\"0xdc9b7c9924ea448c7aaab16d5a56b9b3b09b58406ae34026687337eee7ba4a4e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a6c8ea8188c310082c2ad6205725323b9a47208a52820f51c1b8b0a80009331b\",\"dweb:/ipfs/Qmanm8gvVL6tv2qNm5UC9TLZ49pLAmqHJRT6Q1rXW2s42g\"]},\"lib/juice-contracts-v1/contracts/interfaces/ITerminal.sol\":{\"keccak256\":\"0x45efad59fd33dab1b05c0d59d1f623fbd9fc67373cf7b4da603078369611cd88\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://093b1157f9a56dd5d38d9aff46d2e76f380dbf5f6792bd1453c17e3b361cf767\",\"dweb:/ipfs/QmSYJoCBuhjJp3tX1yx4NfdEQTrf9R4kau8UiHErjky88L\"]},\"lib/juice-contracts-v1/contracts/interfaces/ITerminalDirectory.sol\":{\"keccak256\":\"0xee026727319ec7f26119fe026c2d5eb3b6769e7bd00f7b39c543b130617cb8bf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7e8e337cb7dc8501afd37fc5a285e930aeec4fe4d36efcc39382eb3cb50212d0\",\"dweb:/ipfs/QmZqD4AbrAwz7kyDeDGGnqLHHD1W7U5SHSngiDRPTbKqzn\"]},\"lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0xab28a56179c1db258c9bf5235b382698cb650debecb51b23d12be9e241374b68\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://daae589a9d6fa7e55f99f86c0a16796ca490f243fb3693632c3711c0646c1d56\",\"dweb:/ipfs/QmR3zpd7wNw3rcUdekwiv6FYHJqksuTCXLVioTxu6Fbxk3\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"configuration\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"contract IModAllocator\",\"name\":\"allocator\",\"type\":\"address\"},{\"internalType\":\"uint56\",\"name\":\"projectId\",\"type\":\"uint56\"}],\"indexed\":false,\"internalType\":\"struct PayoutMod\",\"name\":\"mods\",\"type\":\"tuple\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetPayoutMod\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"configuration\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"indexed\":false,\"internalType\":\"struct TicketMod\",\"name\":\"mods\",\"type\":\"tuple\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetTicketMod\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_configuration\",\"type\":\"uint256\"}],\"name\":\"payoutModsOf\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"contract IModAllocator\",\"name\":\"allocator\",\"type\":\"address\"},{\"internalType\":\"uint56\",\"name\":\"projectId\",\"type\":\"uint56\"}],\"internalType\":\"struct PayoutMod[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"projects\",\"outputs\":[{\"internalType\":\"contract IProjects\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_configuration\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"contract IModAllocator\",\"name\":\"allocator\",\"type\":\"address\"},{\"internalType\":\"uint56\",\"name\":\"projectId\",\"type\":\"uint56\"}],\"internalType\":\"struct PayoutMod[]\",\"name\":\"_mods\",\"type\":\"tuple[]\"}],\"name\":\"setPayoutMods\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_configuration\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"internalType\":\"struct TicketMod[]\",\"name\":\"_mods\",\"type\":\"tuple[]\"}],\"name\":\"setTicketMods\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_configuration\",\"type\":\"uint256\"}],\"name\":\"ticketModsOf\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"preferUnstaked\",\"type\":\"bool\"},{\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"},{\"internalType\":\"uint48\",\"name\":\"lockedUntil\",\"type\":\"uint48\"},{\"internalType\":\"address payable\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"internalType\":\"struct TicketMod[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/juice-contracts-v1/contracts/interfaces/IModStore.sol\":\"IModStore\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":@chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":@jbx-protocol-v1/=lib/juice-contracts-v1/\",\":@jbx-protocol-v2/=lib/juice-contracts-v2/\",\":@jbx-protocol-v3/=lib/juice-contracts-v3/\",\":@juicebox/=lib/juice-contracts-v2/contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/\",\":chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":juice-contracts-v1/=lib/juice-contracts-v1/contracts/\",\":juice-contracts-v2/=lib/juice-contracts-v2/contracts/\",\":juice-contracts-v3/=lib/juice-contracts-v3/contracts/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":openzeppelin-contracts/contracts/=lib/juice-contracts-v2/lib/openzeppelin-contracts/contracts/\",\":prb-math/=lib/juice-contracts-v2/lib/prb-math/\"]},\"sources\":{\"lib/juice-contracts-v1/contracts/interfaces/IDirectPaymentAddress.sol\":{\"keccak256\":\"0xadcaeb92b5682b85f48c4a8923e82b54bbee28ef31a54e7ec8dea31efe45ee7e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://27ec298aa604532de06f56c2c932cc017b9bfc5b196f0781ebb54909dc7bc4a7\",\"dweb:/ipfs/QmT5ut8rzEsoebYAv2fmSDWYYKyNULGGD9KaVU1qCDhxhH\"]},\"lib/juice-contracts-v1/contracts/interfaces/IModAllocator.sol\":{\"keccak256\":\"0x7fa3496d09249348a6be4614d282d4da9aa0042fcae1d5c117001df0ac5c10ca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://916e1d2173c1d2151ac10be09b4222f5a053e8cef18462d752873226779c808c\",\"dweb:/ipfs/QmZD3CNtE3nDeaqataApxJ28GMajaZ2LbWp5d64pxXbzPb\"]},\"lib/juice-contracts-v1/contracts/interfaces/IModStore.sol\":{\"keccak256\":\"0xd265501b6abeec0bcab11f972c6d36ba47bfda57a53dd85cade4940d3e11132c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7c3a00b880a7782e12df17b5006cec50405f3b840db7054a27a1ce07bf4146bc\",\"dweb:/ipfs/QmZi3T8pQwpFPaBfSyFbj2L6MAj1dTSsTigjSo6SWQZmRj\"]},\"lib/juice-contracts-v1/contracts/interfaces/IOperatorStore.sol\":{\"keccak256\":\"0x1fefddcf072d01ffd86b5743d8f1e6ac32b4c5bc0af54b9cf2e00fb79d22d90d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://76d837c380f40598f9a3854924a19cf89daad9bc6856adca304ca5a4b8d90e87\",\"dweb:/ipfs/QmWbb6Si6Fic7uWCfLeP9AstCWocKcQe99bae1QbhmrRb5\"]},\"lib/juice-contracts-v1/contracts/interfaces/IProjects.sol\":{\"keccak256\":\"0xdc9b7c9924ea448c7aaab16d5a56b9b3b09b58406ae34026687337eee7ba4a4e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a6c8ea8188c310082c2ad6205725323b9a47208a52820f51c1b8b0a80009331b\",\"dweb:/ipfs/Qmanm8gvVL6tv2qNm5UC9TLZ49pLAmqHJRT6Q1rXW2s42g\"]},\"lib/juice-contracts-v1/contracts/interfaces/ITerminal.sol\":{\"keccak256\":\"0x45efad59fd33dab1b05c0d59d1f623fbd9fc67373cf7b4da603078369611cd88\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://093b1157f9a56dd5d38d9aff46d2e76f380dbf5f6792bd1453c17e3b361cf767\",\"dweb:/ipfs/QmSYJoCBuhjJp3tX1yx4NfdEQTrf9R4kau8UiHErjky88L\"]},\"lib/juice-contracts-v1/contracts/interfaces/ITerminalDirectory.sol\":{\"keccak256\":\"0xee026727319ec7f26119fe026c2d5eb3b6769e7bd00f7b39c543b130617cb8bf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7e8e337cb7dc8501afd37fc5a285e930aeec4fe4d36efcc39382eb3cb50212d0\",\"dweb:/ipfs/QmZqD4AbrAwz7kyDeDGGnqLHHD1W7U5SHSngiDRPTbKqzn\"]},\"lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0xab28a56179c1db258c9bf5235b382698cb650debecb51b23d12be9e241374b68\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://daae589a9d6fa7e55f99f86c0a16796ca490f243fb3693632c3711c0646c1d56\",\"dweb:/ipfs/QmR3zpd7wNw3rcUdekwiv6FYHJqksuTCXLVioTxu6Fbxk3\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.6+commit.11564f7e"
@@ -708,7 +708,7 @@
         ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
         ":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/",
         ":chainlink/=lib/juice-contracts-v2/lib/chainlink/",
-        ":ds-test/=lib/juice-contracts-v2/lib/ds-test/src/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
         ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
         ":forge-std/=lib/forge-std/src/",
         ":juice-contracts-v1/=lib/juice-contracts-v1/contracts/",
@@ -808,49 +808,49 @@
   },
   "ast": {
     "absolutePath": "lib/juice-contracts-v1/contracts/interfaces/IModStore.sol",
-    "id": 34417,
+    "id": 11349,
     "exportedSymbols": {
       "IDirectPaymentAddress": [
-        34091
+        36101
       ],
       "IERC165": [
-        59507
+        38868
       ],
       "IERC721": [
-        56883
+        37612
       ],
       "IModAllocator": [
-        34315
+        11247
       ],
       "IModStore": [
-        34416
+        11348
       ],
       "IOperatorStore": [
-        34503
+        36269
       ],
       "IProjects": [
-        34721
+        36554
       ],
       "ITerminal": [
-        34771
+        36604
       ],
       "ITerminalDirectory": [
-        34862
+        36192
       ],
       "PayoutMod": [
-        34334
+        11266
       ],
       "TicketMod": [
-        34343
+        11275
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "32:1355:40",
+    "src": "32:1355:44",
     "nodes": [
       {
-        "id": 34317,
+        "id": 11249,
         "nodeType": "PragmaDirective",
-        "src": "32:23:40",
+        "src": "32:23:44",
         "nodes": [],
         "literals": [
           "solidity",
@@ -860,60 +860,60 @@
         ]
       },
       {
-        "id": 34318,
+        "id": 11250,
         "nodeType": "ImportDirective",
-        "src": "57:30:40",
+        "src": "57:30:44",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v1/contracts/interfaces/IOperatorStore.sol",
         "file": "./IOperatorStore.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 34417,
-        "sourceUnit": 34504,
+        "scope": 11349,
+        "sourceUnit": 36270,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 34319,
+        "id": 11251,
         "nodeType": "ImportDirective",
-        "src": "88:25:40",
+        "src": "88:25:44",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v1/contracts/interfaces/IProjects.sol",
         "file": "./IProjects.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 34417,
-        "sourceUnit": 34722,
+        "scope": 11349,
+        "sourceUnit": 36555,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 34320,
+        "id": 11252,
         "nodeType": "ImportDirective",
-        "src": "114:29:40",
+        "src": "114:29:44",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v1/contracts/interfaces/IModAllocator.sol",
         "file": "./IModAllocator.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 34417,
-        "sourceUnit": 34316,
+        "scope": 11349,
+        "sourceUnit": 11248,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 34334,
+        "id": 11266,
         "nodeType": "StructDefinition",
-        "src": "145:173:40",
+        "src": "145:173:44",
         "nodes": [],
         "canonicalName": "PayoutMod",
         "members": [
           {
             "constant": false,
-            "id": 34322,
+            "id": 11254,
             "mutability": "mutable",
             "name": "preferUnstaked",
-            "nameLocation": "173:14:40",
+            "nameLocation": "173:14:44",
             "nodeType": "VariableDeclaration",
-            "scope": 34334,
-            "src": "168:19:40",
+            "scope": 11266,
+            "src": "168:19:44",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -921,10 +921,10 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 34321,
+              "id": 11253,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
-              "src": "168:4:40",
+              "src": "168:4:44",
               "typeDescriptions": {
                 "typeIdentifier": "t_bool",
                 "typeString": "bool"
@@ -934,13 +934,13 @@
           },
           {
             "constant": false,
-            "id": 34324,
+            "id": 11256,
             "mutability": "mutable",
             "name": "percent",
-            "nameLocation": "200:7:40",
+            "nameLocation": "200:7:44",
             "nodeType": "VariableDeclaration",
-            "scope": 34334,
-            "src": "193:14:40",
+            "scope": 11266,
+            "src": "193:14:44",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -948,10 +948,10 @@
               "typeString": "uint16"
             },
             "typeName": {
-              "id": 34323,
+              "id": 11255,
               "name": "uint16",
               "nodeType": "ElementaryTypeName",
-              "src": "193:6:40",
+              "src": "193:6:44",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint16",
                 "typeString": "uint16"
@@ -961,13 +961,13 @@
           },
           {
             "constant": false,
-            "id": 34326,
+            "id": 11258,
             "mutability": "mutable",
             "name": "lockedUntil",
-            "nameLocation": "220:11:40",
+            "nameLocation": "220:11:44",
             "nodeType": "VariableDeclaration",
-            "scope": 34334,
-            "src": "213:18:40",
+            "scope": 11266,
+            "src": "213:18:44",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -975,10 +975,10 @@
               "typeString": "uint48"
             },
             "typeName": {
-              "id": 34325,
+              "id": 11257,
               "name": "uint48",
               "nodeType": "ElementaryTypeName",
-              "src": "213:6:40",
+              "src": "213:6:44",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint48",
                 "typeString": "uint48"
@@ -988,13 +988,13 @@
           },
           {
             "constant": false,
-            "id": 34328,
+            "id": 11260,
             "mutability": "mutable",
             "name": "beneficiary",
-            "nameLocation": "253:11:40",
+            "nameLocation": "253:11:44",
             "nodeType": "VariableDeclaration",
-            "scope": 34334,
-            "src": "237:27:40",
+            "scope": 11266,
+            "src": "237:27:44",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1002,10 +1002,10 @@
               "typeString": "address payable"
             },
             "typeName": {
-              "id": 34327,
+              "id": 11259,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "237:15:40",
+              "src": "237:15:44",
               "stateMutability": "payable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address_payable",
@@ -1016,33 +1016,33 @@
           },
           {
             "constant": false,
-            "id": 34331,
+            "id": 11263,
             "mutability": "mutable",
             "name": "allocator",
-            "nameLocation": "284:9:40",
+            "nameLocation": "284:9:44",
             "nodeType": "VariableDeclaration",
-            "scope": 34334,
-            "src": "270:23:40",
+            "scope": 11266,
+            "src": "270:23:44",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IModAllocator_$34315",
+              "typeIdentifier": "t_contract$_IModAllocator_$11247",
               "typeString": "contract IModAllocator"
             },
             "typeName": {
-              "id": 34330,
+              "id": 11262,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 34329,
+                "id": 11261,
                 "name": "IModAllocator",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 34315,
-                "src": "270:13:40"
+                "referencedDeclaration": 11247,
+                "src": "270:13:44"
               },
-              "referencedDeclaration": 34315,
-              "src": "270:13:40",
+              "referencedDeclaration": 11247,
+              "src": "270:13:44",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IModAllocator_$34315",
+                "typeIdentifier": "t_contract$_IModAllocator_$11247",
                 "typeString": "contract IModAllocator"
               }
             },
@@ -1050,13 +1050,13 @@
           },
           {
             "constant": false,
-            "id": 34333,
+            "id": 11265,
             "mutability": "mutable",
             "name": "projectId",
-            "nameLocation": "306:9:40",
+            "nameLocation": "306:9:44",
             "nodeType": "VariableDeclaration",
-            "scope": 34334,
-            "src": "299:16:40",
+            "scope": 11266,
+            "src": "299:16:44",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1064,10 +1064,10 @@
               "typeString": "uint56"
             },
             "typeName": {
-              "id": 34332,
+              "id": 11264,
               "name": "uint56",
               "nodeType": "ElementaryTypeName",
-              "src": "299:6:40",
+              "src": "299:6:44",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint56",
                 "typeString": "uint56"
@@ -1077,26 +1077,26 @@
           }
         ],
         "name": "PayoutMod",
-        "nameLocation": "152:9:40",
-        "scope": 34417,
+        "nameLocation": "152:9:44",
+        "scope": 11349,
         "visibility": "public"
       },
       {
-        "id": 34343,
+        "id": 11275,
         "nodeType": "StructDefinition",
-        "src": "320:122:40",
+        "src": "320:122:44",
         "nodes": [],
         "canonicalName": "TicketMod",
         "members": [
           {
             "constant": false,
-            "id": 34336,
+            "id": 11268,
             "mutability": "mutable",
             "name": "preferUnstaked",
-            "nameLocation": "348:14:40",
+            "nameLocation": "348:14:44",
             "nodeType": "VariableDeclaration",
-            "scope": 34343,
-            "src": "343:19:40",
+            "scope": 11275,
+            "src": "343:19:44",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1104,10 +1104,10 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 34335,
+              "id": 11267,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
-              "src": "343:4:40",
+              "src": "343:4:44",
               "typeDescriptions": {
                 "typeIdentifier": "t_bool",
                 "typeString": "bool"
@@ -1117,13 +1117,13 @@
           },
           {
             "constant": false,
-            "id": 34338,
+            "id": 11270,
             "mutability": "mutable",
             "name": "percent",
-            "nameLocation": "375:7:40",
+            "nameLocation": "375:7:44",
             "nodeType": "VariableDeclaration",
-            "scope": 34343,
-            "src": "368:14:40",
+            "scope": 11275,
+            "src": "368:14:44",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1131,10 +1131,10 @@
               "typeString": "uint16"
             },
             "typeName": {
-              "id": 34337,
+              "id": 11269,
               "name": "uint16",
               "nodeType": "ElementaryTypeName",
-              "src": "368:6:40",
+              "src": "368:6:44",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint16",
                 "typeString": "uint16"
@@ -1144,13 +1144,13 @@
           },
           {
             "constant": false,
-            "id": 34340,
+            "id": 11272,
             "mutability": "mutable",
             "name": "lockedUntil",
-            "nameLocation": "395:11:40",
+            "nameLocation": "395:11:44",
             "nodeType": "VariableDeclaration",
-            "scope": 34343,
-            "src": "388:18:40",
+            "scope": 11275,
+            "src": "388:18:44",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1158,10 +1158,10 @@
               "typeString": "uint48"
             },
             "typeName": {
-              "id": 34339,
+              "id": 11271,
               "name": "uint48",
               "nodeType": "ElementaryTypeName",
-              "src": "388:6:40",
+              "src": "388:6:44",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint48",
                 "typeString": "uint48"
@@ -1171,13 +1171,13 @@
           },
           {
             "constant": false,
-            "id": 34342,
+            "id": 11274,
             "mutability": "mutable",
             "name": "beneficiary",
-            "nameLocation": "428:11:40",
+            "nameLocation": "428:11:44",
             "nodeType": "VariableDeclaration",
-            "scope": 34343,
-            "src": "412:27:40",
+            "scope": 11275,
+            "src": "412:27:44",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1185,10 +1185,10 @@
               "typeString": "address payable"
             },
             "typeName": {
-              "id": 34341,
+              "id": 11273,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "412:15:40",
+              "src": "412:15:44",
               "stateMutability": "payable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address_payable",
@@ -1199,37 +1199,37 @@
           }
         ],
         "name": "TicketMod",
-        "nameLocation": "327:9:40",
-        "scope": 34417,
+        "nameLocation": "327:9:44",
+        "scope": 11349,
         "visibility": "public"
       },
       {
-        "id": 34416,
+        "id": 11348,
         "nodeType": "ContractDefinition",
-        "src": "444:942:40",
+        "src": "444:942:44",
         "nodes": [
           {
-            "id": 34354,
+            "id": 11286,
             "nodeType": "EventDefinition",
-            "src": "470:147:40",
+            "src": "470:147:44",
             "nodes": [],
             "anonymous": false,
             "name": "SetPayoutMod",
-            "nameLocation": "476:12:40",
+            "nameLocation": "476:12:44",
             "parameters": {
-              "id": 34353,
+              "id": 11285,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34345,
+                  "id": 11277,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "projectId",
-                  "nameLocation": "514:9:40",
+                  "nameLocation": "514:9:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34354,
-                  "src": "498:25:40",
+                  "scope": 11286,
+                  "src": "498:25:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1237,10 +1237,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34344,
+                    "id": 11276,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "498:7:40",
+                    "src": "498:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1250,14 +1250,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 34347,
+                  "id": 11279,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "configuration",
-                  "nameLocation": "549:13:40",
+                  "nameLocation": "549:13:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34354,
-                  "src": "533:29:40",
+                  "scope": 11286,
+                  "src": "533:29:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1265,10 +1265,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34346,
+                    "id": 11278,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "533:7:40",
+                    "src": "533:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1278,34 +1278,34 @@
                 },
                 {
                   "constant": false,
-                  "id": 34350,
+                  "id": 11282,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "mods",
-                  "nameLocation": "582:4:40",
+                  "nameLocation": "582:4:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34354,
-                  "src": "572:14:40",
+                  "scope": 11286,
+                  "src": "572:14:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_PayoutMod_$34334_memory_ptr",
+                    "typeIdentifier": "t_struct$_PayoutMod_$11266_memory_ptr",
                     "typeString": "struct PayoutMod"
                   },
                   "typeName": {
-                    "id": 34349,
+                    "id": 11281,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 34348,
+                      "id": 11280,
                       "name": "PayoutMod",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 34334,
-                      "src": "572:9:40"
+                      "referencedDeclaration": 11266,
+                      "src": "572:9:44"
                     },
-                    "referencedDeclaration": 34334,
-                    "src": "572:9:40",
+                    "referencedDeclaration": 11266,
+                    "src": "572:9:44",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_PayoutMod_$34334_storage_ptr",
+                      "typeIdentifier": "t_struct$_PayoutMod_$11266_storage_ptr",
                       "typeString": "struct PayoutMod"
                     }
                   },
@@ -1313,14 +1313,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 34352,
+                  "id": 11284,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "caller",
-                  "nameLocation": "604:6:40",
+                  "nameLocation": "604:6:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34354,
-                  "src": "596:14:40",
+                  "scope": 11286,
+                  "src": "596:14:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1328,10 +1328,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 34351,
+                    "id": 11283,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "596:7:40",
+                    "src": "596:7:44",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1341,31 +1341,31 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "488:128:40"
+              "src": "488:128:44"
             }
           },
           {
-            "id": 34365,
+            "id": 11297,
             "nodeType": "EventDefinition",
-            "src": "623:147:40",
+            "src": "623:147:44",
             "nodes": [],
             "anonymous": false,
             "name": "SetTicketMod",
-            "nameLocation": "629:12:40",
+            "nameLocation": "629:12:44",
             "parameters": {
-              "id": 34364,
+              "id": 11296,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34356,
+                  "id": 11288,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "projectId",
-                  "nameLocation": "667:9:40",
+                  "nameLocation": "667:9:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34365,
-                  "src": "651:25:40",
+                  "scope": 11297,
+                  "src": "651:25:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1373,10 +1373,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34355,
+                    "id": 11287,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "651:7:40",
+                    "src": "651:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1386,14 +1386,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 34358,
+                  "id": 11290,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "configuration",
-                  "nameLocation": "702:13:40",
+                  "nameLocation": "702:13:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34365,
-                  "src": "686:29:40",
+                  "scope": 11297,
+                  "src": "686:29:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1401,10 +1401,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34357,
+                    "id": 11289,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "686:7:40",
+                    "src": "686:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1414,34 +1414,34 @@
                 },
                 {
                   "constant": false,
-                  "id": 34361,
+                  "id": 11293,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "mods",
-                  "nameLocation": "735:4:40",
+                  "nameLocation": "735:4:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34365,
-                  "src": "725:14:40",
+                  "scope": 11297,
+                  "src": "725:14:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_TicketMod_$34343_memory_ptr",
+                    "typeIdentifier": "t_struct$_TicketMod_$11275_memory_ptr",
                     "typeString": "struct TicketMod"
                   },
                   "typeName": {
-                    "id": 34360,
+                    "id": 11292,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 34359,
+                      "id": 11291,
                       "name": "TicketMod",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 34343,
-                      "src": "725:9:40"
+                      "referencedDeclaration": 11275,
+                      "src": "725:9:44"
                     },
-                    "referencedDeclaration": 34343,
-                    "src": "725:9:40",
+                    "referencedDeclaration": 11275,
+                    "src": "725:9:44",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TicketMod_$34343_storage_ptr",
+                      "typeIdentifier": "t_struct$_TicketMod_$11275_storage_ptr",
                       "typeString": "struct TicketMod"
                     }
                   },
@@ -1449,14 +1449,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 34363,
+                  "id": 11295,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "caller",
-                  "nameLocation": "757:6:40",
+                  "nameLocation": "757:6:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34365,
-                  "src": "749:14:40",
+                  "scope": 11297,
+                  "src": "749:14:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1464,10 +1464,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 34362,
+                    "id": 11294,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "749:7:40",
+                    "src": "749:7:44",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1477,96 +1477,96 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "641:128:40"
+              "src": "641:128:44"
             }
           },
           {
-            "id": 34371,
+            "id": 11303,
             "nodeType": "FunctionDefinition",
-            "src": "776:54:40",
+            "src": "776:54:44",
             "nodes": [],
             "functionSelector": "8b79543c",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "projects",
-            "nameLocation": "785:8:40",
+            "nameLocation": "785:8:44",
             "parameters": {
-              "id": 34366,
+              "id": 11298,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "793:2:40"
+              "src": "793:2:44"
             },
             "returnParameters": {
-              "id": 34370,
+              "id": 11302,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34369,
+                  "id": 11301,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34371,
-                  "src": "819:9:40",
+                  "scope": 11303,
+                  "src": "819:9:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IProjects_$34721",
+                    "typeIdentifier": "t_contract$_IProjects_$36554",
                     "typeString": "contract IProjects"
                   },
                   "typeName": {
-                    "id": 34368,
+                    "id": 11300,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 34367,
+                      "id": 11299,
                       "name": "IProjects",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 34721,
-                      "src": "819:9:40"
+                      "referencedDeclaration": 36554,
+                      "src": "819:9:44"
                     },
-                    "referencedDeclaration": 34721,
-                    "src": "819:9:40",
+                    "referencedDeclaration": 36554,
+                    "src": "819:9:44",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IProjects_$34721",
+                      "typeIdentifier": "t_contract$_IProjects_$36554",
                       "typeString": "contract IProjects"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "818:11:40"
+              "src": "818:11:44"
             },
-            "scope": 34416,
+            "scope": 11348,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 34382,
+            "id": 11314,
             "nodeType": "FunctionDefinition",
-            "src": "836:133:40",
+            "src": "836:133:44",
             "nodes": [],
             "functionSelector": "7559aaaa",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "payoutModsOf",
-            "nameLocation": "845:12:40",
+            "nameLocation": "845:12:44",
             "parameters": {
-              "id": 34376,
+              "id": 11308,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34373,
+                  "id": 11305,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "866:10:40",
+                  "nameLocation": "866:10:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34382,
-                  "src": "858:18:40",
+                  "scope": 11314,
+                  "src": "858:18:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1574,10 +1574,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34372,
+                    "id": 11304,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "858:7:40",
+                    "src": "858:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1587,13 +1587,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 34375,
+                  "id": 11307,
                   "mutability": "mutable",
                   "name": "_configuration",
-                  "nameLocation": "886:14:40",
+                  "nameLocation": "886:14:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34382,
-                  "src": "878:22:40",
+                  "scope": 11314,
+                  "src": "878:22:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1601,10 +1601,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34374,
+                    "id": 11306,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "878:7:40",
+                    "src": "878:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1613,87 +1613,87 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "857:44:40"
+              "src": "857:44:44"
             },
             "returnParameters": {
-              "id": 34381,
+              "id": 11313,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34380,
+                  "id": 11312,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34382,
-                  "src": "949:18:40",
+                  "scope": 11314,
+                  "src": "949:18:44",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_PayoutMod_$34334_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_PayoutMod_$11266_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct PayoutMod[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 34378,
+                      "id": 11310,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 34377,
+                        "id": 11309,
                         "name": "PayoutMod",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 34334,
-                        "src": "949:9:40"
+                        "referencedDeclaration": 11266,
+                        "src": "949:9:44"
                       },
-                      "referencedDeclaration": 34334,
-                      "src": "949:9:40",
+                      "referencedDeclaration": 11266,
+                      "src": "949:9:44",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_PayoutMod_$34334_storage_ptr",
+                        "typeIdentifier": "t_struct$_PayoutMod_$11266_storage_ptr",
                         "typeString": "struct PayoutMod"
                       }
                     },
-                    "id": 34379,
+                    "id": 11311,
                     "nodeType": "ArrayTypeName",
-                    "src": "949:11:40",
+                    "src": "949:11:44",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_PayoutMod_$34334_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_PayoutMod_$11266_storage_$dyn_storage_ptr",
                       "typeString": "struct PayoutMod[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "948:20:40"
+              "src": "948:20:44"
             },
-            "scope": 34416,
+            "scope": 11348,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 34393,
+            "id": 11325,
             "nodeType": "FunctionDefinition",
-            "src": "975:133:40",
+            "src": "975:133:44",
             "nodes": [],
             "functionSelector": "4833b512",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "ticketModsOf",
-            "nameLocation": "984:12:40",
+            "nameLocation": "984:12:44",
             "parameters": {
-              "id": 34387,
+              "id": 11319,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34384,
+                  "id": 11316,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "1005:10:40",
+                  "nameLocation": "1005:10:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34393,
-                  "src": "997:18:40",
+                  "scope": 11325,
+                  "src": "997:18:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1701,10 +1701,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34383,
+                    "id": 11315,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "997:7:40",
+                    "src": "997:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1714,13 +1714,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 34386,
+                  "id": 11318,
                   "mutability": "mutable",
                   "name": "_configuration",
-                  "nameLocation": "1025:14:40",
+                  "nameLocation": "1025:14:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34393,
-                  "src": "1017:22:40",
+                  "scope": 11325,
+                  "src": "1017:22:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1728,10 +1728,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34385,
+                    "id": 11317,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1017:7:40",
+                    "src": "1017:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1740,87 +1740,87 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "996:44:40"
+              "src": "996:44:44"
             },
             "returnParameters": {
-              "id": 34392,
+              "id": 11324,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34391,
+                  "id": 11323,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34393,
-                  "src": "1088:18:40",
+                  "scope": 11325,
+                  "src": "1088:18:44",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_TicketMod_$34343_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_TicketMod_$11275_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct TicketMod[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 34389,
+                      "id": 11321,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 34388,
+                        "id": 11320,
                         "name": "TicketMod",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 34343,
-                        "src": "1088:9:40"
+                        "referencedDeclaration": 11275,
+                        "src": "1088:9:44"
                       },
-                      "referencedDeclaration": 34343,
-                      "src": "1088:9:40",
+                      "referencedDeclaration": 11275,
+                      "src": "1088:9:44",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_TicketMod_$34343_storage_ptr",
+                        "typeIdentifier": "t_struct$_TicketMod_$11275_storage_ptr",
                         "typeString": "struct TicketMod"
                       }
                     },
-                    "id": 34390,
+                    "id": 11322,
                     "nodeType": "ArrayTypeName",
-                    "src": "1088:11:40",
+                    "src": "1088:11:44",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_TicketMod_$34343_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_TicketMod_$11275_storage_$dyn_storage_ptr",
                       "typeString": "struct TicketMod[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1087:20:40"
+              "src": "1087:20:44"
             },
-            "scope": 34416,
+            "scope": 11348,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 34404,
+            "id": 11336,
             "nodeType": "FunctionDefinition",
-            "src": "1114:132:40",
+            "src": "1114:132:44",
             "nodes": [],
             "functionSelector": "a67e210a",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setPayoutMods",
-            "nameLocation": "1123:13:40",
+            "nameLocation": "1123:13:44",
             "parameters": {
-              "id": 34402,
+              "id": 11334,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34395,
+                  "id": 11327,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "1154:10:40",
+                  "nameLocation": "1154:10:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34404,
-                  "src": "1146:18:40",
+                  "scope": 11336,
+                  "src": "1146:18:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1828,10 +1828,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34394,
+                    "id": 11326,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1146:7:40",
+                    "src": "1146:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1841,13 +1841,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 34397,
+                  "id": 11329,
                   "mutability": "mutable",
                   "name": "_configuration",
-                  "nameLocation": "1182:14:40",
+                  "nameLocation": "1182:14:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34404,
-                  "src": "1174:22:40",
+                  "scope": 11336,
+                  "src": "1174:22:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1855,10 +1855,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34396,
+                    "id": 11328,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1174:7:40",
+                    "src": "1174:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1868,85 +1868,85 @@
                 },
                 {
                   "constant": false,
-                  "id": 34401,
+                  "id": 11333,
                   "mutability": "mutable",
                   "name": "_mods",
-                  "nameLocation": "1225:5:40",
+                  "nameLocation": "1225:5:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34404,
-                  "src": "1206:24:40",
+                  "scope": 11336,
+                  "src": "1206:24:44",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_PayoutMod_$34334_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_PayoutMod_$11266_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct PayoutMod[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 34399,
+                      "id": 11331,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 34398,
+                        "id": 11330,
                         "name": "PayoutMod",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 34334,
-                        "src": "1206:9:40"
+                        "referencedDeclaration": 11266,
+                        "src": "1206:9:44"
                       },
-                      "referencedDeclaration": 34334,
-                      "src": "1206:9:40",
+                      "referencedDeclaration": 11266,
+                      "src": "1206:9:44",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_PayoutMod_$34334_storage_ptr",
+                        "typeIdentifier": "t_struct$_PayoutMod_$11266_storage_ptr",
                         "typeString": "struct PayoutMod"
                       }
                     },
-                    "id": 34400,
+                    "id": 11332,
                     "nodeType": "ArrayTypeName",
-                    "src": "1206:11:40",
+                    "src": "1206:11:44",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_PayoutMod_$34334_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_PayoutMod_$11266_storage_$dyn_storage_ptr",
                       "typeString": "struct PayoutMod[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1136:100:40"
+              "src": "1136:100:44"
             },
             "returnParameters": {
-              "id": 34403,
+              "id": 11335,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1245:0:40"
+              "src": "1245:0:44"
             },
-            "scope": 34416,
+            "scope": 11348,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 34415,
+            "id": 11347,
             "nodeType": "FunctionDefinition",
-            "src": "1252:132:40",
+            "src": "1252:132:44",
             "nodes": [],
             "functionSelector": "ebe352a4",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setTicketMods",
-            "nameLocation": "1261:13:40",
+            "nameLocation": "1261:13:44",
             "parameters": {
-              "id": 34413,
+              "id": 11345,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 34406,
+                  "id": 11338,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "1292:10:40",
+                  "nameLocation": "1292:10:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34415,
-                  "src": "1284:18:40",
+                  "scope": 11347,
+                  "src": "1284:18:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1954,10 +1954,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34405,
+                    "id": 11337,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1284:7:40",
+                    "src": "1284:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1967,13 +1967,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 34408,
+                  "id": 11340,
                   "mutability": "mutable",
                   "name": "_configuration",
-                  "nameLocation": "1320:14:40",
+                  "nameLocation": "1320:14:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34415,
-                  "src": "1312:22:40",
+                  "scope": 11347,
+                  "src": "1312:22:44",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1981,10 +1981,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 34407,
+                    "id": 11339,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1312:7:40",
+                    "src": "1312:7:44",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1994,57 +1994,57 @@
                 },
                 {
                   "constant": false,
-                  "id": 34412,
+                  "id": 11344,
                   "mutability": "mutable",
                   "name": "_mods",
-                  "nameLocation": "1363:5:40",
+                  "nameLocation": "1363:5:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34415,
-                  "src": "1344:24:40",
+                  "scope": 11347,
+                  "src": "1344:24:44",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_TicketMod_$34343_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_TicketMod_$11275_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct TicketMod[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 34410,
+                      "id": 11342,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 34409,
+                        "id": 11341,
                         "name": "TicketMod",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 34343,
-                        "src": "1344:9:40"
+                        "referencedDeclaration": 11275,
+                        "src": "1344:9:44"
                       },
-                      "referencedDeclaration": 34343,
-                      "src": "1344:9:40",
+                      "referencedDeclaration": 11275,
+                      "src": "1344:9:44",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_TicketMod_$34343_storage_ptr",
+                        "typeIdentifier": "t_struct$_TicketMod_$11275_storage_ptr",
                         "typeString": "struct TicketMod"
                       }
                     },
-                    "id": 34411,
+                    "id": 11343,
                     "nodeType": "ArrayTypeName",
-                    "src": "1344:11:40",
+                    "src": "1344:11:44",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_TicketMod_$34343_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_TicketMod_$11275_storage_$dyn_storage_ptr",
                       "typeString": "struct TicketMod[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1274:100:40"
+              "src": "1274:100:44"
             },
             "returnParameters": {
-              "id": 34414,
+              "id": 11346,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1383:0:40"
+              "src": "1383:0:44"
             },
-            "scope": 34416,
+            "scope": 11348,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -2056,15 +2056,15 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          34416
+          11348
         ],
         "name": "IModStore",
-        "nameLocation": "454:9:40",
-        "scope": 34417,
+        "nameLocation": "454:9:44",
+        "scope": 11349,
         "usedErrors": []
       }
     ],
     "license": "MIT"
   },
-  "id": 40
+  "id": 44
 }

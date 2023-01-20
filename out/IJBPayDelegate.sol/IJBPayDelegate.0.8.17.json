@@ -116,7 +116,7 @@
     "didPay((address,uint256,uint256,(address,uint256,uint256,uint256),uint256,address,bool,string,bytes))": "304b1eea",
     "supportsInterface(bytes4)": "01ffc9a7"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"payer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"currentFundingCycleConfiguration\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"decimals\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"currency\",\"type\":\"uint256\"}],\"internalType\":\"struct JBTokenAmount\",\"name\":\"amount\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"projectTokenCount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"preferClaimedTokens\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"memo\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"internalType\":\"struct JBDidPayData\",\"name\":\"_data\",\"type\":\"tuple\"}],\"name\":\"didPay\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Adheres to: IERC165 for adequate interface integration\",\"kind\":\"dev\",\"methods\":{\"didPay((address,uint256,uint256,(address,uint256,uint256,uint256),uint256,address,bool,string,bytes))\":{\"details\":\"Critical business logic should be protected by an appropriate access control\",\"params\":{\"_data\":\"the data passed by the terminal, as a JBDidPayData struct: address payer; uint256 projectId; uint256 currentFundingCycleConfiguration; JBTokenAmount amount; uint256 projectTokenCount; address beneficiary; bool preferClaimedTokens; string memo; bytes metadata;\"}},\"supportsInterface(bytes4)\":{\"details\":\"Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas.\"}},\"title\":\"Pay delegate\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"didPay((address,uint256,uint256,(address,uint256,uint256,uint256),uint256,address,bool,string,bytes))\":{\"notice\":\"This function is called by JBPaymentTerminal.pay(..), after the execution of its logic\"}},\"notice\":\"Delegate called after JBTerminal.pay(..) logic completion (if passed by the funding cycle datasource)\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/juice-contracts-v2/contracts/interfaces/IJBPayDelegate.sol\":\"IJBPayDelegate\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":@chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":@jbx-protocol-v1/=lib/juice-contracts-v1/\",\":@jbx-protocol-v2/=lib/juice-contracts-v2/\",\":@jbx-protocol-v3/=lib/juice-contracts-v3/\",\":@juicebox/=lib/juice-contracts-v2/contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/\",\":chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":ds-test/=lib/juice-contracts-v2/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":juice-contracts-v1/=lib/juice-contracts-v1/contracts/\",\":juice-contracts-v2/=lib/juice-contracts-v2/contracts/\",\":juice-contracts-v3/=lib/juice-contracts-v3/contracts/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":openzeppelin-contracts/contracts/=lib/juice-contracts-v2/lib/openzeppelin-contracts/contracts/\",\":prb-math/=lib/juice-contracts-v2/lib/prb-math/\"]},\"sources\":{\"lib/juice-contracts-v2/contracts/interfaces/IJBPayDelegate.sol\":{\"keccak256\":\"0x75defc0a7e830a46dcf40d79fe8d048102fd02d2d4e1970a454e3212746f9808\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a191f17806de317ce13bceee1bc8bfe8acf3d48f8a0729081f3997cdd8958aae\",\"dweb:/ipfs/QmRf5hnSszH31W7WACv6Q8iMpDq81H89ZtGBf3p2FMhVYh\"]},\"lib/juice-contracts-v2/contracts/structs/JBDidPayData.sol\":{\"keccak256\":\"0x4a0c3ab3a5526b9261982bfb0788cb893666ccc02058fded75575ca64798d536\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://aa3c8dff5c0a1cb0f5f0ee49b4d3495ef9aa99ea282bfbe85ca0ff2eadf515c0\",\"dweb:/ipfs/QmSU3FxcgqiJgvQUddugWpk3s45Ahu4tTzwQUP7kZsoBRx\"]},\"lib/juice-contracts-v2/contracts/structs/JBTokenAmount.sol\":{\"keccak256\":\"0x4a778e779ba257ba5638c5469e07a4d21b55a3128d56db5a0fdfacb1f3301c51\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fdb8302e06c5b4e1e91d204ed735d8d5db5bb3648200c144d7c545678010a44d\",\"dweb:/ipfs/QmTpffbt3FShkk8LDjsonVGnecbbNMUL8QHYQM7AFcMa54\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"payer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"currentFundingCycleConfiguration\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"decimals\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"currency\",\"type\":\"uint256\"}],\"internalType\":\"struct JBTokenAmount\",\"name\":\"amount\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"projectTokenCount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"preferClaimedTokens\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"memo\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"internalType\":\"struct JBDidPayData\",\"name\":\"_data\",\"type\":\"tuple\"}],\"name\":\"didPay\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Adheres to: IERC165 for adequate interface integration\",\"kind\":\"dev\",\"methods\":{\"didPay((address,uint256,uint256,(address,uint256,uint256,uint256),uint256,address,bool,string,bytes))\":{\"details\":\"Critical business logic should be protected by an appropriate access control\",\"params\":{\"_data\":\"the data passed by the terminal, as a JBDidPayData struct: address payer; uint256 projectId; uint256 currentFundingCycleConfiguration; JBTokenAmount amount; uint256 projectTokenCount; address beneficiary; bool preferClaimedTokens; string memo; bytes metadata;\"}},\"supportsInterface(bytes4)\":{\"details\":\"Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas.\"}},\"title\":\"Pay delegate\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"didPay((address,uint256,uint256,(address,uint256,uint256,uint256),uint256,address,bool,string,bytes))\":{\"notice\":\"This function is called by JBPaymentTerminal.pay(..), after the execution of its logic\"}},\"notice\":\"Delegate called after JBTerminal.pay(..) logic completion (if passed by the funding cycle datasource)\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/juice-contracts-v2/contracts/interfaces/IJBPayDelegate.sol\":\"IJBPayDelegate\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":@chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":@jbx-protocol-v1/=lib/juice-contracts-v1/\",\":@jbx-protocol-v2/=lib/juice-contracts-v2/\",\":@jbx-protocol-v3/=lib/juice-contracts-v3/\",\":@juicebox/=lib/juice-contracts-v2/contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/\",\":chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":juice-contracts-v1/=lib/juice-contracts-v1/contracts/\",\":juice-contracts-v2/=lib/juice-contracts-v2/contracts/\",\":juice-contracts-v3/=lib/juice-contracts-v3/contracts/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":openzeppelin-contracts/contracts/=lib/juice-contracts-v2/lib/openzeppelin-contracts/contracts/\",\":prb-math/=lib/juice-contracts-v2/lib/prb-math/\"]},\"sources\":{\"lib/juice-contracts-v2/contracts/interfaces/IJBPayDelegate.sol\":{\"keccak256\":\"0x75defc0a7e830a46dcf40d79fe8d048102fd02d2d4e1970a454e3212746f9808\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a191f17806de317ce13bceee1bc8bfe8acf3d48f8a0729081f3997cdd8958aae\",\"dweb:/ipfs/QmRf5hnSszH31W7WACv6Q8iMpDq81H89ZtGBf3p2FMhVYh\"]},\"lib/juice-contracts-v2/contracts/structs/JBDidPayData.sol\":{\"keccak256\":\"0x4a0c3ab3a5526b9261982bfb0788cb893666ccc02058fded75575ca64798d536\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://aa3c8dff5c0a1cb0f5f0ee49b4d3495ef9aa99ea282bfbe85ca0ff2eadf515c0\",\"dweb:/ipfs/QmSU3FxcgqiJgvQUddugWpk3s45Ahu4tTzwQUP7kZsoBRx\"]},\"lib/juice-contracts-v2/contracts/structs/JBTokenAmount.sol\":{\"keccak256\":\"0x4a778e779ba257ba5638c5469e07a4d21b55a3128d56db5a0fdfacb1f3301c51\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fdb8302e06c5b4e1e91d204ed735d8d5db5bb3648200c144d7c545678010a44d\",\"dweb:/ipfs/QmTpffbt3FShkk8LDjsonVGnecbbNMUL8QHYQM7AFcMa54\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.17+commit.8df45f5f"
@@ -260,7 +260,7 @@
         ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
         ":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/",
         ":chainlink/=lib/juice-contracts-v2/lib/chainlink/",
-        ":ds-test/=lib/juice-contracts-v2/lib/ds-test/src/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
         ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
         ":forge-std/=lib/forge-std/src/",
         ":juice-contracts-v1/=lib/juice-contracts-v1/contracts/",
@@ -320,28 +320,28 @@
   },
   "ast": {
     "absolutePath": "lib/juice-contracts-v2/contracts/interfaces/IJBPayDelegate.sol",
-    "id": 28446,
+    "id": 27309,
     "exportedSymbols": {
       "IERC165": [
-        3267
+        30690
       ],
       "IJBPayDelegate": [
-        28445
+        27308
       ],
       "JBDidPayData": [
-        30476
+        27924
       ],
       "JBTokenAmount": [
-        30508
+        28170
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "32:1091:32",
+    "src": "32:1091:33",
     "nodes": [
       {
-        "id": 28432,
+        "id": 27295,
         "nodeType": "PragmaDirective",
-        "src": "32:23:32",
+        "src": "32:23:33",
         "nodes": [],
         "literals": [
           "solidity",
@@ -351,45 +351,45 @@
         ]
       },
       {
-        "id": 28433,
+        "id": 27296,
         "nodeType": "ImportDirective",
-        "src": "57:65:32",
+        "src": "57:65:33",
         "nodes": [],
         "absolutePath": "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
         "file": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 28446,
-        "sourceUnit": 3268,
+        "scope": 27309,
+        "sourceUnit": 30691,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 28434,
+        "id": 27297,
         "nodeType": "ImportDirective",
-        "src": "123:39:32",
+        "src": "123:39:33",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v2/contracts/structs/JBDidPayData.sol",
         "file": "./../structs/JBDidPayData.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 28446,
-        "sourceUnit": 30477,
+        "scope": 27309,
+        "sourceUnit": 27925,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 28445,
+        "id": 27308,
         "nodeType": "ContractDefinition",
-        "src": "377:745:32",
+        "src": "377:745:33",
         "nodes": [
           {
-            "id": 28444,
+            "id": 27307,
             "nodeType": "FunctionDefinition",
-            "src": "1066:54:32",
+            "src": "1066:54:33",
             "nodes": [],
             "documentation": {
-              "id": 28438,
+              "id": 27301,
               "nodeType": "StructuredDocumentation",
-              "src": "417:646:32",
+              "src": "417:646:33",
               "text": "@notice\nThis function is called by JBPaymentTerminal.pay(..), after the execution of its logic\n@dev\nCritical business logic should be protected by an appropriate access control\n@param _data the data passed by the terminal, as a JBDidPayData struct:\naddress payer;\nuint256 projectId;\nuint256 currentFundingCycleConfiguration;\nJBTokenAmount amount;\nuint256 projectTokenCount;\naddress beneficiary;\nbool preferClaimedTokens;\nstring memo;\nbytes metadata;"
             },
             "functionSelector": "304b1eea",
@@ -397,58 +397,58 @@
             "kind": "function",
             "modifiers": [],
             "name": "didPay",
-            "nameLocation": "1075:6:32",
+            "nameLocation": "1075:6:33",
             "parameters": {
-              "id": 28442,
+              "id": 27305,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 28441,
+                  "id": 27304,
                   "mutability": "mutable",
                   "name": "_data",
-                  "nameLocation": "1104:5:32",
+                  "nameLocation": "1104:5:33",
                   "nodeType": "VariableDeclaration",
-                  "scope": 28444,
-                  "src": "1082:27:32",
+                  "scope": 27307,
+                  "src": "1082:27:33",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_JBDidPayData_$30476_calldata_ptr",
+                    "typeIdentifier": "t_struct$_JBDidPayData_$27924_calldata_ptr",
                     "typeString": "struct JBDidPayData"
                   },
                   "typeName": {
-                    "id": 28440,
+                    "id": 27303,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 28439,
+                      "id": 27302,
                       "name": "JBDidPayData",
                       "nameLocations": [
-                        "1082:12:32"
+                        "1082:12:33"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 30476,
-                      "src": "1082:12:32"
+                      "referencedDeclaration": 27924,
+                      "src": "1082:12:33"
                     },
-                    "referencedDeclaration": 30476,
-                    "src": "1082:12:32",
+                    "referencedDeclaration": 27924,
+                    "src": "1082:12:33",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_JBDidPayData_$30476_storage_ptr",
+                      "typeIdentifier": "t_struct$_JBDidPayData_$27924_storage_ptr",
                       "typeString": "struct JBDidPayData"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1081:29:32"
+              "src": "1081:29:33"
             },
             "returnParameters": {
-              "id": 28443,
+              "id": 27306,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1119:0:32"
+              "src": "1119:0:33"
             },
-            "scope": 28445,
+            "scope": 27308,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -458,41 +458,41 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 28436,
+              "id": 27299,
               "name": "IERC165",
               "nameLocations": [
-                "405:7:32"
+                "405:7:33"
               ],
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3267,
-              "src": "405:7:32"
+              "referencedDeclaration": 30690,
+              "src": "405:7:33"
             },
-            "id": 28437,
+            "id": 27300,
             "nodeType": "InheritanceSpecifier",
-            "src": "405:7:32"
+            "src": "405:7:33"
           }
         ],
         "canonicalName": "IJBPayDelegate",
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 28435,
+          "id": 27298,
           "nodeType": "StructuredDocumentation",
-          "src": "164:212:32",
+          "src": "164:212:33",
           "text": "@title\nPay delegate\n@notice\nDelegate called after JBTerminal.pay(..) logic completion (if passed by the funding cycle datasource)\n@dev\nAdheres to:\nIERC165 for adequate interface integration"
         },
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          28445,
-          3267
+          27308,
+          30690
         ],
         "name": "IJBPayDelegate",
-        "nameLocation": "387:14:32",
-        "scope": 28446,
+        "nameLocation": "387:14:33",
+        "scope": 27309,
         "usedErrors": []
       }
     ],
     "license": "MIT"
   },
-  "id": 32
+  "id": 33
 }

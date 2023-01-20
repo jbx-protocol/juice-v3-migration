@@ -363,7 +363,7 @@
     "setTerminalsOf(uint256,address[])": "821b9fd8",
     "terminalsOf(uint256)": "d1754153"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"contract IJBPaymentTerminal\",\"name\":\"terminal\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"AddTerminal\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"controller\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetController\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bool\",\"name\":\"flag\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetIsAllowedToSetFirstController\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"contract IJBPaymentTerminal\",\"name\":\"terminal\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetPrimaryTerminal\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"contract IJBPaymentTerminal[]\",\"name\":\"terminals\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetTerminals\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"}],\"name\":\"controllerOf\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fundingCycleStore\",\"outputs\":[{\"internalType\":\"contract IJBFundingCycleStore\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"isAllowedToSetFirstController\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"contract IJBPaymentTerminal\",\"name\":\"_terminal\",\"type\":\"address\"}],\"name\":\"isTerminalOf\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"primaryTerminalOf\",\"outputs\":[{\"internalType\":\"contract IJBPaymentTerminal\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"projects\",\"outputs\":[{\"internalType\":\"contract IJBProjects\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_controller\",\"type\":\"address\"}],\"name\":\"setControllerOf\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_flag\",\"type\":\"bool\"}],\"name\":\"setIsAllowedToSetFirstController\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"},{\"internalType\":\"contract IJBPaymentTerminal\",\"name\":\"_terminal\",\"type\":\"address\"}],\"name\":\"setPrimaryTerminalOf\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"contract IJBPaymentTerminal[]\",\"name\":\"_terminals\",\"type\":\"address[]\"}],\"name\":\"setTerminalsOf\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"}],\"name\":\"terminalsOf\",\"outputs\":[{\"internalType\":\"contract IJBPaymentTerminal[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/juice-contracts-v3/contracts/interfaces/IJBDirectory.sol\":\"IJBDirectory\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":@chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":@jbx-protocol-v1/=lib/juice-contracts-v1/\",\":@jbx-protocol-v2/=lib/juice-contracts-v2/\",\":@jbx-protocol-v3/=lib/juice-contracts-v3/\",\":@juicebox/=lib/juice-contracts-v2/contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/\",\":chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":ds-test/=lib/juice-contracts-v2/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":juice-contracts-v1/=lib/juice-contracts-v1/contracts/\",\":juice-contracts-v2/=lib/juice-contracts-v2/contracts/\",\":juice-contracts-v3/=lib/juice-contracts-v3/contracts/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":openzeppelin-contracts/contracts/=lib/juice-contracts-v2/lib/openzeppelin-contracts/contracts/\",\":prb-math/=lib/juice-contracts-v2/lib/prb-math/\"]},\"sources\":{\"lib/juice-contracts-v3/contracts/enums/JBBallotState.sol\":{\"keccak256\":\"0x891fcac63470398b3a11239da7feba6b07d640809fcefd2404303b823d7378f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e6adfceaf284b669a8c1cbcf2da7f18ab31a2d1066f9db8bc914349e7401de7\",\"dweb:/ipfs/QmXLHVRPPZdXUkgAHQbHUtEzAvCJk1P6rJ7wrwfTcfW6fw\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBDirectory.sol\":{\"keccak256\":\"0x715321646db00514d1355ed43c40cd3f01e94959552fd07797b315d9c49cdb1d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c34c9e1c727ffc63dd42fb6e6ffb3116c8ba15d6a322a300f10f29478974768d\",\"dweb:/ipfs/QmYToaGrbMyyWAuyepYcDd8M6KcmosY8AWhT3uJmPM6Pvy\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBFundingCycleBallot.sol\":{\"keccak256\":\"0x49553a56209237846bc400cf27f260824a6bd06fd8094a7eb5abb9de75779598\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://559372746f94f28b385bc336df263f583dca5377350645c0b28110b083bdb41a\",\"dweb:/ipfs/QmeQRYqPjXBQCtMKXSFtHVD2ewEPoUAPDxLh4oWTRSKbmx\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBFundingCycleStore.sol\":{\"keccak256\":\"0xaead823851433be0c2ddc8f8086813e6cd647de3a1bc0f7570a5d6b38c378b5a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7f11fd52ba9ef67b40811d8a2298ae8b69447d2565b3f1069cbb8f0f13bc65e7\",\"dweb:/ipfs/QmVbBzpTxZWar9xvj6x1vW91hJDv2iPVq7aG6waMxaHUPQ\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBPaymentTerminal.sol\":{\"keccak256\":\"0xb7826f5ed609359ce322c09e83236c47ba385df1c3cad3607e56fd0a2e00eee2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cbb0de0e73f73a04fcfc8f08cab3588b6d608cf5268af737cff6a530f6062c95\",\"dweb:/ipfs/QmPGb8aEbZNHNnrCvuGH52RLvV3kjL3agxQiFrjHoLHaup\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBProjects.sol\":{\"keccak256\":\"0x7cfc021d0bd7e73b1ba8f4845d7d35e3419d6a14d3d25ca3a8010e7f91062fe4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ff265e13e60da56b93104260ed69ab01153437ec2af9d453781f22ca295eaef9\",\"dweb:/ipfs/QmfGCSLX2Wy26ojf4U12udsdtjSSacbLcZGwCjTw7MjWF8\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBTokenUriResolver.sol\":{\"keccak256\":\"0xd267fd8ca7c21c2c71794acdb9a98314c33a35fc559e0bf0897a6686d196d174\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://aa7053d4300ed1374f3f993e6e2163d0a05ee780e4e99eb007b55eabc93c724e\",\"dweb:/ipfs/QmYZAUn7VCwqpDWYZNCXLNYMRQpD334YgPRiGCfxQApzuT\"]},\"lib/juice-contracts-v3/contracts/structs/JBFundingCycle.sol\":{\"keccak256\":\"0xcdd3ac9b6fa67e62ada88d09b73bc35ade1cd77d43db712289266a788928b4c2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8ba0be407022bbeb0e9272884653209ee262b8a4e00ffbba1298c3b119feccba\",\"dweb:/ipfs/QmbtLQzSN3hut4jYVsYPiYDfRkDdGkZmTWBnV2wJKrdM3K\"]},\"lib/juice-contracts-v3/contracts/structs/JBFundingCycleData.sol\":{\"keccak256\":\"0x2aa6368bf4dfc5797e8b02a978293de0c777fae2658de2c825a103587240f3b0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2d7a980ab9b67ad1569d4407b747903cab668a332214117f5ad44feb50af0a3a\",\"dweb:/ipfs/QmSuEzmrmDSihrTKYCk8miq7VQi7WD6jmQePkjDyzt7UpC\"]},\"lib/juice-contracts-v3/contracts/structs/JBProjectMetadata.sol\":{\"keccak256\":\"0x90ad7b1014c0a9f945fe7a2efde9d5de41e40574fa27969070b1d2ff52033ea0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1fafc65a9fd74605b7d6c6f0a92b3237a8e3efdd160affb8c117bad00dcf9494\",\"dweb:/ipfs/QmQkcVt11WLqrxHVrcDCF6dNxzg2kKHEghAgSbfLF6CHkt\"]},\"lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0xab28a56179c1db258c9bf5235b382698cb650debecb51b23d12be9e241374b68\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://daae589a9d6fa7e55f99f86c0a16796ca490f243fb3693632c3711c0646c1d56\",\"dweb:/ipfs/QmR3zpd7wNw3rcUdekwiv6FYHJqksuTCXLVioTxu6Fbxk3\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"contract IJBPaymentTerminal\",\"name\":\"terminal\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"AddTerminal\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"controller\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetController\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bool\",\"name\":\"flag\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetIsAllowedToSetFirstController\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"contract IJBPaymentTerminal\",\"name\":\"terminal\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetPrimaryTerminal\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"contract IJBPaymentTerminal[]\",\"name\":\"terminals\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"SetTerminals\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"}],\"name\":\"controllerOf\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fundingCycleStore\",\"outputs\":[{\"internalType\":\"contract IJBFundingCycleStore\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"isAllowedToSetFirstController\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"contract IJBPaymentTerminal\",\"name\":\"_terminal\",\"type\":\"address\"}],\"name\":\"isTerminalOf\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"primaryTerminalOf\",\"outputs\":[{\"internalType\":\"contract IJBPaymentTerminal\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"projects\",\"outputs\":[{\"internalType\":\"contract IJBProjects\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_controller\",\"type\":\"address\"}],\"name\":\"setControllerOf\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_flag\",\"type\":\"bool\"}],\"name\":\"setIsAllowedToSetFirstController\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"},{\"internalType\":\"contract IJBPaymentTerminal\",\"name\":\"_terminal\",\"type\":\"address\"}],\"name\":\"setPrimaryTerminalOf\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"contract IJBPaymentTerminal[]\",\"name\":\"_terminals\",\"type\":\"address[]\"}],\"name\":\"setTerminalsOf\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"}],\"name\":\"terminalsOf\",\"outputs\":[{\"internalType\":\"contract IJBPaymentTerminal[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/juice-contracts-v3/contracts/interfaces/IJBDirectory.sol\":\"IJBDirectory\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":@chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":@jbx-protocol-v1/=lib/juice-contracts-v1/\",\":@jbx-protocol-v2/=lib/juice-contracts-v2/\",\":@jbx-protocol-v3/=lib/juice-contracts-v3/\",\":@juicebox/=lib/juice-contracts-v2/contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/\",\":chainlink/=lib/juice-contracts-v2/lib/chainlink/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":juice-contracts-v1/=lib/juice-contracts-v1/contracts/\",\":juice-contracts-v2/=lib/juice-contracts-v2/contracts/\",\":juice-contracts-v3/=lib/juice-contracts-v3/contracts/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":openzeppelin-contracts/contracts/=lib/juice-contracts-v2/lib/openzeppelin-contracts/contracts/\",\":prb-math/=lib/juice-contracts-v2/lib/prb-math/\"]},\"sources\":{\"lib/juice-contracts-v3/contracts/enums/JBBallotState.sol\":{\"keccak256\":\"0x891fcac63470398b3a11239da7feba6b07d640809fcefd2404303b823d7378f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e6adfceaf284b669a8c1cbcf2da7f18ab31a2d1066f9db8bc914349e7401de7\",\"dweb:/ipfs/QmXLHVRPPZdXUkgAHQbHUtEzAvCJk1P6rJ7wrwfTcfW6fw\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBDirectory.sol\":{\"keccak256\":\"0x715321646db00514d1355ed43c40cd3f01e94959552fd07797b315d9c49cdb1d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c34c9e1c727ffc63dd42fb6e6ffb3116c8ba15d6a322a300f10f29478974768d\",\"dweb:/ipfs/QmYToaGrbMyyWAuyepYcDd8M6KcmosY8AWhT3uJmPM6Pvy\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBFundingCycleBallot.sol\":{\"keccak256\":\"0x49553a56209237846bc400cf27f260824a6bd06fd8094a7eb5abb9de75779598\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://559372746f94f28b385bc336df263f583dca5377350645c0b28110b083bdb41a\",\"dweb:/ipfs/QmeQRYqPjXBQCtMKXSFtHVD2ewEPoUAPDxLh4oWTRSKbmx\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBFundingCycleStore.sol\":{\"keccak256\":\"0xaead823851433be0c2ddc8f8086813e6cd647de3a1bc0f7570a5d6b38c378b5a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7f11fd52ba9ef67b40811d8a2298ae8b69447d2565b3f1069cbb8f0f13bc65e7\",\"dweb:/ipfs/QmVbBzpTxZWar9xvj6x1vW91hJDv2iPVq7aG6waMxaHUPQ\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBPaymentTerminal.sol\":{\"keccak256\":\"0xb7826f5ed609359ce322c09e83236c47ba385df1c3cad3607e56fd0a2e00eee2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cbb0de0e73f73a04fcfc8f08cab3588b6d608cf5268af737cff6a530f6062c95\",\"dweb:/ipfs/QmPGb8aEbZNHNnrCvuGH52RLvV3kjL3agxQiFrjHoLHaup\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBProjects.sol\":{\"keccak256\":\"0x7cfc021d0bd7e73b1ba8f4845d7d35e3419d6a14d3d25ca3a8010e7f91062fe4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ff265e13e60da56b93104260ed69ab01153437ec2af9d453781f22ca295eaef9\",\"dweb:/ipfs/QmfGCSLX2Wy26ojf4U12udsdtjSSacbLcZGwCjTw7MjWF8\"]},\"lib/juice-contracts-v3/contracts/interfaces/IJBTokenUriResolver.sol\":{\"keccak256\":\"0xd267fd8ca7c21c2c71794acdb9a98314c33a35fc559e0bf0897a6686d196d174\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://aa7053d4300ed1374f3f993e6e2163d0a05ee780e4e99eb007b55eabc93c724e\",\"dweb:/ipfs/QmYZAUn7VCwqpDWYZNCXLNYMRQpD334YgPRiGCfxQApzuT\"]},\"lib/juice-contracts-v3/contracts/structs/JBFundingCycle.sol\":{\"keccak256\":\"0xcdd3ac9b6fa67e62ada88d09b73bc35ade1cd77d43db712289266a788928b4c2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8ba0be407022bbeb0e9272884653209ee262b8a4e00ffbba1298c3b119feccba\",\"dweb:/ipfs/QmbtLQzSN3hut4jYVsYPiYDfRkDdGkZmTWBnV2wJKrdM3K\"]},\"lib/juice-contracts-v3/contracts/structs/JBFundingCycleData.sol\":{\"keccak256\":\"0x2aa6368bf4dfc5797e8b02a978293de0c777fae2658de2c825a103587240f3b0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2d7a980ab9b67ad1569d4407b747903cab668a332214117f5ad44feb50af0a3a\",\"dweb:/ipfs/QmSuEzmrmDSihrTKYCk8miq7VQi7WD6jmQePkjDyzt7UpC\"]},\"lib/juice-contracts-v3/contracts/structs/JBProjectMetadata.sol\":{\"keccak256\":\"0x90ad7b1014c0a9f945fe7a2efde9d5de41e40574fa27969070b1d2ff52033ea0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1fafc65a9fd74605b7d6c6f0a92b3237a8e3efdd160affb8c117bad00dcf9494\",\"dweb:/ipfs/QmQkcVt11WLqrxHVrcDCF6dNxzg2kKHEghAgSbfLF6CHkt\"]},\"lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0xab28a56179c1db258c9bf5235b382698cb650debecb51b23d12be9e241374b68\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://daae589a9d6fa7e55f99f86c0a16796ca490f243fb3693632c3711c0646c1d56\",\"dweb:/ipfs/QmR3zpd7wNw3rcUdekwiv6FYHJqksuTCXLVioTxu6Fbxk3\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.6+commit.11564f7e"
@@ -728,7 +728,7 @@
         ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
         ":@paulrberg/contracts/math/=lib/juice-contracts-v2/lib/prb-math/contracts/",
         ":chainlink/=lib/juice-contracts-v2/lib/chainlink/",
-        ":ds-test/=lib/juice-contracts-v2/lib/ds-test/src/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
         ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
         ":forge-std/=lib/forge-std/src/",
         ":juice-contracts-v1/=lib/juice-contracts-v1/contracts/",
@@ -852,52 +852,52 @@
   },
   "ast": {
     "absolutePath": "lib/juice-contracts-v3/contracts/interfaces/IJBDirectory.sol",
-    "id": 53880,
+    "id": 26858,
     "exportedSymbols": {
       "IERC165": [
-        59507
+        38868
       ],
       "IERC721": [
-        56883
+        37612
       ],
       "IJBDirectory": [
-        53879
+        26857
       ],
       "IJBFundingCycleBallot": [
-        53903
+        62921
       ],
       "IJBFundingCycleStore": [
-        53999
+        38777
       ],
       "IJBPaymentTerminal": [
-        54069
+        26927
       ],
       "IJBProjects": [
-        54148
+        38856
       ],
       "IJBTokenUriResolver": [
-        54158
+        62493
       ],
       "JBBallotState": [
-        53739
+        62447
       ],
       "JBFundingCycle": [
-        54191
+        62470
       ],
       "JBFundingCycleData": [
-        54204
+        62483
       ],
       "JBProjectMetadata": [
-        54211
+        62500
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "32:1729:127",
+    "src": "32:1729:130",
     "nodes": [
       {
-        "id": 53741,
+        "id": 26719,
         "nodeType": "PragmaDirective",
-        "src": "32:23:127",
+        "src": "32:23:130",
         "nodes": [],
         "literals": [
           "solidity",
@@ -907,71 +907,71 @@
         ]
       },
       {
-        "id": 53742,
+        "id": 26720,
         "nodeType": "ImportDirective",
-        "src": "57:36:127",
+        "src": "57:36:130",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v3/contracts/interfaces/IJBFundingCycleStore.sol",
         "file": "./IJBFundingCycleStore.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 53880,
-        "sourceUnit": 54000,
+        "scope": 26858,
+        "sourceUnit": 38778,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 53743,
+        "id": 26721,
         "nodeType": "ImportDirective",
-        "src": "94:34:127",
+        "src": "94:34:130",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v3/contracts/interfaces/IJBPaymentTerminal.sol",
         "file": "./IJBPaymentTerminal.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 53880,
-        "sourceUnit": 54070,
+        "scope": 26858,
+        "sourceUnit": 26928,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 53744,
+        "id": 26722,
         "nodeType": "ImportDirective",
-        "src": "129:27:127",
+        "src": "129:27:130",
         "nodes": [],
         "absolutePath": "lib/juice-contracts-v3/contracts/interfaces/IJBProjects.sol",
         "file": "./IJBProjects.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 53880,
-        "sourceUnit": 54149,
+        "scope": 26858,
+        "sourceUnit": 38857,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 53879,
+        "id": 26857,
         "nodeType": "ContractDefinition",
-        "src": "158:1602:127",
+        "src": "158:1602:130",
         "nodes": [
           {
-            "id": 53752,
+            "id": 26730,
             "nodeType": "EventDefinition",
-            "src": "185:91:127",
+            "src": "185:91:130",
             "nodes": [],
             "anonymous": false,
             "name": "SetController",
-            "nameLocation": "191:13:127",
+            "nameLocation": "191:13:130",
             "parameters": {
-              "id": 53751,
+              "id": 26729,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53746,
+                  "id": 26724,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "projectId",
-                  "nameLocation": "221:9:127",
+                  "nameLocation": "221:9:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53752,
-                  "src": "205:25:127",
+                  "scope": 26730,
+                  "src": "205:25:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -979,10 +979,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53745,
+                    "id": 26723,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "205:7:127",
+                    "src": "205:7:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -992,14 +992,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 53748,
+                  "id": 26726,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "controller",
-                  "nameLocation": "248:10:127",
+                  "nameLocation": "248:10:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53752,
-                  "src": "232:26:127",
+                  "scope": 26730,
+                  "src": "232:26:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1007,10 +1007,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53747,
+                    "id": 26725,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "232:7:127",
+                    "src": "232:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1021,14 +1021,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 53750,
+                  "id": 26728,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "caller",
-                  "nameLocation": "268:6:127",
+                  "nameLocation": "268:6:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53752,
-                  "src": "260:14:127",
+                  "scope": 26730,
+                  "src": "260:14:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1036,10 +1036,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53749,
+                    "id": 26727,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "260:7:127",
+                    "src": "260:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1049,31 +1049,31 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "204:71:127"
+              "src": "204:71:130"
             }
           },
           {
-            "id": 53761,
+            "id": 26739,
             "nodeType": "EventDefinition",
-            "src": "280:98:127",
+            "src": "280:98:130",
             "nodes": [],
             "anonymous": false,
             "name": "AddTerminal",
-            "nameLocation": "286:11:127",
+            "nameLocation": "286:11:130",
             "parameters": {
-              "id": 53760,
+              "id": 26738,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53754,
+                  "id": 26732,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "projectId",
-                  "nameLocation": "314:9:127",
+                  "nameLocation": "314:9:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53761,
-                  "src": "298:25:127",
+                  "scope": 26739,
+                  "src": "298:25:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1081,10 +1081,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53753,
+                    "id": 26731,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "298:7:127",
+                    "src": "298:7:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1094,34 +1094,34 @@
                 },
                 {
                   "constant": false,
-                  "id": 53757,
+                  "id": 26735,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "terminal",
-                  "nameLocation": "352:8:127",
+                  "nameLocation": "352:8:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53761,
-                  "src": "325:35:127",
+                  "scope": 26739,
+                  "src": "325:35:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                    "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                     "typeString": "contract IJBPaymentTerminal"
                   },
                   "typeName": {
-                    "id": 53756,
+                    "id": 26734,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 53755,
+                      "id": 26733,
                       "name": "IJBPaymentTerminal",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 54069,
-                      "src": "325:18:127"
+                      "referencedDeclaration": 26927,
+                      "src": "325:18:130"
                     },
-                    "referencedDeclaration": 54069,
-                    "src": "325:18:127",
+                    "referencedDeclaration": 26927,
+                    "src": "325:18:130",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                      "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                       "typeString": "contract IJBPaymentTerminal"
                     }
                   },
@@ -1129,14 +1129,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 53759,
+                  "id": 26737,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "caller",
-                  "nameLocation": "370:6:127",
+                  "nameLocation": "370:6:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53761,
-                  "src": "362:14:127",
+                  "scope": 26739,
+                  "src": "362:14:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1144,10 +1144,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53758,
+                    "id": 26736,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "362:7:127",
+                    "src": "362:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1157,31 +1157,31 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "297:80:127"
+              "src": "297:80:130"
             }
           },
           {
-            "id": 53771,
+            "id": 26749,
             "nodeType": "EventDefinition",
-            "src": "382:94:127",
+            "src": "382:94:130",
             "nodes": [],
             "anonymous": false,
             "name": "SetTerminals",
-            "nameLocation": "388:12:127",
+            "nameLocation": "388:12:130",
             "parameters": {
-              "id": 53770,
+              "id": 26748,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53763,
+                  "id": 26741,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "projectId",
-                  "nameLocation": "417:9:127",
+                  "nameLocation": "417:9:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53771,
-                  "src": "401:25:127",
+                  "scope": 26749,
+                  "src": "401:25:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1189,10 +1189,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53762,
+                    "id": 26740,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "401:7:127",
+                    "src": "401:7:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1202,43 +1202,43 @@
                 },
                 {
                   "constant": false,
-                  "id": 53767,
+                  "id": 26745,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "terminals",
-                  "nameLocation": "449:9:127",
+                  "nameLocation": "449:9:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53771,
-                  "src": "428:30:127",
+                  "scope": 26749,
+                  "src": "428:30:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$54069_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$26927_$dyn_memory_ptr",
                     "typeString": "contract IJBPaymentTerminal[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 53765,
+                      "id": 26743,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 53764,
+                        "id": 26742,
                         "name": "IJBPaymentTerminal",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 54069,
-                        "src": "428:18:127"
+                        "referencedDeclaration": 26927,
+                        "src": "428:18:130"
                       },
-                      "referencedDeclaration": 54069,
-                      "src": "428:18:127",
+                      "referencedDeclaration": 26927,
+                      "src": "428:18:130",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                        "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                         "typeString": "contract IJBPaymentTerminal"
                       }
                     },
-                    "id": 53766,
+                    "id": 26744,
                     "nodeType": "ArrayTypeName",
-                    "src": "428:20:127",
+                    "src": "428:20:130",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$54069_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$26927_$dyn_storage_ptr",
                       "typeString": "contract IJBPaymentTerminal[]"
                     }
                   },
@@ -1246,14 +1246,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 53769,
+                  "id": 26747,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "caller",
-                  "nameLocation": "468:6:127",
+                  "nameLocation": "468:6:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53771,
-                  "src": "460:14:127",
+                  "scope": 26749,
+                  "src": "460:14:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1261,10 +1261,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53768,
+                    "id": 26746,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "460:7:127",
+                    "src": "460:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1274,31 +1274,31 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "400:75:127"
+              "src": "400:75:130"
             }
           },
           {
-            "id": 53782,
+            "id": 26760,
             "nodeType": "EventDefinition",
-            "src": "480:148:127",
+            "src": "480:148:130",
             "nodes": [],
             "anonymous": false,
             "name": "SetPrimaryTerminal",
-            "nameLocation": "486:18:127",
+            "nameLocation": "486:18:130",
             "parameters": {
-              "id": 53781,
+              "id": 26759,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53773,
+                  "id": 26751,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "projectId",
-                  "nameLocation": "526:9:127",
+                  "nameLocation": "526:9:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53782,
-                  "src": "510:25:127",
+                  "scope": 26760,
+                  "src": "510:25:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1306,10 +1306,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53772,
+                    "id": 26750,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "510:7:127",
+                    "src": "510:7:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1319,14 +1319,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 53775,
+                  "id": 26753,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "token",
-                  "nameLocation": "557:5:127",
+                  "nameLocation": "557:5:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53782,
-                  "src": "541:21:127",
+                  "scope": 26760,
+                  "src": "541:21:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1334,10 +1334,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53774,
+                    "id": 26752,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "541:7:127",
+                    "src": "541:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1348,34 +1348,34 @@
                 },
                 {
                   "constant": false,
-                  "id": 53778,
+                  "id": 26756,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "terminal",
-                  "nameLocation": "595:8:127",
+                  "nameLocation": "595:8:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53782,
-                  "src": "568:35:127",
+                  "scope": 26760,
+                  "src": "568:35:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                    "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                     "typeString": "contract IJBPaymentTerminal"
                   },
                   "typeName": {
-                    "id": 53777,
+                    "id": 26755,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 53776,
+                      "id": 26754,
                       "name": "IJBPaymentTerminal",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 54069,
-                      "src": "568:18:127"
+                      "referencedDeclaration": 26927,
+                      "src": "568:18:130"
                     },
-                    "referencedDeclaration": 54069,
-                    "src": "568:18:127",
+                    "referencedDeclaration": 26927,
+                    "src": "568:18:130",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                      "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                       "typeString": "contract IJBPaymentTerminal"
                     }
                   },
@@ -1383,14 +1383,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 53780,
+                  "id": 26758,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "caller",
-                  "nameLocation": "617:6:127",
+                  "nameLocation": "617:6:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53782,
-                  "src": "609:14:127",
+                  "scope": 26760,
+                  "src": "609:14:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1398,10 +1398,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53779,
+                    "id": 26757,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "609:7:127",
+                    "src": "609:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1411,31 +1411,31 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "504:123:127"
+              "src": "504:123:130"
             }
           },
           {
-            "id": 53790,
+            "id": 26768,
             "nodeType": "EventDefinition",
-            "src": "632:96:127",
+            "src": "632:96:130",
             "nodes": [],
             "anonymous": false,
             "name": "SetIsAllowedToSetFirstController",
-            "nameLocation": "638:32:127",
+            "nameLocation": "638:32:130",
             "parameters": {
-              "id": 53789,
+              "id": 26767,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53784,
+                  "id": 26762,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "addr",
-                  "nameLocation": "687:4:127",
+                  "nameLocation": "687:4:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53790,
-                  "src": "671:20:127",
+                  "scope": 26768,
+                  "src": "671:20:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1443,10 +1443,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53783,
+                    "id": 26761,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "671:7:127",
+                    "src": "671:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1457,14 +1457,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 53786,
+                  "id": 26764,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "flag",
-                  "nameLocation": "706:4:127",
+                  "nameLocation": "706:4:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53790,
-                  "src": "693:17:127",
+                  "scope": 26768,
+                  "src": "693:17:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1472,10 +1472,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 53785,
+                    "id": 26763,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "693:4:127",
+                    "src": "693:4:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1485,14 +1485,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 53788,
+                  "id": 26766,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "caller",
-                  "nameLocation": "720:6:127",
+                  "nameLocation": "720:6:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53790,
-                  "src": "712:14:127",
+                  "scope": 26768,
+                  "src": "712:14:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1500,10 +1500,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53787,
+                    "id": 26765,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "712:7:127",
+                    "src": "712:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1513,159 +1513,159 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "670:57:127"
+              "src": "670:57:130"
             }
           },
           {
-            "id": 53796,
+            "id": 26774,
             "nodeType": "FunctionDefinition",
-            "src": "732:56:127",
+            "src": "732:56:130",
             "nodes": [],
             "functionSelector": "8b79543c",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "projects",
-            "nameLocation": "741:8:127",
+            "nameLocation": "741:8:130",
             "parameters": {
-              "id": 53791,
+              "id": 26769,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "749:2:127"
+              "src": "749:2:130"
             },
             "returnParameters": {
-              "id": 53795,
+              "id": 26773,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53794,
+                  "id": 26772,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53796,
-                  "src": "775:11:127",
+                  "scope": 26774,
+                  "src": "775:11:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IJBProjects_$54148",
+                    "typeIdentifier": "t_contract$_IJBProjects_$38856",
                     "typeString": "contract IJBProjects"
                   },
                   "typeName": {
-                    "id": 53793,
+                    "id": 26771,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 53792,
+                      "id": 26770,
                       "name": "IJBProjects",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 54148,
-                      "src": "775:11:127"
+                      "referencedDeclaration": 38856,
+                      "src": "775:11:130"
                     },
-                    "referencedDeclaration": 54148,
-                    "src": "775:11:127",
+                    "referencedDeclaration": 38856,
+                    "src": "775:11:130",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IJBProjects_$54148",
+                      "typeIdentifier": "t_contract$_IJBProjects_$38856",
                       "typeString": "contract IJBProjects"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "774:13:127"
+              "src": "774:13:130"
             },
-            "scope": 53879,
+            "scope": 26857,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 53802,
+            "id": 26780,
             "nodeType": "FunctionDefinition",
-            "src": "792:74:127",
+            "src": "792:74:130",
             "nodes": [],
             "functionSelector": "557e7155",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "fundingCycleStore",
-            "nameLocation": "801:17:127",
+            "nameLocation": "801:17:130",
             "parameters": {
-              "id": 53797,
+              "id": 26775,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "818:2:127"
+              "src": "818:2:130"
             },
             "returnParameters": {
-              "id": 53801,
+              "id": 26779,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53800,
+                  "id": 26778,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53802,
-                  "src": "844:20:127",
+                  "scope": 26780,
+                  "src": "844:20:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IJBFundingCycleStore_$53999",
+                    "typeIdentifier": "t_contract$_IJBFundingCycleStore_$38777",
                     "typeString": "contract IJBFundingCycleStore"
                   },
                   "typeName": {
-                    "id": 53799,
+                    "id": 26777,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 53798,
+                      "id": 26776,
                       "name": "IJBFundingCycleStore",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 53999,
-                      "src": "844:20:127"
+                      "referencedDeclaration": 38777,
+                      "src": "844:20:130"
                     },
-                    "referencedDeclaration": 53999,
-                    "src": "844:20:127",
+                    "referencedDeclaration": 38777,
+                    "src": "844:20:130",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IJBFundingCycleStore_$53999",
+                      "typeIdentifier": "t_contract$_IJBFundingCycleStore_$38777",
                       "typeString": "contract IJBFundingCycleStore"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "843:22:127"
+              "src": "843:22:130"
             },
-            "scope": 53879,
+            "scope": 26857,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 53809,
+            "id": 26787,
             "nodeType": "FunctionDefinition",
-            "src": "870:74:127",
+            "src": "870:74:130",
             "nodes": [],
             "functionSelector": "5dd8f6aa",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "controllerOf",
-            "nameLocation": "879:12:127",
+            "nameLocation": "879:12:130",
             "parameters": {
-              "id": 53805,
+              "id": 26783,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53804,
+                  "id": 26782,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "900:10:127",
+                  "nameLocation": "900:10:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53809,
-                  "src": "892:18:127",
+                  "scope": 26787,
+                  "src": "892:18:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1673,10 +1673,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53803,
+                    "id": 26781,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "892:7:127",
+                    "src": "892:7:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1685,21 +1685,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "891:20:127"
+              "src": "891:20:130"
             },
             "returnParameters": {
-              "id": 53808,
+              "id": 26786,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53807,
+                  "id": 26785,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53809,
-                  "src": "935:7:127",
+                  "scope": 26787,
+                  "src": "935:7:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1707,10 +1707,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53806,
+                    "id": 26784,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "935:7:127",
+                    "src": "935:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1720,37 +1720,37 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "934:9:127"
+              "src": "934:9:130"
             },
-            "scope": 53879,
+            "scope": 26857,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 53816,
+            "id": 26794,
             "nodeType": "FunctionDefinition",
-            "src": "948:86:127",
+            "src": "948:86:130",
             "nodes": [],
             "functionSelector": "c5664e21",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isAllowedToSetFirstController",
-            "nameLocation": "957:29:127",
+            "nameLocation": "957:29:130",
             "parameters": {
-              "id": 53812,
+              "id": 26790,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53811,
+                  "id": 26789,
                   "mutability": "mutable",
                   "name": "_address",
-                  "nameLocation": "995:8:127",
+                  "nameLocation": "995:8:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53816,
-                  "src": "987:16:127",
+                  "scope": 26794,
+                  "src": "987:16:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1758,10 +1758,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53810,
+                    "id": 26788,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "987:7:127",
+                    "src": "987:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1771,21 +1771,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "986:18:127"
+              "src": "986:18:130"
             },
             "returnParameters": {
-              "id": 53815,
+              "id": 26793,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53814,
+                  "id": 26792,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53816,
-                  "src": "1028:4:127",
+                  "scope": 26794,
+                  "src": "1028:4:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1793,10 +1793,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 53813,
+                    "id": 26791,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1028:4:127",
+                    "src": "1028:4:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1805,37 +1805,37 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1027:6:127"
+              "src": "1027:6:130"
             },
-            "scope": 53879,
+            "scope": 26857,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 53825,
+            "id": 26803,
             "nodeType": "FunctionDefinition",
-            "src": "1038:93:127",
+            "src": "1038:93:130",
             "nodes": [],
             "functionSelector": "d1754153",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "terminalsOf",
-            "nameLocation": "1047:11:127",
+            "nameLocation": "1047:11:130",
             "parameters": {
-              "id": 53819,
+              "id": 26797,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53818,
+                  "id": 26796,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "1067:10:127",
+                  "nameLocation": "1067:10:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53825,
-                  "src": "1059:18:127",
+                  "scope": 26803,
+                  "src": "1059:18:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1843,10 +1843,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53817,
+                    "id": 26795,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1059:7:127",
+                    "src": "1059:7:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1855,87 +1855,87 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1058:20:127"
+              "src": "1058:20:130"
             },
             "returnParameters": {
-              "id": 53824,
+              "id": 26802,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53823,
+                  "id": 26801,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53825,
-                  "src": "1102:27:127",
+                  "scope": 26803,
+                  "src": "1102:27:130",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$54069_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$26927_$dyn_memory_ptr",
                     "typeString": "contract IJBPaymentTerminal[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 53821,
+                      "id": 26799,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 53820,
+                        "id": 26798,
                         "name": "IJBPaymentTerminal",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 54069,
-                        "src": "1102:18:127"
+                        "referencedDeclaration": 26927,
+                        "src": "1102:18:130"
                       },
-                      "referencedDeclaration": 54069,
-                      "src": "1102:18:127",
+                      "referencedDeclaration": 26927,
+                      "src": "1102:18:130",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                        "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                         "typeString": "contract IJBPaymentTerminal"
                       }
                     },
-                    "id": 53822,
+                    "id": 26800,
                     "nodeType": "ArrayTypeName",
-                    "src": "1102:20:127",
+                    "src": "1102:20:130",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$54069_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$26927_$dyn_storage_ptr",
                       "typeString": "contract IJBPaymentTerminal[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1101:29:127"
+              "src": "1101:29:130"
             },
-            "scope": 53879,
+            "scope": 26857,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 53835,
+            "id": 26813,
             "nodeType": "FunctionDefinition",
-            "src": "1135:113:127",
+            "src": "1135:113:130",
             "nodes": [],
             "functionSelector": "6e49181f",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isTerminalOf",
-            "nameLocation": "1144:12:127",
+            "nameLocation": "1144:12:130",
             "parameters": {
-              "id": 53831,
+              "id": 26809,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53827,
+                  "id": 26805,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "1165:10:127",
+                  "nameLocation": "1165:10:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53835,
-                  "src": "1157:18:127",
+                  "scope": 26813,
+                  "src": "1157:18:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1943,10 +1943,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53826,
+                    "id": 26804,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1157:7:127",
+                    "src": "1157:7:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1956,54 +1956,54 @@
                 },
                 {
                   "constant": false,
-                  "id": 53830,
+                  "id": 26808,
                   "mutability": "mutable",
                   "name": "_terminal",
-                  "nameLocation": "1196:9:127",
+                  "nameLocation": "1196:9:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53835,
-                  "src": "1177:28:127",
+                  "scope": 26813,
+                  "src": "1177:28:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                    "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                     "typeString": "contract IJBPaymentTerminal"
                   },
                   "typeName": {
-                    "id": 53829,
+                    "id": 26807,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 53828,
+                      "id": 26806,
                       "name": "IJBPaymentTerminal",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 54069,
-                      "src": "1177:18:127"
+                      "referencedDeclaration": 26927,
+                      "src": "1177:18:130"
                     },
-                    "referencedDeclaration": 54069,
-                    "src": "1177:18:127",
+                    "referencedDeclaration": 26927,
+                    "src": "1177:18:130",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                      "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                       "typeString": "contract IJBPaymentTerminal"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1156:50:127"
+              "src": "1156:50:130"
             },
             "returnParameters": {
-              "id": 53834,
+              "id": 26812,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53833,
+                  "id": 26811,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53835,
-                  "src": "1242:4:127",
+                  "scope": 26813,
+                  "src": "1242:4:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2011,10 +2011,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 53832,
+                    "id": 26810,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1242:4:127",
+                    "src": "1242:4:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2023,37 +2023,37 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1241:6:127"
+              "src": "1241:6:130"
             },
-            "scope": 53879,
+            "scope": 26857,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 53845,
+            "id": 26823,
             "nodeType": "FunctionDefinition",
-            "src": "1252:118:127",
+            "src": "1252:118:130",
             "nodes": [],
             "functionSelector": "86202650",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "primaryTerminalOf",
-            "nameLocation": "1261:17:127",
+            "nameLocation": "1261:17:130",
             "parameters": {
-              "id": 53840,
+              "id": 26818,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53837,
+                  "id": 26815,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "1287:10:127",
+                  "nameLocation": "1287:10:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53845,
-                  "src": "1279:18:127",
+                  "scope": 26823,
+                  "src": "1279:18:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2061,10 +2061,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53836,
+                    "id": 26814,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1279:7:127",
+                    "src": "1279:7:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2074,13 +2074,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 53839,
+                  "id": 26817,
                   "mutability": "mutable",
                   "name": "_token",
-                  "nameLocation": "1307:6:127",
+                  "nameLocation": "1307:6:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53845,
-                  "src": "1299:14:127",
+                  "scope": 26823,
+                  "src": "1299:14:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2088,10 +2088,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53838,
+                    "id": 26816,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1299:7:127",
+                    "src": "1299:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2101,78 +2101,78 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1278:36:127"
+              "src": "1278:36:130"
             },
             "returnParameters": {
-              "id": 53844,
+              "id": 26822,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53843,
+                  "id": 26821,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53845,
-                  "src": "1350:18:127",
+                  "scope": 26823,
+                  "src": "1350:18:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                    "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                     "typeString": "contract IJBPaymentTerminal"
                   },
                   "typeName": {
-                    "id": 53842,
+                    "id": 26820,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 53841,
+                      "id": 26819,
                       "name": "IJBPaymentTerminal",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 54069,
-                      "src": "1350:18:127"
+                      "referencedDeclaration": 26927,
+                      "src": "1350:18:130"
                     },
-                    "referencedDeclaration": 54069,
-                    "src": "1350:18:127",
+                    "referencedDeclaration": 26927,
+                    "src": "1350:18:130",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                      "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                       "typeString": "contract IJBPaymentTerminal"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1349:20:127"
+              "src": "1349:20:130"
             },
-            "scope": 53879,
+            "scope": 26857,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 53852,
+            "id": 26830,
             "nodeType": "FunctionDefinition",
-            "src": "1374:75:127",
+            "src": "1374:75:130",
             "nodes": [],
             "functionSelector": "714e7f32",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setControllerOf",
-            "nameLocation": "1383:15:127",
+            "nameLocation": "1383:15:130",
             "parameters": {
-              "id": 53850,
+              "id": 26828,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53847,
+                  "id": 26825,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "1407:10:127",
+                  "nameLocation": "1407:10:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53852,
-                  "src": "1399:18:127",
+                  "scope": 26830,
+                  "src": "1399:18:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2180,10 +2180,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53846,
+                    "id": 26824,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1399:7:127",
+                    "src": "1399:7:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2193,13 +2193,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 53849,
+                  "id": 26827,
                   "mutability": "mutable",
                   "name": "_controller",
-                  "nameLocation": "1427:11:127",
+                  "nameLocation": "1427:11:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53852,
-                  "src": "1419:19:127",
+                  "scope": 26830,
+                  "src": "1419:19:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2207,10 +2207,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53848,
+                    "id": 26826,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1419:7:127",
+                    "src": "1419:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2220,43 +2220,43 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1398:41:127"
+              "src": "1398:41:130"
             },
             "returnParameters": {
-              "id": 53851,
+              "id": 26829,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1448:0:127"
+              "src": "1448:0:130"
             },
-            "scope": 53879,
+            "scope": 26857,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 53861,
+            "id": 26839,
             "nodeType": "FunctionDefinition",
-            "src": "1453:95:127",
+            "src": "1453:95:130",
             "nodes": [],
             "functionSelector": "821b9fd8",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setTerminalsOf",
-            "nameLocation": "1462:14:127",
+            "nameLocation": "1462:14:130",
             "parameters": {
-              "id": 53859,
+              "id": 26837,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53854,
+                  "id": 26832,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "1485:10:127",
+                  "nameLocation": "1485:10:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53861,
-                  "src": "1477:18:127",
+                  "scope": 26839,
+                  "src": "1477:18:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2264,10 +2264,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53853,
+                    "id": 26831,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1477:7:127",
+                    "src": "1477:7:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2277,85 +2277,85 @@
                 },
                 {
                   "constant": false,
-                  "id": 53858,
+                  "id": 26836,
                   "mutability": "mutable",
                   "name": "_terminals",
-                  "nameLocation": "1527:10:127",
+                  "nameLocation": "1527:10:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53861,
-                  "src": "1497:40:127",
+                  "scope": 26839,
+                  "src": "1497:40:130",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$54069_$dyn_calldata_ptr",
+                    "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$26927_$dyn_calldata_ptr",
                     "typeString": "contract IJBPaymentTerminal[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 53856,
+                      "id": 26834,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 53855,
+                        "id": 26833,
                         "name": "IJBPaymentTerminal",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 54069,
-                        "src": "1497:18:127"
+                        "referencedDeclaration": 26927,
+                        "src": "1497:18:130"
                       },
-                      "referencedDeclaration": 54069,
-                      "src": "1497:18:127",
+                      "referencedDeclaration": 26927,
+                      "src": "1497:18:130",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                        "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                         "typeString": "contract IJBPaymentTerminal"
                       }
                     },
-                    "id": 53857,
+                    "id": 26835,
                     "nodeType": "ArrayTypeName",
-                    "src": "1497:20:127",
+                    "src": "1497:20:130",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$54069_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_contract$_IJBPaymentTerminal_$26927_$dyn_storage_ptr",
                       "typeString": "contract IJBPaymentTerminal[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1476:62:127"
+              "src": "1476:62:130"
             },
             "returnParameters": {
-              "id": 53860,
+              "id": 26838,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1547:0:127"
+              "src": "1547:0:130"
             },
-            "scope": 53879,
+            "scope": 26857,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 53871,
+            "id": 26849,
             "nodeType": "FunctionDefinition",
-            "src": "1552:121:127",
+            "src": "1552:121:130",
             "nodes": [],
             "functionSelector": "63d0850a",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setPrimaryTerminalOf",
-            "nameLocation": "1561:20:127",
+            "nameLocation": "1561:20:130",
             "parameters": {
-              "id": 53869,
+              "id": 26847,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53863,
+                  "id": 26841,
                   "mutability": "mutable",
                   "name": "_projectId",
-                  "nameLocation": "1595:10:127",
+                  "nameLocation": "1595:10:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53871,
-                  "src": "1587:18:127",
+                  "scope": 26849,
+                  "src": "1587:18:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2363,10 +2363,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53862,
+                    "id": 26840,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1587:7:127",
+                    "src": "1587:7:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2376,13 +2376,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 53865,
+                  "id": 26843,
                   "mutability": "mutable",
                   "name": "_token",
-                  "nameLocation": "1619:6:127",
+                  "nameLocation": "1619:6:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53871,
-                  "src": "1611:14:127",
+                  "scope": 26849,
+                  "src": "1611:14:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2390,10 +2390,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53864,
+                    "id": 26842,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1611:7:127",
+                    "src": "1611:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2404,76 +2404,76 @@
                 },
                 {
                   "constant": false,
-                  "id": 53868,
+                  "id": 26846,
                   "mutability": "mutable",
                   "name": "_terminal",
-                  "nameLocation": "1650:9:127",
+                  "nameLocation": "1650:9:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53871,
-                  "src": "1631:28:127",
+                  "scope": 26849,
+                  "src": "1631:28:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                    "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                     "typeString": "contract IJBPaymentTerminal"
                   },
                   "typeName": {
-                    "id": 53867,
+                    "id": 26845,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 53866,
+                      "id": 26844,
                       "name": "IJBPaymentTerminal",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 54069,
-                      "src": "1631:18:127"
+                      "referencedDeclaration": 26927,
+                      "src": "1631:18:130"
                     },
-                    "referencedDeclaration": 54069,
-                    "src": "1631:18:127",
+                    "referencedDeclaration": 26927,
+                    "src": "1631:18:130",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IJBPaymentTerminal_$54069",
+                      "typeIdentifier": "t_contract$_IJBPaymentTerminal_$26927",
                       "typeString": "contract IJBPaymentTerminal"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1581:82:127"
+              "src": "1581:82:130"
             },
             "returnParameters": {
-              "id": 53870,
+              "id": 26848,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1672:0:127"
+              "src": "1672:0:130"
             },
-            "scope": 53879,
+            "scope": 26857,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 53878,
+            "id": 26856,
             "nodeType": "FunctionDefinition",
-            "src": "1677:81:127",
+            "src": "1677:81:130",
             "nodes": [],
             "functionSelector": "a1ed3175",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setIsAllowedToSetFirstController",
-            "nameLocation": "1686:32:127",
+            "nameLocation": "1686:32:130",
             "parameters": {
-              "id": 53876,
+              "id": 26854,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 53873,
+                  "id": 26851,
                   "mutability": "mutable",
                   "name": "_address",
-                  "nameLocation": "1727:8:127",
+                  "nameLocation": "1727:8:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53878,
-                  "src": "1719:16:127",
+                  "scope": 26856,
+                  "src": "1719:16:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2481,10 +2481,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 53872,
+                    "id": 26850,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1719:7:127",
+                    "src": "1719:7:130",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2495,13 +2495,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 53875,
+                  "id": 26853,
                   "mutability": "mutable",
                   "name": "_flag",
-                  "nameLocation": "1742:5:127",
+                  "nameLocation": "1742:5:130",
                   "nodeType": "VariableDeclaration",
-                  "scope": 53878,
-                  "src": "1737:10:127",
+                  "scope": 26856,
+                  "src": "1737:10:130",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2509,10 +2509,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 53874,
+                    "id": 26852,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1737:4:127",
+                    "src": "1737:4:130",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2521,15 +2521,15 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1718:30:127"
+              "src": "1718:30:130"
             },
             "returnParameters": {
-              "id": 53877,
+              "id": 26855,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1757:0:127"
+              "src": "1757:0:130"
             },
-            "scope": 53879,
+            "scope": 26857,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -2541,15 +2541,15 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          53879
+          26857
         ],
         "name": "IJBDirectory",
-        "nameLocation": "168:12:127",
-        "scope": 53880,
+        "nameLocation": "168:12:130",
+        "scope": 26858,
         "usedErrors": []
       }
     ],
     "license": "MIT"
   },
-  "id": 127
+  "id": 130
 }
